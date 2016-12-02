@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 //    MainWindow w;
     Database* db = new Database();
     db->createTable("oj", "database");
-    db->insertValue("database","oj","dog","pies");
+    db->insertValue("database","oj","dog","gęś");
     db->displayTable("database","oj");
 //    w.show();
 
