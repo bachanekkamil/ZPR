@@ -10,7 +10,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = GreatMemo
 TEMPLATE = app
-LIBS += -lsqlite3
+
+QT += sql
 
 SOURCES += main.cpp\
         mainwindow.cpp \

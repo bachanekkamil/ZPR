@@ -1,117 +1,154 @@
-#include "database.h"
-using namespace std;
+#include <database.h>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QSqlRecord>
+#include <QDebug>
 
-
-Database::Database()
+DbManager::DbManager(const QString &path)
 {
+    m_db = QSqlDatabase::addDatabase("QSQLITE");
+    m_db.setDatabaseName(path);
 
-}
-
-int Database::createTable(const std::string& tableName, const std::string& databaseName){
-
-    openDatabase(databaseName);
-
-    char *error;
-    std::string sqlCreateTable = "CREATE TABLE " + std::string(tableName) + "(id INTEGER PRIMARY KEY,ang STRING, pol STRING);";
-
-    const char *createTableChar = sqlCreateTable.c_str();
-    rc = sqlite3_exec(db, createTableChar, NULL, NULL, &error);
-
-    if (rc)
+    if (!m_db.open())
     {
-       cerr << "Error executing SQLite3 statement: " << sqlite3_errmsg(db) << endl << endl;
-       sqlite3_free(error);
+        qDebug() << "Error: connection with database fail";
     }
     else
     {
-       cout << "Table "<<tableName<<" created"<< endl;
-    }
-    sqlite3_close(db);
-
-}
-
-int Database::openDatabase(const std::string& databaseName){
-    rc = sqlite3_open(databaseName.c_str(), &db);
-    if( rc ){
-       fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-       return(0);
+        qDebug() << "Database: connection ok";
     }
 }
 
-
-int Database::insertValue(const std::string& databaseName, const std::string& tableName, const std::string& value1, const std::string& value2){
-
-    openDatabase(databaseName);
-    char *error;
-    std::string sqlInsert = "INSERT INTO " +tableName+" VALUES(NULL, '"+value1+"', '" + value2+"');";
-
-    const char *sqlInsertChar = sqlInsert.c_str();
-    fprintf(stderr,sqlInsertChar);
-
-    rc = sqlite3_exec(db, sqlInsertChar, NULL, NULL, &error);
-    if (rc)
+DbManager::~DbManager()
+{
+    if (m_db.isOpen())
     {
-       cerr << "Error executing SQLite3 statement: " << sqlite3_errmsg(db) << endl << endl;
-       sqlite3_free(error);
+        m_db.close();
+    }
+}
+
+bool DbManager::isOpen() const
+{
+    return m_db.isOpen();
+}
+
+bool DbManager::createTable()
+{
+    bool success = false;
+
+    QSqlQuery query;
+    query.prepare("CREATE TABLE people(id INTEGER PRIMARY KEY, name TEXT);");
+
+    if (!query.exec())
+    {
+        qDebug() << "Couldn't create the table 'people': one might already exist.";
+        success = false;
+    }
+
+    return success;
+}
+
+bool DbManager::addPerson(const QString& name)
+{
+    bool success = false;
+
+    if (!name.isEmpty())
+    {
+        QSqlQuery queryAdd;
+        queryAdd.prepare("INSERT INTO people (name) VALUES (:name)");
+        queryAdd.bindValue(":name", name);
+
+        if(queryAdd.exec())
+        {
+            success = true;
+        }
+        else
+        {
+            qDebug() << "add person failed: " << queryAdd.lastError();
+        }
     }
     else
     {
-       cout << "Inserted a value" << endl << endl;
+        qDebug() << "add person failed: name cannot be empty";
     }
 
-    sqlite3_close(db);
-
+    return success;
 }
 
-int Database::displayTable(const std::string& databaseName, const std::string& tableName){
+bool DbManager::removePerson(const QString& name)
+{
+    bool success = false;
 
-    openDatabase(databaseName);
-    char *error;
-
-    std::string sqlSelect = "SELECT * FROM " + tableName+";";
-    const char *sqlSelectChar = sqlSelect.c_str();
-    char **results = NULL;
-    int rows, columns;
-    sqlite3_get_table(db, sqlSelectChar, &results, &rows, &columns, &error);
-    if (rc)
+    if (personExists(name))
     {
-       cerr << "Error executing SQLite3 query: " << sqlite3_errmsg(db) << endl << endl;
-       sqlite3_free(error);
+        QSqlQuery queryDelete;
+        queryDelete.prepare("DELETE FROM people WHERE name = (:name)");
+        queryDelete.bindValue(":name", name);
+        success = queryDelete.exec();
+
+        if(!success)
+        {
+            qDebug() << "remove person failed: " << queryDelete.lastError();
+        }
     }
     else
     {
-       // Display Table
-       for (int rowCtr = 0; rowCtr <= rows; ++rowCtr)
-       {
-          for (int colCtr = 0; colCtr < columns; ++colCtr)
-          {
-             // Determine Cell Position
-             int cellPosition = (rowCtr * columns) + colCtr;
-
-             // Display Cell Value
-             cout.width(12);
-             cout.setf(ios::left);
-             cout << results[cellPosition] << " ";
-          }
-
-          // End Line
-          cout << endl;
-
-          // Display Separator For Header
-          if (0 == rowCtr)
-          {
-             for (int colCtr = 0; colCtr < columns; ++colCtr)
-             {
-                cout.width(12);
-                cout.setf(ios::left);
-                cout << "~~~~~~~~~~~~ ";
-             }
-             cout << endl;
-          }
-       }
+        qDebug() << "remove person failed: person doesnt exist";
     }
-    sqlite3_free_table(results);
 
-    sqlite3_close(db);
+    return success;
+}
 
+void DbManager::printAllPersons() const
+{
+    qDebug() << "Persons in db:";
+    QSqlQuery query("SELECT * FROM people");
+    int idName = query.record().indexOf("name");
+    while (query.next())
+    {
+        QString name = query.value(idName).toString();
+        qDebug() << "===" << name;
+    }
+}
+
+bool DbManager::personExists(const QString& name) const
+{
+    bool exists = false;
+
+    QSqlQuery checkQuery;
+    checkQuery.prepare("SELECT name FROM people WHERE name = (:name)");
+    checkQuery.bindValue(":name", name);
+
+    if (checkQuery.exec())
+    {
+        if (checkQuery.next())
+        {
+            exists = true;
+        }
+    }
+    else
+    {
+        qDebug() << "person exists failed: " << checkQuery.lastError();
+    }
+
+    return exists;
+}
+
+bool DbManager::removeAllPersons()
+{
+    bool success = false;
+
+    QSqlQuery removeQuery;
+    removeQuery.prepare("DELETE FROM people");
+
+    if (removeQuery.exec())
+    {
+        success = true;
+    }
+    else
+    {
+        qDebug() << "remove all persons failed: " << removeQuery.lastError();
+    }
+
+    return success;
 }
