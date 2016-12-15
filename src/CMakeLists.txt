@@ -10,18 +10,23 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
 
+# Instruct CMake where to search for Qt libraries on Windows. On Unix systems usually you can find them in default location.
+if (WIN32)
 set(CMAKE_PREFIX_PATH "C:/Qtt/5.7/msvc2015")
+endif()
+
 # Find the QtWidgets library
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Sql REQUIRED)
 
-# Set boost root directory
+
+# Set boost root directory (Windows system). 
+if (WIN32)
 set(BOOST_ROOT "C:/boost_1_62_0")
+endif()
 
 # Find the Boost library
 find_package(Boost REQUIRED) 
-
-message(${Boost_INCLUDE_DIRS})
 
 # Include Boost .h headers
 include_directories(${Boost_INCLUDE_DIRS})
