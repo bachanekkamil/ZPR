@@ -1,3 +1,9 @@
+#Path to Qt libraries
+set(Qt_path "C:/Qtt/5.7/msvc2015")
+
+#Path to Boost libraries
+set(Boost_path "C:/boost_1_62_0")
+
 #Minimum required version of CMake
 cmake_minimum_required (VERSION 2.8.11)
 
@@ -10,23 +16,20 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
 
-# Instruct CMake where to search for Qt libraries on Windows. On Unix systems usually you can find them in default location.
-if (WIN32)
-set(CMAKE_PREFIX_PATH "C:/Qtt/5.7/msvc2015")
-endif()
+# One more poath tosearch
+set(CMAKE_PREFIX_PATH ${Qt_path})
 
-# Find the QtWidgets library
+# Find the QtWidgets library.
 find_package(Qt5Widgets REQUIRED)
+
+# Find the QtSql library.
 find_package(Qt5Sql REQUIRED)
 
+# One more path to search
+set(BOOST_ROOT ${Boost_path})
 
-# Set boost root directory (Windows system). 
-if (WIN32)
-set(BOOST_ROOT "C:/boost_1_62_0")
-endif()
-
-# Find the Boost library
-find_package(Boost REQUIRED) 
+# Find the Boost library.
+find_package(Boost REQUIRED)
 
 # Include Boost .h headers
 include_directories(${Boost_INCLUDE_DIRS})
