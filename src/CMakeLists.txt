@@ -44,13 +44,13 @@ file(GLOB UIS_HEADERS "ui_include/*.ui")
 QT5_WRAP_UI(UIS ${UIS_HEADERS})
 
 # Find all .h files
-file(GLOB H_HEADERS "include/*.h")
+file(GLOB H_HEADERS "include/GUI/*.h" "include/logic/*.h")
 
 # Wrap .h files
 qt5_wrap_cpp(MOC_HEADERS ${H_HEADERS})
 
 # Find all .cpp files
-file(GLOB CPP_FILES "src/*.cpp")
+file(GLOB CPP_FILES "src/logic/*.cpp" "src/GUI/*.cpp")
 
 add_definitions( -DBOOST_ALL_NO_LIB )
 
