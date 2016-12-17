@@ -69,7 +69,6 @@ enable_testing()
 
 find_package(Boost COMPONENTS system filesystem unit_test_framework REQUIRED)
 
-
 #I like to keep test files in a separate source directory called test
 file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} src_test/*.cpp)
 
@@ -80,9 +79,6 @@ foreach(testSrc ${TEST_SRCS})
 
         #Add compile target
         add_executable(${testName} ${testSrc})
-
-        #link to Boost libraries AND your targets and dependencies
-        #target_link_libraries(${testName} ${Boost_LIBRARIES})
 		
 		target_link_libraries(${testName}
                       ${Boost_FILESYSTEM_LIBRARY}
@@ -92,10 +88,6 @@ foreach(testSrc ${TEST_SRCS})
 		
 		# Use the Widgets module from Qt 5.
 		target_link_libraries(${testName} Qt5::Widgets)
-
-        #I like to move testing binaries into a src_test directory
-        set_target_properties(${testName} PROPERTIES 
-            RUNTIME_OUTPUT_DIRECTORY  ${CMAKE_CURRENT_SOURCE_DIR}/src_test)
 
         #Finally add it to test execution - 
         #Notice the WORKING_DIRECTORY and COMMAND
