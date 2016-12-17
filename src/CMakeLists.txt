@@ -10,6 +10,9 @@ cmake_minimum_required (VERSION 2.8.11)
 # Set project name
 project (SuperMemo)
 
+# Add support for C++11
+add_definitions(-std=c++11)
+
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
