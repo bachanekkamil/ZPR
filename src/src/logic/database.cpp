@@ -4,6 +4,10 @@
 #include <QSqlRecord>
 #include <QDebug>
 
+
+
+
+
 DbManager::DbManager(const QString &path)
 {
     m_db = QSqlDatabase::addDatabase("QSQLITE");
@@ -32,30 +36,14 @@ bool DbManager::isOpen() const
     return m_db.isOpen();
 }
 
-bool DbManager::createTable()
-{
-    bool success = false;
-
-    QSqlQuery query;
-    query.prepare("CREATE TABLE people(id INTEGER PRIMARY KEY, name TEXT);");
-
-    if (!query.exec())
-    {
-        qDebug() << "Couldn't create the table 'people': one might already exist.";
-        success = false;
-    }
-
-    return success;
-}
-
-bool DbManager::addPerson(const QString& name)
+bool DbManager::addUser(const QString& name)
 {
     bool success = false;
 
     if (!name.isEmpty())
     {
         QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO people (name) VALUES (:name)");
+        queryAdd.prepare("INSERT INTO Users (name) VALUES (:name)");
         queryAdd.bindValue(":name", name);
 
         if(queryAdd.exec())
@@ -64,45 +52,70 @@ bool DbManager::addPerson(const QString& name)
         }
         else
         {
-            qDebug() << "add person failed: " << queryAdd.lastError();
+            qDebug() << "add user failed: " << queryAdd.lastError();
         }
     }
     else
     {
-        qDebug() << "add person failed: name cannot be empty";
+        qDebug() << "add user failed: name cannot be empty";
     }
 
     return success;
 }
 
-bool DbManager::removePerson(const QString& name)
+
+bool DbManager::removeUser(const QString& name)
 {
     bool success = false;
 
-    if (personExists(name))
+    if (isUserExists(name))
     {
         QSqlQuery queryDelete;
-        queryDelete.prepare("DELETE FROM people WHERE name = (:name)");
+        queryDelete.prepare("DELETE FROM Users WHERE name = (:name)");
         queryDelete.bindValue(":name", name);
         success = queryDelete.exec();
 
         if(!success)
         {
-            qDebug() << "remove person failed: " << queryDelete.lastError();
+            qDebug() << "remove user failed: " << queryDelete.lastError();
         }
     }
     else
     {
-        qDebug() << "remove person failed: person doesnt exist";
+        qDebug() << "remove user failed: person doesnt exist";
     }
 
     return success;
 }
 
-void DbManager::printAllPersons() const
+bool DbManager::removeUser(unsigned int id)
+{
+    bool success = false;
+
+    if (isUserExists(id))
+    {
+        QSqlQuery queryDelete;
+        queryDelete.prepare("DELETE FROM Users WHERE id = (:id)");
+        queryDelete.bindValue(":id", id);
+        success = queryDelete.exec();
+
+        if(!success)
+        {
+            qDebug() << "remove user failed: " << queryDelete.lastError();
+        }
+    }
+    else
+    {
+        qDebug() << "remove user failed: person doesnt exist";
+    }
+
+    return success;
+}
+
+void DbManager::getAllUsers() const
 {
     qDebug() << "Persons in db:";
-    QSqlQuery query("SELECT * FROM people");
+    QSqlQuery query("SELECT * FROM Users");
     int idName = query.record().indexOf("name");
     while (query.next())
     {
@@ -111,12 +124,12 @@ void DbManager::printAllPersons() const
     }
 }
 
-bool DbManager::personExists(const QString& name) const
+bool DbManager::isUserExists(const QString& name) const
 {
     bool exists = false;
 
     QSqlQuery checkQuery;
-    checkQuery.prepare("SELECT name FROM people WHERE name = (:name)");
+    checkQuery.prepare("SELECT name FROM Users WHERE name = (:name)");
     checkQuery.bindValue(":name", name);
 
     if (checkQuery.exec())
@@ -128,18 +141,42 @@ bool DbManager::personExists(const QString& name) const
     }
     else
     {
-        qDebug() << "person exists failed: " << checkQuery.lastError();
+        qDebug() << "user exists failed: " << checkQuery.lastError();
     }
 
     return exists;
 }
 
-bool DbManager::removeAllPersons()
+bool DbManager::isUserExists(unsigned int id)
+{
+    bool exists = false;
+
+    QSqlQuery checkQuery;
+    checkQuery.prepare("SELECT name FROM Users WHERE id = (:id)");
+    checkQuery.bindValue(":id", id);
+
+    if (checkQuery.exec())
+    {
+        if (checkQuery.next())
+        {
+            exists = true;
+        }
+    }
+    else
+    {
+        qDebug() << "user exists failed: " << checkQuery.lastError();
+    }
+
+    return exists;
+}
+
+
+bool DbManager::removeAllUsers()
 {
     bool success = false;
 
     QSqlQuery removeQuery;
-    removeQuery.prepare("DELETE FROM people");
+    removeQuery.prepare("DELETE FROM Users");
 
     if (removeQuery.exec())
     {
@@ -147,7 +184,7 @@ bool DbManager::removeAllPersons()
     }
     else
     {
-        qDebug() << "remove all persons failed: " << removeQuery.lastError();
+        qDebug() << "remove all users failed: " << removeQuery.lastError();
     }
 
     return success;

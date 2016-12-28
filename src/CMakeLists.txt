@@ -10,9 +10,6 @@ cmake_minimum_required (VERSION 2.8.11)
 # Set project name
 project (SuperMemo)
 
-# Add support for C++11
-add_definitions(-std=c++11)
-
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -38,7 +35,13 @@ find_package(Boost REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
 # Include .h headers
-include_directories(include)
+include_directories("include")
+
+# Include .h headers
+include_directories("include/GUI")
+
+# Include .h headers
+include_directories("include/logic")
 
 # Find all .ui files
 file(GLOB UIS_HEADERS "ui_include/*.ui")
