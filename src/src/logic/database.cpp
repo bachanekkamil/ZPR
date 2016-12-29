@@ -1,8 +1,10 @@
 #include <logic/database.h>
+#include <logic/database_exception.h>
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
+
 
 
 
@@ -19,7 +21,7 @@ DbManager::DbManager(const QString &path)
     }
     else
     {
-        qDebug() << "Database: connection ok";
+        qDebug() << "Database: connection okk";
     }
 }
 
@@ -36,10 +38,8 @@ bool DbManager::isOpen() const
     return m_db.isOpen();
 }
 
-bool DbManager::addUser(const QString& name)
+void DbManager::addUser(const QString& name)
 {
-    bool success = false;
-
     if (!name.isEmpty())
     {
         QSqlQuery queryAdd;
@@ -48,19 +48,49 @@ bool DbManager::addUser(const QString& name)
 
         if(queryAdd.exec())
         {
-            success = true;
+            return;
         }
         else
         {
-            qDebug() << "add user failed: " << queryAdd.lastError();
+            throw DatabaseException(queryAdd.lastError().text().toStdString().c_str());
         }
     }
     else
     {
-        qDebug() << "add user failed: name cannot be empty";
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
     }
+}
 
-    return success;
+User DbManager::getUser(unsigned int id)
+{
+    if (id > 0)
+    {
+        QSqlQuery queryGet;
+        queryGet.prepare("Select name FROM Users WHERE id = :id");
+        queryGet.bindValue(":id", QString::number(id));
+
+        if(queryGet.exec())
+        {
+            if(queryGet.next())
+            {
+                QString name = queryGet.value(0).toString();
+                User us(name, id);
+                return us;
+            }
+            else
+            {
+                throw DatabaseException(error_type::ROW_NOT_FOUND);
+            }
+        }
+        else
+        {
+            throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
+        }
+    }
+    else
+    {
+        throw DatabaseException(error_type::PASSED_WRONG_ID);
+    }
 }
 
 

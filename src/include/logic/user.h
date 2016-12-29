@@ -8,7 +8,7 @@ class User
 
 public:
     User();
-    User(QString _name);
+    User(QString _name, unsigned int id);
     ~User();
     unsigned int getIdDb();
     const QString* getName();

@@ -2,6 +2,7 @@
 #define DATABASE_H
 
 #include <QSqlDatabase>
+#include "user.h"
 
 
 class DbManager
@@ -18,7 +19,9 @@ public:
 
     bool isOpen() const;
 
-    bool addUser(const QString& name);
+    void addUser(const QString& name);
+
+    User getUser(unsigned int id);
 
     bool removeUser(const QString& name);
 

@@ -3,7 +3,9 @@
 #include <QVBoxLayout>
 #include "logic/answer.h"
 #include "logic/database.h"
+#include <logic/database_exception.h>
 #include <QDebug>
+#include <logic/user.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -29,6 +31,43 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if(db.removeUser("Kamil"))
             qDebug() << "User deleted";
+
+    //add user test
+    db.addUser("Kamil");
+
+    try{
+    //add user test
+    db.addUser("Kamil");
+    }
+    catch(DatabaseException& e)
+    {
+        qDebug() << "Database exception. Do sth";
+        qDebug() << e.what();
+    }
+
+    try{
+    //add user test
+    db.addUser("");
+    }
+    catch(DatabaseException& e)
+    {
+        qDebug() << "Database exception. Do sth";
+        qDebug() << e.what();
+    }
+
+    try{
+    //get user test
+    User us = db.getUser(1);
+    qDebug() << "Name: ";
+    qDebug() << *us.getName();
+    }
+    catch(DatabaseException& e)
+    {
+        qDebug() << "Database exception. Do sth";
+        qDebug() << e.what();
+    }
+
+
 
 
 }

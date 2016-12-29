@@ -1,4 +1,5 @@
 #include "logic/user.h"
+#include <QDebug>
 
 /**
  * pull data from database
@@ -11,7 +12,8 @@ User::User():id_db(0){
  * create new user and add to database, throw exception if saving to database
  * unsuccessful
  */
-User::User(QString _name):id_db(0){
+User::User(QString _name, unsigned int id):name(_name), id_db(id)
+{
 
 }
 
@@ -29,7 +31,7 @@ unsigned int User::getIdDb(){
 
 const QString* User::getName(){
 
-    return  NULL;
+    return &name;
 }
 
 
