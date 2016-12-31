@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include "secondwindow.h"
+#include <deque>
+#include <memory>
+#include <logic/user.h>
+
 
 namespace Ui {
 class MainWindow;
@@ -22,6 +26,7 @@ private slots:
 private:
     SecondWindow *window2;
     Ui::MainWindow *ui;
+    std::deque<std::shared_ptr<User>> deq;
 };
 
 #endif // MAINWINDOW_H

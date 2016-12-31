@@ -4,7 +4,7 @@
 /**
  * pull data from database
  */
-User::User():id_db(0){
+User::User():mIdDb(0){
 
 }
 
@@ -12,14 +12,16 @@ User::User():id_db(0){
  * create new user and add to database, throw exception if saving to database
  * unsuccessful
  */
-User::User(QString _name, unsigned int id):name(_name), id_db(id)
+User::User(QString name, unsigned int id, QDateTime time_created):mName(name), mIdDb(id), mTimeCreated(time_created)
 {
-
+    qDebug() << "User created. Id:";
+    qDebug() << QString::number(mIdDb);
 }
 
 
 User::~User(){
-
+ qDebug() << "User deleted from memory. Id:";
+ qDebug() << QString::number(mIdDb);
 }
 
 
@@ -31,7 +33,11 @@ unsigned int User::getIdDb(){
 
 const QString* User::getName(){
 
-    return &name;
+    return &mName;
+}
+
+const QDateTime* User::getTimeCreated(){
+    return &mTimeCreated;
 }
 
 

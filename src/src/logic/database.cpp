@@ -4,10 +4,7 @@
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
-
-
-
-
+#include <QDateTime>
 
 
 DbManager::DbManager(const QString &path)
@@ -38,7 +35,7 @@ bool DbManager::isOpen() const
     return m_db.isOpen();
 }
 
-void DbManager::addUser(const QString& name)
+unsigned int DbManager::addUser(const QString& name)
 {
     if (!name.isEmpty())
     {
@@ -48,7 +45,7 @@ void DbManager::addUser(const QString& name)
 
         if(queryAdd.exec())
         {
-            return;
+            return getLastInsertedRowId();
         }
         else
         {
@@ -61,12 +58,12 @@ void DbManager::addUser(const QString& name)
     }
 }
 
-User DbManager::getUser(unsigned int id)
+std::shared_ptr<User> DbManager::getUser(unsigned int id)
 {
     if (id > 0)
     {
         QSqlQuery queryGet;
-        queryGet.prepare("Select name FROM Users WHERE id = :id");
+        queryGet.prepare("Select name, datetime_created FROM Users WHERE id = :id");
         queryGet.bindValue(":id", QString::number(id));
 
         if(queryGet.exec())
@@ -74,7 +71,10 @@ User DbManager::getUser(unsigned int id)
             if(queryGet.next())
             {
                 QString name = queryGet.value(0).toString();
-                User us(name, id);
+                QString date = queryGet.value(1).toString();
+                QString format = "yyyy-MM-dd HH:mm:ss";
+                QDateTime dt = QDateTime::fromString(date, format);
+                std::shared_ptr<User> us(new User (name, id, dt));
                 return us;
             }
             else
@@ -94,64 +94,66 @@ User DbManager::getUser(unsigned int id)
 }
 
 
-bool DbManager::removeUser(const QString& name)
+void DbManager::removeUser(const QString& name)
 {
-    bool success = false;
-
     if (isUserExists(name))
     {
         QSqlQuery queryDelete;
         queryDelete.prepare("DELETE FROM Users WHERE name = (:name)");
         queryDelete.bindValue(":name", name);
-        success = queryDelete.exec();
 
-        if(!success)
+        if(!queryDelete.exec())
         {
-            qDebug() << "remove user failed: " << queryDelete.lastError();
+            throw DatabaseException(queryDelete.lastError().text().toStdString().c_str());
         }
     }
     else
     {
-        qDebug() << "remove user failed: person doesnt exist";
+        throw DatabaseException(error_type::ROW_NOT_FOUND);
     }
 
-    return success;
 }
 
-bool DbManager::removeUser(unsigned int id)
+void DbManager::removeUser(unsigned int id)
 {
-    bool success = false;
-
     if (isUserExists(id))
     {
         QSqlQuery queryDelete;
         queryDelete.prepare("DELETE FROM Users WHERE id = (:id)");
         queryDelete.bindValue(":id", id);
-        success = queryDelete.exec();
 
-        if(!success)
+        if(!queryDelete.exec())
         {
-            qDebug() << "remove user failed: " << queryDelete.lastError();
+            throw DatabaseException(queryDelete.lastError().text().toStdString().c_str());
         }
     }
     else
     {
-        qDebug() << "remove user failed: person doesnt exist";
+        throw DatabaseException(error_type::ROW_NOT_FOUND);
     }
-
-    return success;
 }
 
-void DbManager::getAllUsers() const
+std::vector<std::shared_ptr<User>> DbManager::getAllUsers() const
 {
     qDebug() << "Persons in db:";
-    QSqlQuery query("SELECT * FROM Users");
-    int idName = query.record().indexOf("name");
-    while (query.next())
+    QSqlQuery queryGet;
+    queryGet.prepare("Select name, datetime_created, id FROM Users");
+    if(!queryGet.exec())
     {
-        QString name = query.value(idName).toString();
-        qDebug() << "===" << name;
+        throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
     }
+    std::vector<std::shared_ptr<User>> vec;
+    while (queryGet.next())
+    {
+        QString name = queryGet.value(0).toString();
+        QString date = queryGet.value(1).toString();
+        unsigned int id = queryGet.value(2).toUInt();
+        QString format = "yyyy-MM-dd HH:mm:ss";
+        QDateTime dt = QDateTime::fromString(date, format);
+        std::shared_ptr<User> us(new User (name, id, dt));
+        vec.push_back(us);
+    }
+    return vec;
 }
 
 bool DbManager::isUserExists(const QString& name) const
@@ -171,7 +173,7 @@ bool DbManager::isUserExists(const QString& name) const
     }
     else
     {
-        qDebug() << "user exists failed: " << checkQuery.lastError();
+        throw DatabaseException(checkQuery.lastError().text().toStdString().c_str());
     }
 
     return exists;
@@ -194,28 +196,44 @@ bool DbManager::isUserExists(unsigned int id)
     }
     else
     {
-        qDebug() << "user exists failed: " << checkQuery.lastError();
+        throw DatabaseException(checkQuery.lastError().text().toStdString().c_str());
     }
 
     return exists;
 }
 
 
-bool DbManager::removeAllUsers()
+void DbManager::removeAllUsers()
 {
-    bool success = false;
-
     QSqlQuery removeQuery;
     removeQuery.prepare("DELETE FROM Users");
 
-    if (removeQuery.exec())
+    if (!removeQuery.exec())
     {
-        success = true;
+        throw DatabaseException(removeQuery.lastError().text().toStdString().c_str());
+    }
+}
+
+unsigned int DbManager::getLastInsertedRowId()
+{
+    QSqlQuery queryGet;
+    queryGet.prepare("SELECT last_insert_rowid()");
+
+    if(queryGet.exec())
+    {
+        if(queryGet.next())
+        {
+            unsigned int id = queryGet.value(0).toUInt();
+            return id;
+        }
+        else
+        {
+            throw DatabaseException(error_type::ROW_NOT_FOUND);
+        }
     }
     else
     {
-        qDebug() << "remove all users failed: " << removeQuery.lastError();
+        throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
     }
-
-    return success;
 }
+

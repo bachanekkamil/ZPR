@@ -3,6 +3,7 @@
 
 #include <QSqlDatabase>
 #include "user.h"
+#include <memory>
 
 
 class DbManager
@@ -19,26 +20,28 @@ public:
 
     bool isOpen() const;
 
-    void addUser(const QString& name);
+    unsigned int addUser(const QString& name);
 
-    User getUser(unsigned int id);
+    std::shared_ptr<User> getUser(unsigned int id);
 
-    bool removeUser(const QString& name);
+    void removeUser(const QString& name);
 
-    bool removeUser(unsigned int id);
+    void removeUser(unsigned int id);
 
     bool isUserExists(const QString& name) const;
 
     bool isUserExists(unsigned int id);
 
-    void getAllUsers() const;
+    std::vector<std::shared_ptr<User> > getAllUsers() const;
 
-    bool removeAllUsers();
+    void removeAllUsers();
 
 private:
     QSqlDatabase m_db;
 
     DbManager(const QString& path);
+
+    unsigned int getLastInsertedRowId();
 };
 
 #endif // DATABASE_H
