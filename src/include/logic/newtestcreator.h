@@ -2,6 +2,7 @@
 #define NEWTESTCREATOR_H
 
 #include "test.h"
+#include "questionreal.h"
 
 class NewTestCreator
 {
@@ -12,7 +13,7 @@ public:
 
     NewTestCreator(Test* _parent_test, QString name);
     ~NewTestCreator();
-    void addQuestion(Question name);
+    void addQuestion(QString text, std::vector<QString> Answer, std::shared_ptr<Test> test, short correct_answer);
     Test* getNewTest();
 
 private:

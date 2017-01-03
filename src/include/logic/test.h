@@ -1,6 +1,7 @@
 #ifndef TEST_H
 #define TEST_H
 
+#include "test.h"
 #include "user.h"
 #include "question.h"
 #include <unordered_map>
@@ -8,30 +9,35 @@ class Test
 {
 
 public:
-    Test();
-    User *m_User;
-    Question *m_Question;
+    Test(unsigned int id_test_db, QString name, std::shared_ptr<User> createdBy, std::vector<std::shared_ptr<Question>> questions);
+    std::shared_ptr<User> getTestOwner() const;
+    const QString* getTestName() const;
+    unsigned int getIdDb() const;
 
-    Test(unsigned int _id_test_db);
+    //not used now
+    Test();
+
+
     Test(QString _name, User _user);
     ~Test();
     void addQuestion(Question* _question);
-    std::unordered_map<int, Question*> getAllQuestions();
+    std::vector<std::shared_ptr<Question> > getAllQuestions();
     Test* getParentTest();
     Question* getQuestion(unsigned int _id_db);
-    const QString* getTestName();
-    User* getTestOwner();
     void setTestName(QString _name);
 
 private:
-    const User* created_by;
-    const unsigned int id_test_db;
-    const QString name;
-    Test* parent_test;
+    std::shared_ptr<User> mCreatedBy;
+    const unsigned int mIdTestDb;
+    QString mName;
+    std::vector<std::shared_ptr<Question>> mQuestions;
+
+    //not used now
+    std::shared_ptr<User> mParentTest;
     /**
      * container with questions
      */
-    std::unordered_map<int, Question*> questions;
+
 
 };
 

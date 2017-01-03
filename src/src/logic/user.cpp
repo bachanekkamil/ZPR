@@ -14,29 +14,27 @@ User::User():mIdDb(0){
  */
 User::User(QString name, unsigned int id, QDateTime time_created):mName(name), mIdDb(id), mTimeCreated(time_created)
 {
-    qDebug() << "User created. Id:";
-    qDebug() << QString::number(mIdDb);
+
 }
 
 
 User::~User(){
- qDebug() << "User deleted from memory. Id:";
- qDebug() << QString::number(mIdDb);
+
 }
 
 
-unsigned int User::getIdDb(){
+unsigned int User::getIdDb() const{
 
-    return 0;
+    return mIdDb;
 }
 
 
-const QString* User::getName(){
+const QString* User::getName() const{
 
     return &mName;
 }
 
-const QDateTime* User::getTimeCreated(){
+const QDateTime* User::getTimeCreated() const{
     return &mTimeCreated;
 }
 

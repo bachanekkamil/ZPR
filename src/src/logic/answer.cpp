@@ -7,14 +7,10 @@
 //  Original author: bacha
 ///////////////////////////////////////////////////////////
 
-Answer::Answer():id_db(0){
-
-}
 
 
-Answer::~Answer(){
 
-}
+
 
 /**
  * use initialization list to set parameters:
@@ -22,14 +18,16 @@ Answer::~Answer(){
  * - QString
  * throws std::invalid_argument
  */
-Answer::Answer(QString text, unsigned int _id_db):id_db(_id_db){
+Answer::Answer(QString text, unsigned int _id_db):
+    mIdDb(_id_db), mText(text)
+{
 
 }
 
 
-const unsigned int* Answer::getIdDb(){
+const unsigned int Answer::getIdDb(){
 
-    return  NULL;
+    return  mIdDb;
 }
 
 

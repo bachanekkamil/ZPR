@@ -5,12 +5,13 @@
 #include <QSqlRecord>
 #include <QDebug>
 #include <QDateTime>
+#include <logic/questionproxy.h>
 
 
 DbManager::DbManager(const QString &path)
 {
     m_db = QSqlDatabase::addDatabase("QSQLITE");
-    m_db.setDatabaseName(path);
+    m_db.setDatabaseName("db_test.db");
 
     if (!m_db.open())
     {
@@ -20,6 +21,9 @@ DbManager::DbManager(const QString &path)
     {
         qDebug() << "Database: connection okk";
     }
+    QSqlQuery query;
+    query.prepare("PRAGMA foreign_keys = ON");
+    query.exec();
 }
 
 DbManager::~DbManager()
@@ -62,6 +66,13 @@ std::shared_ptr<User> DbManager::getUser(unsigned int id)
 {
     if (id > 0)
     {
+        if(all_users.size() > 0)
+        {
+            foreach (std::shared_ptr<User> us, all_users) {
+                if(us->getIdDb() == id)
+                    return us;
+            }
+        }
         QSqlQuery queryGet;
         queryGet.prepare("Select name, datetime_created FROM Users WHERE id = :id");
         queryGet.bindValue(":id", QString::number(id));
@@ -133,16 +144,16 @@ void DbManager::removeUser(unsigned int id)
     }
 }
 
-std::vector<std::shared_ptr<User>> DbManager::getAllUsers() const
+std::vector<std::shared_ptr<User>> DbManager::getAllUsers()
 {
-    qDebug() << "Persons in db:";
+    if(all_users.size() > 0)
+        return all_users;
     QSqlQuery queryGet;
     queryGet.prepare("Select name, datetime_created, id FROM Users");
     if(!queryGet.exec())
     {
         throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
     }
-    std::vector<std::shared_ptr<User>> vec;
     while (queryGet.next())
     {
         QString name = queryGet.value(0).toString();
@@ -151,9 +162,9 @@ std::vector<std::shared_ptr<User>> DbManager::getAllUsers() const
         QString format = "yyyy-MM-dd HH:mm:ss";
         QDateTime dt = QDateTime::fromString(date, format);
         std::shared_ptr<User> us(new User (name, id, dt));
-        vec.push_back(us);
+        all_users.push_back(us);
     }
-    return vec;
+    return all_users;
 }
 
 bool DbManager::isUserExists(const QString& name) const
@@ -237,3 +248,214 @@ unsigned int DbManager::getLastInsertedRowId()
     }
 }
 
+unsigned int DbManager::addTest(const QString& name, const std::shared_ptr<User> user)
+{
+    if (!name.isEmpty() && user)
+    {
+        QSqlQuery queryAdd;
+        queryAdd.prepare("INSERT INTO Tests(name, user_who_made) VALUES (:name, :user_who_made)");
+        queryAdd.bindValue(":name", name);
+        queryAdd.bindValue(":user_who_made", user->getIdDb());
+
+        if(queryAdd.exec())
+        {
+            return getLastInsertedRowId();
+        }
+        else
+        {
+            throw DatabaseException(queryAdd.lastError().text().toStdString().c_str());
+        }
+    }
+    else
+    {
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+}
+
+std::vector<std::shared_ptr<Test>> DbManager::getAllTests()
+{
+    QSqlQuery queryGet;
+    queryGet.prepare("Select name, user_who_made, id FROM Tests");
+    if(!queryGet.exec())
+    {
+        throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
+    }
+    std::vector<std::shared_ptr<Test>> vec;
+    while (queryGet.next())
+    {
+        QString name = queryGet.value(0).toString();
+        unsigned int user_id = queryGet.value(1).toUInt();
+        unsigned int id = queryGet.value(2).toUInt();
+        std::shared_ptr<Test> test(new Test (id, name, getUser(user_id), getAllQuestionForTest(id)));
+        vec.push_back(test);
+    }
+    return vec;
+}
+
+std::shared_ptr<Question> DbManager::getRealQuestion(unsigned long long id)
+{
+    if (id > 0)
+    {
+        QSqlQuery queryGet;
+        queryGet.prepare("Select id, question_text, correct_answer FROM Users WHERE id = :id");
+        queryGet.bindValue(":id", QString::number(id));
+
+        if(queryGet.exec())
+        {
+            if(queryGet.next())
+            {
+                unsigned long long id = queryGet.value(0).toLongLong();
+                QString text = queryGet.value(1).toString();
+                unsigned long long id_correct_answer = queryGet.value(2).toLongLong();
+                std::vector<std::shared_ptr<Answer>> answers = getAnswersforQuestion(id);
+                std::shared_ptr<Answer> corr_ans;
+                foreach(std::shared_ptr<Answer> ans, answers)
+                {
+                    if(ans->getIdDb() == id_correct_answer)
+                        corr_ans = ans;
+                }
+                std::shared_ptr<Question> us(new QuestionReal(id, answers, corr_ans, text));
+                return us;
+            }
+            else
+            {
+                throw DatabaseException(error_type::ROW_NOT_FOUND);
+            }
+        }
+        else
+        {
+            throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
+        }
+    }
+    else
+    {
+        throw DatabaseException(error_type::PASSED_WRONG_ID);
+    }
+}
+
+std::vector<std::shared_ptr<Question>> DbManager::getAllQuestionForTest(unsigned int id)
+{
+    if (id <= 0)
+    throw DatabaseException(error_type::PASSED_WRONG_ID);
+
+    std::vector<std::shared_ptr<Question>> all_questions;
+    QSqlQuery queryGet;
+    queryGet.prepare("Select id FROM Questions WHERE test_id = :test_id");
+    queryGet.bindValue(":test_id", id);
+    if(!queryGet.exec())
+    {
+        throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
+    }
+    while (queryGet.next())
+    {
+        unsigned int id_question = queryGet.value(0).toUInt();
+        std::shared_ptr<Question> que(new QuestionProxy (id_question));
+        all_questions.push_back(que);
+    }
+    return all_questions;
+}
+
+unsigned int DbManager::addQuestionAndAnswers(std::shared_ptr<Test> test, QString& question_text, std::vector<QString>& answers_text, unsigned short which_correct)
+{
+    QSqlDatabase::database().transaction();
+    long inserted_question_id;
+    if (!question_text.isEmpty() && test)
+    {
+        QSqlQuery queryAdd;
+        queryAdd.prepare("INSERT INTO Questions(question_text, test_id) VALUES (:text, :test_id)");
+        queryAdd.bindValue(":text", question_text);
+        queryAdd.bindValue(":test_id", test->getIdDb());
+
+        if(queryAdd.exec())
+        {
+            inserted_question_id = getLastInsertedRowId();
+        }
+        else
+        {
+            QSqlDatabase::database().rollback();
+            throw DatabaseException(queryAdd.lastError().text().toStdString().c_str());
+        }
+    }
+    else
+    {
+        QSqlDatabase::database().rollback();
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+
+    long correct_question_id;
+    for(unsigned int i = 0 ; i<answers_text.size() ; ++i)
+    {
+        if (!answers_text.at(i).isEmpty())
+        {
+            QSqlQuery queryAdd;
+            queryAdd.prepare("INSERT INTO Answers(answer_text, question_id) VALUES (:text, :question_id)");
+            queryAdd.bindValue(":text", answers_text.at(i));
+            queryAdd.bindValue(":question_id", inserted_question_id);
+
+            if(queryAdd.exec())
+            {
+                if(i == which_correct)
+                    correct_question_id = getLastInsertedRowId();
+            }
+            else
+            {
+                QSqlDatabase::database().rollback();
+                throw DatabaseException(queryAdd.lastError().text().toStdString().c_str());
+            }
+        }
+        else
+        {
+            QSqlDatabase::database().rollback();
+            throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        }
+    }
+
+    QSqlQuery queryAdd;
+    queryAdd.prepare("UPDATE Questions SET correct_answer = :correct WHERE id = :question_id");
+    queryAdd.bindValue(":correct", correct_question_id);
+    queryAdd.bindValue(":question_id", inserted_question_id);
+
+    if(queryAdd.exec())
+    {
+        QSqlDatabase::database().commit();
+        return inserted_question_id;
+    }
+    else
+    {
+        QSqlDatabase::database().rollback();
+        throw DatabaseException(queryAdd.lastError().text().toStdString().c_str());
+    }
+}
+
+
+std::vector<std::shared_ptr<Answer>> DbManager::getAnswersforQuestion(long id_db_question)
+{
+    std::vector<std::shared_ptr<Answer>> answers;
+
+    QSqlQuery queryGet;
+    queryGet.prepare("Select answer_text, id FROM Answers WHERE qustion_id = :question_id");
+    queryGet.bindValue(":question_id", id_db_question);
+    if(!queryGet.exec())
+    {
+        throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
+    }
+    std::vector<std::shared_ptr<Answer>> vec;
+    while (queryGet.next())
+    {
+        QString name = queryGet.value(0).toString();
+        unsigned int id = queryGet.value(1).toUInt();
+
+        std::shared_ptr<Answer> ans(new Answer (name, id));
+        answers.push_back(ans);
+    }
+    return answers;
+}
+
+
+std::shared_ptr<Answer> DbManager::getAnswer(long id_db_answer)
+{
+    std::shared_ptr<Answer> answer;
+
+
+    return answer;
+}

@@ -6,7 +6,7 @@
 #include "secondwindow.h"
 #include <deque>
 #include <memory>
-#include <logic/user.h>
+#include <logic/mainclass.h>
 
 
 namespace Ui {
@@ -26,7 +26,7 @@ private slots:
 private:
     SecondWindow *window2;
     Ui::MainWindow *ui;
-    std::deque<std::shared_ptr<User>> deq;
+    MainClass mMainClass;
 };
 
 #endif // MAINWINDOW_H

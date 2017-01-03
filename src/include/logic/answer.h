@@ -6,11 +6,9 @@ class Answer
 {
 
 public:
-    Answer();
-    virtual ~Answer();
-
+    ~Answer() {}
     Answer(QString text, unsigned int _id_db);
-    const unsigned int* getIdDb();
+    const unsigned int getIdDb();
     const QString* getText();
     void setText(QString _text);
 
@@ -18,11 +16,11 @@ private:
     /**
      * ID from database
      */
-    const unsigned int id_db;
+    const unsigned int mIdDb;
     /**
      * text of answer
      */
-    QString text;
+    QString mText;
 
 };
 #endif // ANSWER_H

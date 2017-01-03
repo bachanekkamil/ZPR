@@ -15,7 +15,7 @@ NewTestCreator::~NewTestCreator(){
 }
 
 
-void NewTestCreator::addQuestion(Question name){
+void NewTestCreator::addQuestion(QString text, std::vector<QString> Answer, std::shared_ptr<Test> test, short correct_answer){
 
 }
 

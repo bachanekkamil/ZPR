@@ -18,6 +18,8 @@ class MainClass
 public:
     MainClass();
     ~MainClass();
+
+    //not used now
     void createNewTest();
     void endConcreteTest();
     void endCreatingNewTest();
@@ -30,6 +32,10 @@ public:
     void startNewTest(unsigned int, Test*);
 
 private:
+    std::vector<std::shared_ptr<User>> mUsers;
+    std::vector<std::shared_ptr<Test>> mTests;
+
+    //not used now
     state actual_state;
     User* actual_user;
     std::vector<ConcreteTest*> concrete_tests;

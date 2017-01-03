@@ -1,32 +1,31 @@
-//#ifndef QUESTIONPROXY_H
-//#define QUESTIONPROXY_H
+#ifndef QUESTIONPROXY_H
+#define QUESTIONPROXY_H
 
-//#include <QString>
-//#include "question.h"
-////#include "questionReal.h"
+#include <QString>
+#include "question.h"
+#include "questionReal.h"
 
-//class QuestionProxy : public Question
-//{
 
-//public:
-//    QuestionProxy();
-//    virtual ~QuestionProxy();
-////    QuestionReal *m_QuestionReal;
+class QuestionProxy : public Question
+{
 
-//    QuestionProxy(unsigned int _id_db);
-//    const QString* geIdDb();
-//    virtual std::vector<Answer>* getAnswers();
-//    virtual const QString* getName()();
+public:
+    ~QuestionProxy();
 
-//private:
-//    const unsigned int id_db;
-//    /**
-//     * pointer to QuestionReal
-//     */
-//    Question* realObj;
+    QuestionProxy(unsigned int id_db);
+    virtual std::vector<std::shared_ptr<Answer>> getAnswers();
+    virtual const unsigned int getIdDb();
+    virtual const QString* getText();
+    virtual std::shared_ptr<Answer> getCorrectAnswer();
 
-//    Question* getQuestion();
+private:
+    const unsigned int mIdDb;
+    /**
+     * pointer to QuestionReal
+     */
+    std::shared_ptr<Question> mQuestionReal;
+    std::shared_ptr<Question> getQuestion();
 
-//};
+};
 
-//#endif // QUESTIONPROXY_H
+#endif // QUESTIONPROXY_H

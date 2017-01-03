@@ -1,36 +1,48 @@
-//#include "questionproxy.h"
-
-//QuestionProxy::~QuestionProxy(){
-
-//}
-
-//QuestionProxy::QuestionProxy(unsigned int _id_db){
-
-//}
+#include "questionproxy.h"
+#include "logic/database.h"
 
 
-//const QString* QuestionProxy::geIdDb(){
 
-//    return  NULL;
-//}
+QuestionProxy::QuestionProxy(unsigned int id_db) :mIdDb(id_db)
+{
 
+}
 
-//std::vector<Answer>* QuestionProxy::getAnswers(){
+QuestionProxy::~QuestionProxy()
+{
 
-//    return  NULL;
-//}
-
-
-//const QString* QuestionProxy::getName()(){
-
-//    return  NULL;
-//}
+}
 
 
-///**
-// * returns real Question
-// */
-//Question* QuestionProxy::getQuestion(){
+const unsigned int QuestionProxy::getIdDb()
+{
+    return  mIdDb;
+}
 
-//    return  NULL;
-//}
+
+std::vector<std::shared_ptr<Answer>> QuestionProxy::getAnswers()
+{
+    return getQuestion()->getAnswers();
+}
+
+
+const QString* QuestionProxy::getText()
+{
+    return getQuestion()->getText();
+}
+
+std::shared_ptr<Answer> QuestionProxy::getCorrectAnswer()
+{
+    return getQuestion()->getCorrectAnswer();
+}
+
+
+/**
+ * returns real Question
+ */
+std::shared_ptr<Question> QuestionProxy::getQuestion()
+{
+    if(mQuestionReal == nullptr)
+    mQuestionReal = DbManager::getInstance().getRealQuestion(mIdDb);
+    return mQuestionReal;
+}

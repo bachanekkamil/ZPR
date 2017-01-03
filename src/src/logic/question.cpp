@@ -1,5 +1,5 @@
 #include "logic/question.h"
-
+/*/
 Question::Question()
 {
 
@@ -9,14 +9,18 @@ Question::~Question(){
 
 }
 
+
 /**
  * returns vector with answers
  */
-//std::vector<Answer*> Question::getAnswers(){
+/*/
+std::vector<std::shared_ptr<Answer>> Question::getAnswers(){
 
-//    return  NULL;
-//}
+   return mAnswers;
+}
+/*/
 
+/*/
 
 const unsigned int Question::getIdDb(){
 
@@ -28,3 +32,4 @@ const QString* Question::getName(){
 
     return  NULL;
 }
+/*/

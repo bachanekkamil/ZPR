@@ -2,24 +2,25 @@
 #define QUESTIONREAL_H
 
 #include <vector>
+#include <memory>
 #include <logic/answer.h>
 #include <logic/question.h>
 
 class QuestionReal : public Question
 {
 public:
-    QuestionReal(unsigned int);
-    QuestionReal(unsigned int, unsigned short, std::vector<Answer>, QString);
+    QuestionReal(unsigned int id_db, std::vector<std::shared_ptr<Answer>> answers, std::shared_ptr<Answer> correct_answer, QString text);
     ~QuestionReal();
-    std::vector<Answer>* getAnswers();
+    std::vector<std::shared_ptr<Answer> > getAnswers();
     const unsigned int getIdDb();
-    const QString* getName();
+    std::shared_ptr<Answer> getCorrectAnswer();
+    const QString* getText();
 
 private:
-    std::vector<Answer*> answers;
-    const Answer* correct_answer;
-    unsigned int id_db;
-    QString text;
+    std::vector<std::shared_ptr<Answer>> mAnswers;
+    const std::shared_ptr<Answer> mCorrectAnswer;
+    unsigned int mIdDb;
+    QString mText;
 
 };
 
