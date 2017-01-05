@@ -1,4 +1,4 @@
-#include "logic\database_exception.h"  
+#include "logic/database_exception.h"  
 
 char* DatabaseException::TEXT_PASSED_NULL_PARAMETER = "Passed NULL parameter/s";
 char* DatabaseException::TEXT_PASSED_WRONG_ID = "Passed wrong ID (<0)";
@@ -29,7 +29,8 @@ DatabaseException::DatabaseException(error_type err)
      }
 }
 
-const char* DatabaseException::what() const
+const char* DatabaseException::what() const noexcept
 {
        return text;
 }
+

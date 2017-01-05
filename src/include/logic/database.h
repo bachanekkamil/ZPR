@@ -13,7 +13,7 @@ class DbManager
 {
 public:
 
-    static DbManager& DbManager::getInstance()
+    static DbManager& getInstance()
     {
         static DbManager instance("db_test.db");
         return instance;

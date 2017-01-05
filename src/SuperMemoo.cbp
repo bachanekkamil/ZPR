@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="SuperMemoo" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\opt\;CMake Files\..\..\..\..\..\opt\Qt5.7.0\;CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\;CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\;CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\;CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\;CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Widgets\;CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\;CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Core\;CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Sql\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/jedi/Dokumenty/ZPR/src" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="test">
+         <Option working_dir="/home/jedi/Dokumenty/ZPR/src" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 test" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="SuperMemoo">
+         <Option output="/home/jedi/Dokumenty/ZPR/src/SuperMemoo" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/jedi/Dokumenty/ZPR/src" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DBOOST_ALL_NO_LIB" />
+            <Add option="-DQT_WIDGETS_LIB" />
+            <Add option="-DQT_GUI_LIB" />
+            <Add option="-DQT_CORE_LIB" />
+            <Add option="-DQT_NO_DEBUG" />
+            <Add option="-DQT_SQL_LIB" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include/GUI" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include/logic" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/./mkspecs/linux-g++" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtCore" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtGui" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtSql" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtWidgets" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 SuperMemoo" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="SuperMemoo/fast">
+         <Option output="/home/jedi/Dokumenty/ZPR/src/SuperMemoo" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/jedi/Dokumenty/ZPR/src" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DBOOST_ALL_NO_LIB" />
+            <Add option="-DQT_WIDGETS_LIB" />
+            <Add option="-DQT_GUI_LIB" />
+            <Add option="-DQT_CORE_LIB" />
+            <Add option="-DQT_NO_DEBUG" />
+            <Add option="-DQT_SQL_LIB" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include/GUI" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include/logic" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/./mkspecs/linux-g++" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtCore" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtGui" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtSql" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtWidgets" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 SuperMemoo/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="answer">
+         <Option output="/home/jedi/Dokumenty/ZPR/src/answer" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/jedi/Dokumenty/ZPR/src" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DBOOST_ALL_NO_LIB" />
+            <Add option="-DQT_WIDGETS_LIB" />
+            <Add option="-DQT_GUI_LIB" />
+            <Add option="-DQT_CORE_LIB" />
+            <Add option="-DQT_NO_DEBUG" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include/GUI" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include/logic" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/./mkspecs/linux-g++" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtCore" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtGui" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtWidgets" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 answer" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="answer/fast">
+         <Option output="/home/jedi/Dokumenty/ZPR/src/answer" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/jedi/Dokumenty/ZPR/src" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DBOOST_ALL_NO_LIB" />
+            <Add option="-DQT_WIDGETS_LIB" />
+            <Add option="-DQT_GUI_LIB" />
+            <Add option="-DQT_CORE_LIB" />
+            <Add option="-DQT_NO_DEBUG" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include/GUI" />
+            <Add directory="/home/jedi/Dokumenty/ZPR/src/include/logic" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/./mkspecs/linux-g++" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtCore" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtGui" />
+            <Add directory="/opt/Qt5.7.0/5.7/gcc_64/include/QtWidgets" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 answer/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/home/jedi/Dokumenty/ZPR/src" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="/home/jedi/Dokumenty/ZPR/src" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="SuperMemoo_automoc">
+         <Option working_dir="/home/jedi/Dokumenty/ZPR/src" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 SuperMemoo_automoc" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="answer_automoc">
+         <Option working_dir="/home/jedi/Dokumenty/ZPR/src" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 answer_automoc" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jedi/Dokumenty/ZPR/src/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/GUI/addnewtestwindow.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/GUI/mainwindow.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/GUI/newtestname.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/GUI/secondwindow.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/GUI/solvetestwindow.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/answer.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/answersdone.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/concretetest.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/database.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/database_exception.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/game.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/main.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/mainclass.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/newtestcreator.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/olduseranswer.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/question.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/questionproxy.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/questionreal.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/test.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src/logic/user.cpp">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/src_test/answer.cpp">
+         <Option target="answer"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/ui_include/addnewtestwindow.ui">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/ui_include/mainwindow.ui">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/ui_include/newtestname.ui">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/ui_include/secondwindow.ui">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/ui_include/solvetestwindow.ui">
+         <Option target="SuperMemoo"/>
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Widgets\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Widgets\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Widgets\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Widgets\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWebpPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTiffPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWbmpPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QDDSPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QJp2Plugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QICNSPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTgaPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Gui\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Core\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Core\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Core\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Core\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Core/Qt5CoreMacros.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Core\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Sql/Qt5SqlConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Sql\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Sql/Qt5SqlConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Sql\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Sql/Qt5Sql_QMYSQLDriverPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Sql\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Sql/Qt5Sql_QSQLiteDriverPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Sql\" />
+      </Unit>
+      <Unit filename="/home/jedi/Dokumenty/ZPR/src/../../../../../opt/Qt5.7.0/5.7/gcc_64/lib/cmake/Qt5Sql/Qt5Sql_QPSQLDriverPlugin.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\opt\Qt5.7.0\5.7\gcc_64\lib\cmake\Qt5Sql\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>
