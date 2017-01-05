@@ -20,8 +20,8 @@ public:
 
     DatabaseException(error_type err);
 
+    virtual const char *what() const noexcept override;
 
-    virtual const char* what() const;
 
 private:
    static char* TEXT_PASSED_NULL_PARAMETER;
