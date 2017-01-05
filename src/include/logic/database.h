@@ -42,11 +42,8 @@ public:
     std::vector<std::shared_ptr<Question>> getAllQuestionForTest(unsigned int id);
 
 
-    unsigned int addQuestionAndAnswers(std::shared_ptr<Test> test, QString& question_text, std::vector<QString>& answers_text, unsigned short which_correct);
+    unsigned int addQuestionAndAnswer(std::shared_ptr<Test> test, QString& question_text, QString& answer_text);
 
-    //answers
-    std::vector<std::shared_ptr<Answer>> getAnswersforQuestion(long id_db_question);
-    std::shared_ptr<Answer> getAnswer(long id_db_answer);
 
 private:
     QSqlDatabase m_db;

@@ -1,5 +1,4 @@
 #include "logic/mainclass.h"
-#include "logic/answer.h"
 #include "logic/database.h"
 #include <logic/database_exception.h>
 #include <QDebug>
@@ -33,32 +32,42 @@ MainClass::MainClass()
 
 
 
+
+
     //PIERDOŁY
     //add user test
 
+
     foreach(std::shared_ptr<Test> test, mTests)
     {
+
         qDebug() << "Test ID: " << QString::number(test->getIdDb()) << ". Test name: " << *test->getTestName() << ". Test owner name: " << *test->getTestOwner()->getName();
+        foreach(std::shared_ptr<Question> question, test->getAllQuestions())
+        {
+            try
+            {
+            qDebug() << "Question: " << *question->getText();
+            }
+            catch(exception &e)
+            {
+                qDebug() << "Exception: " << e.what();
+            }
+            qDebug() << "Answer: " << *question->getCorrectAnswerText();
+        }
+
     }
+
+
 
     try{
     db.addUser("Olson");
     }
     catch(DatabaseException& e)
     {
-        qDebug() << "Database exception. Do sth";
-        qDebug() << e.what();
+        qDebug() << "Database exception: " << e.what();
     }
 
-    //add user test
-    try{
-    db.addUser("Kami");
-    }
-    catch(DatabaseException& e)
-    {
-        qDebug() << "Database exception. Do sth";
-        qDebug() << e.what();
-    }
+
 
 
     //add test test
@@ -66,23 +75,23 @@ MainClass::MainClass()
     try
     {
     test_id = db.addTest("Test123", mUsers.at(0));
+    qDebug() << "Added new test to DB. ID:" << QString::number(test_id);
     }
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception: " << e.what();
     }
 
-    qDebug() << "Added new test to DB. ID:" << QString::number(test_id);
 
 
 //unsigned int DbManager::addQuestionAndAnswers(std::shared_ptr<Test> test, QString& question_text, std::vector<QString>& answers_text, unsigned short which_correct)
 
     QString question_text = "How are you?";
-    std::vector<QString> answers;
-    answers.push_back("good");
-    answers.push_back("great");
-    answers.push_back("bad");
-    db.addQuestionAndAnswers(mTests.at(0), question_text, answers, 1);
+    QString answert_text = "OK";
+    db.addQuestionAndAnswer(mTests.at(0), question_text, answert_text);
+
+
+
 
 
 

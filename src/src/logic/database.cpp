@@ -122,7 +122,6 @@ void DbManager::removeUser(const QString& name)
     {
         throw DatabaseException(error_type::ROW_NOT_FOUND);
     }
-
 }
 
 void DbManager::removeUser(unsigned int id)
@@ -297,8 +296,8 @@ std::shared_ptr<Question> DbManager::getRealQuestion(unsigned long long id)
     if (id > 0)
     {
         QSqlQuery queryGet;
-        queryGet.prepare("Select id, question_text, correct_answer FROM Users WHERE id = :id");
-        queryGet.bindValue(":id", QString::number(id));
+        queryGet.prepare("Select id, question_text, correct_answer Questions Users WHERE id = :id");
+        queryGet.bindValue(":id", id);
 
         if(queryGet.exec())
         {
@@ -306,15 +305,8 @@ std::shared_ptr<Question> DbManager::getRealQuestion(unsigned long long id)
             {
                 unsigned long long id = queryGet.value(0).toLongLong();
                 QString text = queryGet.value(1).toString();
-                unsigned long long id_correct_answer = queryGet.value(2).toLongLong();
-                std::vector<std::shared_ptr<Answer>> answers = getAnswersforQuestion(id);
-                std::shared_ptr<Answer> corr_ans;
-                foreach(std::shared_ptr<Answer> ans, answers)
-                {
-                    if(ans->getIdDb() == id_correct_answer)
-                        corr_ans = ans;
-                }
-                std::shared_ptr<Question> us(new QuestionReal(id, answers, corr_ans, text));
+                QString correct_answer = queryGet.value(2).toString();
+                std::shared_ptr<Question> us(new QuestionReal(id, correct_answer, text));
                 return us;
             }
             else
@@ -355,24 +347,22 @@ std::vector<std::shared_ptr<Question>> DbManager::getAllQuestionForTest(unsigned
     return all_questions;
 }
 
-unsigned int DbManager::addQuestionAndAnswers(std::shared_ptr<Test> test, QString& question_text, std::vector<QString>& answers_text, unsigned short which_correct)
+unsigned int DbManager::addQuestionAndAnswer(std::shared_ptr<Test> test, QString& question_text, QString& answer_text)
 {
-    QSqlDatabase::database().transaction();
-    long inserted_question_id;
     if (!question_text.isEmpty() && test)
     {
         QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO Questions(question_text, test_id) VALUES (:text, :test_id)");
+        queryAdd.prepare("INSERT INTO Questions(question_text, test_id, correct_answer) VALUES (:text, :test_id, :correct_answer)");
         queryAdd.bindValue(":text", question_text);
         queryAdd.bindValue(":test_id", test->getIdDb());
+        queryAdd.bindValue(":correct_answer", answer_text);
 
         if(queryAdd.exec())
         {
-            inserted_question_id = getLastInsertedRowId();
+            return getLastInsertedRowId();
         }
         else
         {
-            QSqlDatabase::database().rollback();
             throw DatabaseException(queryAdd.lastError().text().toStdString().c_str());
         }
     }
@@ -381,81 +371,4 @@ unsigned int DbManager::addQuestionAndAnswers(std::shared_ptr<Test> test, QStrin
         QSqlDatabase::database().rollback();
         throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
     }
-
-    long correct_question_id;
-    for(unsigned int i = 0 ; i<answers_text.size() ; ++i)
-    {
-        if (!answers_text.at(i).isEmpty())
-        {
-            QSqlQuery queryAdd;
-            queryAdd.prepare("INSERT INTO Answers(answer_text, question_id) VALUES (:text, :question_id)");
-            queryAdd.bindValue(":text", answers_text.at(i));
-            queryAdd.bindValue(":question_id", inserted_question_id);
-
-            if(queryAdd.exec())
-            {
-                if(i == which_correct)
-                    correct_question_id = getLastInsertedRowId();
-            }
-            else
-            {
-                QSqlDatabase::database().rollback();
-                throw DatabaseException(queryAdd.lastError().text().toStdString().c_str());
-            }
-        }
-        else
-        {
-            QSqlDatabase::database().rollback();
-            throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
-        }
-    }
-
-    QSqlQuery queryAdd;
-    queryAdd.prepare("UPDATE Questions SET correct_answer = :correct WHERE id = :question_id");
-    queryAdd.bindValue(":correct", correct_question_id);
-    queryAdd.bindValue(":question_id", inserted_question_id);
-
-    if(queryAdd.exec())
-    {
-        QSqlDatabase::database().commit();
-        return inserted_question_id;
-    }
-    else
-    {
-        QSqlDatabase::database().rollback();
-        throw DatabaseException(queryAdd.lastError().text().toStdString().c_str());
-    }
-}
-
-
-std::vector<std::shared_ptr<Answer>> DbManager::getAnswersforQuestion(long id_db_question)
-{
-    std::vector<std::shared_ptr<Answer>> answers;
-
-    QSqlQuery queryGet;
-    queryGet.prepare("Select answer_text, id FROM Answers WHERE qustion_id = :question_id");
-    queryGet.bindValue(":question_id", id_db_question);
-    if(!queryGet.exec())
-    {
-        throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
-    }
-    std::vector<std::shared_ptr<Answer>> vec;
-    while (queryGet.next())
-    {
-        QString name = queryGet.value(0).toString();
-        unsigned int id = queryGet.value(1).toUInt();
-
-        std::shared_ptr<Answer> ans(new Answer (name, id));
-        answers.push_back(ans);
-    }
-    return answers;
-}
-
-
-std::shared_ptr<Answer> DbManager::getAnswer(long id_db_answer)
-{
-    std::shared_ptr<Answer> answer;
-
-
-    return answer;
 }

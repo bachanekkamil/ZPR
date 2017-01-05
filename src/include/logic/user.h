@@ -1,6 +1,5 @@
 #ifndef USER_H
 #define USER_H
-#include "boost/date_time/posix_time/posix_time.hpp"
 #include <QString>
 #include <QDateTime>
 

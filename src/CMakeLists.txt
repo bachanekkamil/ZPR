@@ -8,7 +8,7 @@ set(Boost_path "C:/boost_1_62_0")
 cmake_minimum_required (VERSION 2.8.11)
 
 # Set project name
-project (SuperMemoo)
+project (SuperMemo)
 
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

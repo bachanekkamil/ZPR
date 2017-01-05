@@ -13,10 +13,10 @@ public:
     ~QuestionProxy();
 
     QuestionProxy(unsigned int id_db);
-    virtual std::vector<std::shared_ptr<Answer>> getAnswers();
     virtual const unsigned int getIdDb();
     virtual const QString* getText();
-    virtual std::shared_ptr<Answer> getCorrectAnswer();
+    virtual const QString* getCorrectAnswerText();
+
 
 private:
     const unsigned int mIdDb;

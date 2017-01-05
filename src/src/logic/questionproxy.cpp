@@ -1,5 +1,6 @@
 #include "questionproxy.h"
 #include "logic/database.h"
+#include <QDebug>
 
 
 
@@ -20,20 +21,15 @@ const unsigned int QuestionProxy::getIdDb()
 }
 
 
-std::vector<std::shared_ptr<Answer>> QuestionProxy::getAnswers()
-{
-    return getQuestion()->getAnswers();
-}
-
 
 const QString* QuestionProxy::getText()
 {
     return getQuestion()->getText();
 }
 
-std::shared_ptr<Answer> QuestionProxy::getCorrectAnswer()
+const QString* QuestionProxy::getCorrectAnswerText()
 {
-    return getQuestion()->getCorrectAnswer();
+    return getQuestion()->getCorrectAnswerText();
 }
 
 
@@ -42,7 +38,8 @@ std::shared_ptr<Answer> QuestionProxy::getCorrectAnswer()
  */
 std::shared_ptr<Question> QuestionProxy::getQuestion()
 {
-    if(mQuestionReal == nullptr)
+    qDebug() << "QuestionProxy::getQuestion()";
+    if(!mQuestionReal)
     mQuestionReal = DbManager::getInstance().getRealQuestion(mIdDb);
     return mQuestionReal;
 }
