@@ -5,7 +5,7 @@ AddNewTestWindow::AddNewTestWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AddNewTestWindow)
 {
-    this->previous=previous;
+    this->mPrevious=previous;
     ui->setupUi(this);
 }
 
@@ -14,8 +14,8 @@ AddNewTestWindow::~AddNewTestWindow()
     delete ui;
 }
 
-void AddNewTestWindow::on_pushButton_zakoncz_edycje_testu_clicked()
+void AddNewTestWindow::on_pushButtonEndTestEditing_clicked()
 {
-    previous->show();
+    mPrevious->show();
     this->close();
 }

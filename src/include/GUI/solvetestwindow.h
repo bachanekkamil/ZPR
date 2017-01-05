@@ -17,10 +17,10 @@ public:
 
 private slots:
 
-    void on_pushButton_zakoncz_test_clicked();
+    void on_pushButtonEndTest_clicked();
 
 private:
-    QMainWindow *previous;
+    QMainWindow *mPrevious;
     Ui::SolveTestWindow *ui;
 };
 

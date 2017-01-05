@@ -6,11 +6,11 @@
 #include <logic/newtestcreator.h>
 
 enum state{
-    running_test = 0,
-    creating_test = 1,
-    editing_test = 2,
-    not_logged = 3,
-    not_bussy = 4
+    RUNNING_TEST = 0,
+    CREATING_TEST = 1,
+    EDITING_TEST = 2,
+    NOT_LOGGED = 3,
+    NOT_BUSSY = 4,
 };
 
 class MainClass
@@ -36,12 +36,12 @@ private:
     std::vector<std::shared_ptr<Test>> mTests;
 
     //not used now
-    state actual_state;
-    User* actual_user;
-    std::vector<ConcreteTest*> concrete_tests;
-    Game* game;
-    NewTestCreator* new_test;
-    std::vector<Test*> tests;
+    state mState;
+    User* mUser;
+    std::vector<ConcreteTest*> mConcreteTests;
+    Game* mGame;
+    NewTestCreator* mNewTestCreator;
+    std::vector<Test*> mTest;
 };
 
 #endif // MAINCLASS_H

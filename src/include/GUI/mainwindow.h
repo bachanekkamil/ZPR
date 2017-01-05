@@ -7,6 +7,7 @@
 #include <deque>
 #include <memory>
 #include <logic/mainclass.h>
+#include "addnewuserwindow.h"
 
 
 namespace Ui {
@@ -21,10 +22,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButtonLogin_clicked();
+    void on_pushButtonAddUser_clicked();
 
 private:
-    SecondWindow *window2;
+    SecondWindow *mSecondWindow;
+    AddNewUserWindow *mAddNewUserWindow;
     Ui::MainWindow *ui;
     MainClass mMainClass;
 };

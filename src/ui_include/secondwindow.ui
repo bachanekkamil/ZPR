@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="labelChooseTest">
       <property name="font">
        <font>
         <pointsize>11</pointsize>
@@ -35,7 +35,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QListWidget" name="listWidget">
+     <widget class="QListWidget" name="listWidgetChooseTest">
       <item>
        <property name="text">
         <string>Test1</string>
@@ -49,21 +49,21 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButtonTakeTest">
       <property name="text">
        <string>Rozwiąż</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_edytuj_test">
+     <widget class="QPushButton" name="pushButtonEditTest">
       <property name="text">
        <string>Edytuj test</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_dodaj_test">
+     <widget class="QPushButton" name="pushButtonAddTest">
       <property name="text">
        <string>Dodaj test</string>
       </property>
@@ -85,6 +85,7 @@
      <string>Opcje</string>
     </property>
     <addaction name="actionLogout"/>
+    <addaction name="actionEditUserInfo"/>
    </widget>
    <addaction name="menuOpcje"/>
   </widget>
@@ -92,6 +93,11 @@
   <action name="actionLogout">
    <property name="text">
     <string>Logout</string>
+   </property>
+  </action>
+  <action name="actionEditUserInfo">
+   <property name="text">
+    <string>Edytuj dane użytkownika</string>
    </property>
   </action>
  </widget>

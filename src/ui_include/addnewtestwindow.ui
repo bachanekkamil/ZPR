@@ -16,16 +16,16 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayoutQuestionAndProgress">
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="labelQuestion">
         <property name="text">
          <string>Pytanie:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="labelProgress">
         <property name="text">
          <string>Postęp:</string>
         </property>
@@ -35,7 +35,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="labelProgressValue">
         <property name="text">
          <string>1/1</string>
         </property>
@@ -47,29 +47,29 @@
      </layout>
     </item>
     <item>
-     <widget class="QTextEdit" name="textEdit"/>
+     <widget class="QTextEdit" name="textEditQuestion"/>
     </item>
     <item>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="labelAnswer">
       <property name="text">
        <string>Odpowiedź:</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QTextEdit" name="textEdit_2"/>
+     <widget class="QTextEdit" name="textEditAnswer"/>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayoutPreviousNext">
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="pushButtonPrevious">
         <property name="text">
          <string>Poprzednie</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="pushButtonNext">
         <property name="text">
          <string>Następne</string>
         </property>
@@ -78,7 +78,7 @@
      </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_zakoncz_edycje_testu">
+     <widget class="QPushButton" name="pushButtonEndTestEditing">
       <property name="text">
        <string>Zakończ edycje testu</string>
       </property>

@@ -22,8 +22,8 @@ private slots:
     void on_buttonBox_rejected();
 
 private:
-    QMainWindow *previous;
-    AddNewTestWindow *addNewTestWindow;
+    QMainWindow *mPrevious;
+    AddNewTestWindow *mAddNewTestWindow;
     Ui::NewTestName *ui;
 };
 

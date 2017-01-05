@@ -11,20 +11,25 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-	
-
-
-
-
 }
 
 MainWindow::~MainWindow()
 {
+    delete mSecondWindow;
+    delete mAddNewUserWindow;
     delete ui;
 }
-void MainWindow::on_pushButton_clicked()
+
+void MainWindow::on_pushButtonLogin_clicked()
 {
-    window2 = new SecondWindow(this);
-    window2->show();
+    mSecondWindow = new SecondWindow(this);
+    mSecondWindow->show();
+    this->hide();
+}
+
+void MainWindow::on_pushButtonAddUser_clicked()
+{
+    mAddNewUserWindow = new AddNewUserWindow(this);
+    mAddNewUserWindow->show();
     this->hide();
 }

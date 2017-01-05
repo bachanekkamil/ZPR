@@ -4,7 +4,7 @@
 #include <QDebug>
 
 MainClass::MainClass()
-{
+{/*
     //create db
     DbManager db = DbManager::getInstance();
 
@@ -92,9 +92,8 @@ MainClass::MainClass()
 
 
 
-
-
-
+*/
+//////////////???????????????
 
         /*/
     Answer ans("sda",0);
@@ -189,11 +188,11 @@ void MainClass::endCreatingNewTest(){
 }
 
 std::vector<ConcreteTest*> MainClass::getAvailableConcreteTests(){
-    return concrete_tests;
+    return mConcreteTests;
 }
 
 std::vector<Test*> MainClass::getAvailableTest(){
-    return tests;
+    return mTest;
 }
 
 Game* MainClass::getGame(){
@@ -205,7 +204,7 @@ NewTestCreator* MainClass::getNewTestCreator(){
 }
 
 User* MainClass::getUser(){
-    return actual_user;
+    return mUser;
 }
 
 void MainClass::startConcreteTest(unsigned int, ConcreteTest *){

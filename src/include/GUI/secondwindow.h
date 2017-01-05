@@ -5,6 +5,7 @@
 #include "solvetestwindow.h"
 #include "addnewtestwindow.h"
 #include "newtestname.h"
+#include "edituserwindow.h"
 
 namespace Ui {
 class SecondWindow;
@@ -19,19 +20,22 @@ public:
     ~SecondWindow();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButtonTakeTest_clicked();
 
     void on_actionLogout_triggered();
 
-    void on_pushButton_dodaj_test_clicked();
+    void on_actionEditUserInfo_triggered();
 
-    void on_pushButton_edytuj_test_clicked();
+    void on_pushButtonAddTest_clicked();
+
+    void on_pushButtonEditTest_clicked();
 
 private:
-    QMainWindow *previous;
-    SolveTestWindow *solveTestWindow;
-    NewTestName *newTestName;
-    AddNewTestWindow *editTestWindow;
+    QMainWindow *mPrevious;
+    SolveTestWindow *mSolveTestWindow;
+    NewTestName *mNewTestName;
+    AddNewTestWindow *mEditTestWindow;
+    EditUserWindow *mEditUserWindow;
     Ui::SecondWindow *ui;
 };
 

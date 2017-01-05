@@ -5,7 +5,7 @@ SolveTestWindow::SolveTestWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::SolveTestWindow)
 {
-    this->previous=previous;
+    this->mPrevious=previous;
     ui->setupUi(this);
 }
 
@@ -14,8 +14,8 @@ SolveTestWindow::~SolveTestWindow()
     delete ui;
 }
 
-void SolveTestWindow::on_pushButton_zakoncz_test_clicked()
+void SolveTestWindow::on_pushButtonEndTest_clicked()
 {
-    previous->show();
+    mPrevious->show();
     this->close();
 }

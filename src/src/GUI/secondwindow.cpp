@@ -5,38 +5,49 @@ SecondWindow::SecondWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::SecondWindow)
 {
-    this->previous=previous;
+    this->mPrevious=previous;
     ui->setupUi(this);
 }
 
 SecondWindow::~SecondWindow()
 {
+    delete mSolveTestWindow;
+    delete mNewTestName;
+    delete mEditTestWindow;
+    delete mEditUserWindow;
     delete ui;
 }
 
-void SecondWindow::on_pushButton_clicked()
+void SecondWindow::on_pushButtonTakeTest_clicked()
 {
-    solveTestWindow = new SolveTestWindow(this);
-    solveTestWindow->show();
+    mSolveTestWindow = new SolveTestWindow(this);
+    mSolveTestWindow->show();
     this->hide();
 }
 
 void SecondWindow::on_actionLogout_triggered()
 {
-    previous->show();
+    mPrevious->show();
     this->close();
 }
 
-void SecondWindow::on_pushButton_dodaj_test_clicked()
+void SecondWindow::on_actionEditUserInfo_triggered()
 {
-    newTestName = new NewTestName(this);
-    newTestName->show();
+    mEditUserWindow = new EditUserWindow(this);
+    mEditUserWindow->show();
     this->hide();
 }
 
-void SecondWindow::on_pushButton_edytuj_test_clicked()
+void SecondWindow::on_pushButtonAddTest_clicked()
 {
-    editTestWindow = new AddNewTestWindow(this);
-    editTestWindow->show();
+    mNewTestName = new NewTestName(this);
+    mNewTestName->show();
+    this->hide();
+}
+
+void SecondWindow::on_pushButtonEditTest_clicked()
+{
+    mEditTestWindow = new AddNewTestWindow(this);
+    mEditTestWindow->show();
     this->hide();
 }

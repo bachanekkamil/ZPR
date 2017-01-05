@@ -1,8 +1,8 @@
 #Path to Qt libraries
-set(Qt_path "C:/Qtt/5.7/msvc2015")
+set(Qt_path "C:/Qt/5.7/msvc2015_64")
 
 #Path to Boost libraries
-set(Boost_path "C:/boost_1_62_0")
+set(Boost_path "C:/local/boost_1_62_0")
 
 #Minimum required version of CMake
 cmake_minimum_required (VERSION 2.8.11)

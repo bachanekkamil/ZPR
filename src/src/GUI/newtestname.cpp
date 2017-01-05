@@ -5,24 +5,25 @@ NewTestName::NewTestName(QMainWindow *previous, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewTestName)
 {
-    this->previous=previous;
+    this->mPrevious=previous;
     ui->setupUi(this);
 }
 
 NewTestName::~NewTestName()
 {
+    delete mAddNewTestWindow;
     delete ui;
 }
 
 void NewTestName::on_buttonBox_accepted()
 {
-    addNewTestWindow = new AddNewTestWindow(previous);
-    addNewTestWindow->show();
+    mAddNewTestWindow = new AddNewTestWindow(mPrevious);
+    mAddNewTestWindow->show();
     this->close();
 }
 
 void NewTestName::on_buttonBox_rejected()
 {
-    previous->show();
+    mPrevious->show();
     this->close();
 }

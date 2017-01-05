@@ -16,10 +16,10 @@ public:
     ~AddNewTestWindow();
 
 private slots:
-    void on_pushButton_zakoncz_edycje_testu_clicked();
+    void on_pushButtonEndTestEditing_clicked();
 
 private:
-    QMainWindow *previous;
+    QMainWindow *mPrevious;
     Ui::AddNewTestWindow *ui;
 };
 

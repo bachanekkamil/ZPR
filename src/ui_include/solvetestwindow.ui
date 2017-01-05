@@ -16,16 +16,16 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayoutQuestionAndProgress">
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="labelQuestion">
         <property name="text">
          <string>Pytanie:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="labelProgress">
         <property name="text">
          <string>Postęp: </string>
         </property>
@@ -35,7 +35,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="labelProgressValue">
         <property name="text">
          <string>1/10</string>
         </property>
@@ -47,36 +47,32 @@
      </layout>
     </item>
     <item>
-     <widget class="QTextEdit" name="textEdit"/>
+     <widget class="QTextEdit" name="textEditQuestion"/>
     </item>
     <item>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="labelAnswer">
       <property name="text">
        <string>Odpowiedź:</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPlainTextEdit" name="plainTextEdit"/>
+     <widget class="QPlainTextEdit" name="plainTextEditAnswer"/>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButtonShowAnswer">
       <property name="text">
        <string>Pokaż odpowiedź</string>
       </property>
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayoutEvaluateAnswer">
       <item>
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="text">
-         <string>Poprawnie</string>
-        </property>
-       </widget>
+       <widget class="QComboBox" name="comboBoxMark"/>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="pushButtonEvaluate">
         <property name="text">
          <string>Niepoprawnie</string>
         </property>
@@ -85,7 +81,7 @@
      </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_zakoncz_test">
+     <widget class="QPushButton" name="pushButtonEndTest">
       <property name="text">
        <string>Zakończ test</string>
       </property>
