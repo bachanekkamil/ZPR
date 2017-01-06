@@ -33,11 +33,10 @@ MainClass::MainClass()
 
 
     //add test test
-    int test_id;
     try
     {
-    test_id = db->addTest("Test1234", mUsers.at(0));
-    qDebug() << "Added new test to db-> ID:" << QString::number(test_id);
+    shared_ptr<Test> test = db->addTest("Test12345", mUsers.at(0));
+    qDebug() << "Added new test to db-> ID:" << QString::number(test->getIdDb());
     }
     catch(DatabaseException &e)
     {
@@ -73,7 +72,18 @@ MainClass::MainClass()
     }
 
 
+    qDebug() << "add concrete test ";
 
+    QString contestname = "My first concrete test";
+    try
+    {
+    db->addConcreteTest(contestname, mUsers.at(0), mTests.at(0));
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during addConcreteTest method: " << e.what();
+    }
+    /*/
 
     qDebug() << "delete quest ";
 
@@ -99,7 +109,7 @@ MainClass::MainClass()
         qDebug() << "Database exception during deleteTest method: " << e.what();
     }
 
-    /*/
+
     qDebug() << "delete all questions";
 
     try
@@ -304,7 +314,7 @@ void MainClass::endCreatingNewTest(){
 
 }
 
-std::vector<ConcreteTest*> MainClass::getAvailableConcreteTests(){
+std::vector<std::shared_ptr<ConcreteTest>> MainClass::getAvailableConcreteTests(){
     return mConcreteTests;
 }
 
@@ -330,4 +340,31 @@ void MainClass::startConcreteTest(unsigned int, ConcreteTest *){
 
 void MainClass::startNewTest(unsigned int, Test *){
 
+}
+
+std::shared_ptr<User> MainClass::getUser(unsigned int idDb)
+{
+    foreach (std::shared_ptr<User> us, mUsers) {
+        if(us->getIdDb() == idDb)
+            return us;
+    }
+    return nullptr;
+}
+
+std::shared_ptr<Test> MainClass::getTest(unsigned int idDb)
+{
+    foreach (std::shared_ptr<Test> us, mTests) {
+        if(us->getIdDb() == idDb)
+            return us;
+    }
+    return nullptr;
+}
+
+std::shared_ptr<ConcreteTest> MainClass::getConcreteTest(unsigned int idDb)
+{
+    foreach (std::shared_ptr<ConcreteTest> us, mConcreteTests) {
+        if(us->getIdDb() == idDb)
+            return us;
+    }
+    return nullptr;
 }

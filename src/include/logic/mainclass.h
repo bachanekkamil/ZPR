@@ -5,6 +5,7 @@
 #include <logic/game.h>
 #include <logic/newtestcreator.h>
 #include <logic/database.h>
+#include <logic/concretetest.h>
 
 enum state{
     RUNNING_TEST = 0,
@@ -29,12 +30,16 @@ public:
     void addNewUser(const QString& name);
     void deleteUser(int index);
     int iloscDB();
+    std::shared_ptr<User> getUser(unsigned int idDb);
+    std::shared_ptr<Test> getTest(unsigned int idDb);
+    std::shared_ptr<ConcreteTest> getConcreteTest(unsigned int idDB);
+
 
     //not used now
     void createNewTest();
     void endConcreteTest();
     void endCreatingNewTest();
-    std::vector<ConcreteTest*> getAvailableConcreteTests();
+    std::vector<std::shared_ptr<ConcreteTest>> getAvailableConcreteTests();
     std::vector<Test*> getAvailableTest();
     Game *getGame();
     NewTestCreator* getNewTestCreator();
@@ -46,13 +51,13 @@ private:
     MainClass();
     std::vector<std::shared_ptr<User>> mUsers;
     std::vector<std::shared_ptr<Test>> mTests;
+    std::vector<std::shared_ptr<ConcreteTest>> mConcreteTests;
 
     std::shared_ptr<User> mUser;
     DbManager* db;
 
     //not used now
     state mState;
-    std::vector<ConcreteTest*> mConcreteTests;
     Game* mGame;
     NewTestCreator* mNewTestCreator;
     std::vector<Test*> mTest;

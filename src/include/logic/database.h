@@ -7,6 +7,8 @@
 #include "questionreal.h"
 #include <memory>
 #include <vector>
+#include <logic/concretetest.h>
+
 
 
 class DbManager
@@ -30,7 +32,7 @@ public:
     bool isOpen() const;
 
     //users
-    unsigned int addUser(const QString& name);
+    std::shared_ptr<User> addUser(const QString& name);
     std::shared_ptr<User> getUser(unsigned int id);
     void removeUser(const QString& name);
     void removeUser(unsigned int id);
@@ -40,7 +42,7 @@ public:
     void removeAllUsers();
 
     //tests
-    unsigned int addTest(const QString& name, const std::shared_ptr<User> user);
+    std::shared_ptr<Test> addTest(const QString& name, const std::shared_ptr<User> user);
     std::vector<std::shared_ptr<Test>> getAllTests();
     void deleteTest(std::shared_ptr<Test> test);
     void modifyTest(std::shared_ptr<Test> test, const QString& name);
@@ -54,16 +56,18 @@ public:
     void deleteAllQuestionsForTest(std::shared_ptr<Test> test);
 
 
+    //concretetests
+    std::shared_ptr<ConcreteTest> addConcreteTest(const QString& name, const std::shared_ptr<User> user, const std::shared_ptr<Test> test);
+    std::vector<std::shared_ptr<ConcreteTest>> getAllConcreteTests();
+    void deleteConcreteTest(std::shared_ptr<ConcreteTest> test);
+    void modifyConcreteTest(std::shared_ptr<ConcreteTest> test, const QString& name);
+
+
 private:
     QSqlDatabase m_db;
-
     static DbManager* mInstance;
-
     DbManager(const QString& path);
-
     unsigned int getLastInsertedRowId();
-
-    std::vector<std::shared_ptr<User>> all_users;
 };
 
 
