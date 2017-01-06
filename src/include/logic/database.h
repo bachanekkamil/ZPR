@@ -1,7 +1,7 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-#include <QSqlDatabase>
+#include <QtSql/QSqlDatabase>
 #include "user.h"
 #include "test.h"
 #include "questionreal.h"

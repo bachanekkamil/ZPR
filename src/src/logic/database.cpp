@@ -1,8 +1,8 @@
 #include <logic/database.h>
 #include <logic/database_exception.h>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QSqlRecord>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlError>
+#include <QtSql/QSqlRecord>
 #include <QDebug>
 #include <QDateTime>
 #include <logic/questionproxy.h>
@@ -27,6 +27,7 @@ DbManager::DbManager(const QString &path)
     QSqlQuery query;
     query.prepare("PRAGMA foreign_keys = ON");
     query.exec();
+
 
 }
 

@@ -1,7 +1,7 @@
 #ifndef DATABASE_EXCEPTION_H
 #define DATABASE_EXCEPTION_H
 
-#include <QSqlDatabase>
+#include <QtSql/QSqlDatabase>
 #include <exception>
 #include <iostream>
 

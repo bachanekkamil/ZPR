@@ -10,8 +10,18 @@ cmake_minimum_required (VERSION 2.8.11)
 # Set project name
 project (SuperMemo)
 
+# Flag for gcc compiler
+SET ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
+
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+add_definitions(-std=c++0x)
+
+
+# Coverage test
+SET(CMAKE_CXX_FLAGS "-g -O0 --coverage")
+SET(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE_1)
+ 
 
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
@@ -25,8 +35,12 @@ find_package(Qt5Widgets REQUIRED)
 # Find the QtSql library.
 find_package(Qt5Sql REQUIRED)
 
+#set(QT5_LIBRARIES Qt5::Widgets Qt5::PrintSupport Qt5::Sql)
+
 # One more path to search
 set(BOOST_ROOT ${Boost_path})
+
+#set(QT_USE_QTSQL 1)
 
 # Find the Boost library.
 find_package(Boost REQUIRED)
@@ -63,11 +77,11 @@ add_definitions( -DBOOST_ALL_NO_LIB )
 # Add executable
 add_executable(${PROJECT_NAME} ${CPP_FILES} ${UIS} ${MOC_HEADERS})
 
+
 # Use the Widgets module from Qt 5.
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::Sql)
 
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
-
 
 ################TESTS################################
 
@@ -102,3 +116,22 @@ foreach(testSrc ${TEST_SRCS})
                  COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/src_test/${testName} )
 
 endforeach(testSrc)
+
+if (CMAKE_BUILD_TYPE STREQUAL "Coverage")
+    include(CodeCoverage)
+    setup_target_for_coverage(${PROJECT_NAME}_coverage ${testSrc} coverage)
+
+ 
+    SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+
+foreach(testSrc ${TEST_SRCS})
+        add_test(NAME ${testName} 
+                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src_test 
+                 COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/src_test/${testName} )
+
+endforeach(testSrc)
+
+
+endif() #CMAKE_BUILD_TYPE STREQUAL "Coverage"
+
+
