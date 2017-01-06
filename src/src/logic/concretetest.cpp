@@ -1,32 +1,32 @@
 #include "logic/concretetest.h"
 
-ConcreteTest::ConcreteTest():id_concrete_test_db(0){
+ConcreteTest::ConcreteTest(unsigned int id, std::shared_ptr<Test> test, std::shared_ptr<User> user, QString name, QDateTime date):
+mIdDb(id), mTest(test), mUser(user), mName(name), mDateTimeCreated(date)
+{
 
 }
 
 
-/**
- * pull data about concrete test from database
- */
-ConcreteTest::ConcreteTest(unsigned int _id_concrete_test_db): id_concrete_test_db(_id_concrete_test_db){
-
+unsigned int ConcreteTest::getIdDb() const
+{
+    return mIdDb;
 }
 
-/**
- * create new concrete test and push data to db
- */
-ConcreteTest::ConcreteTest(Test* _test, User* _user, QString _name_from_user)
-    : owner(_user),id_concrete_test_db(0){
+std::shared_ptr<Test> ConcreteTest::getTest() const{
 
+    return  mTest;
 }
 
-ConcreteTest::~ConcreteTest(){
-
+std::shared_ptr<User> ConcreteTest::getTestOwner() const
+{
+    return  mUser;
 }
 
+const QString* ConcreteTest::getTestName() const{
 
-const QString* ConcreteTest::getConcreteTestName(){
-
-    return  NULL;
+    return &mName;
 }
 
+const QDateTime* ConcreteTest::getTimeCreated() const{
+    return &mDateTimeCreated;
+}
