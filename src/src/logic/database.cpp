@@ -150,14 +150,13 @@ void DbManager::removeUser(unsigned int id)
 
 std::vector<std::shared_ptr<User>> DbManager::getAllUsers()
 {
-    if(all_users.size() > 0)
-        return all_users;
     QSqlQuery queryGet;
     queryGet.prepare("Select name, datetime_created, id FROM Users");
     if(!queryGet.exec())
     {
         throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
     }
+    all_users.clear();
     while (queryGet.next())
     {
         QString name = queryGet.value(0).toString();
@@ -373,7 +372,117 @@ unsigned int DbManager::addQuestionAndAnswer(std::shared_ptr<Test> test, QString
     }
     else
     {
-        QSqlDatabase::database().rollback();
         throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
     }
 }
+
+void DbManager::modifyQuestion(std::shared_ptr<Question> question, QString& question_text, QString& answer_text)
+{
+    if (question_text.isEmpty() || answer_text.isEmpty() || !question)
+    {
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+    QSqlQuery queryUpdate;
+    queryUpdate.prepare("UPDATE Questions SET question_text = :question_text, correct_answer = :answer_text WHERE id = :id");
+    queryUpdate.bindValue(":question_text", question_text);
+    queryUpdate.bindValue(":answer_text", answer_text);
+    queryUpdate.bindValue(":id", question->getIdDb());
+    if(queryUpdate.exec())
+    {
+        return;
+    }
+    else
+    {
+        throw DatabaseException(queryUpdate.lastError().text().toStdString().c_str());
+    }
+}
+
+void DbManager::deleteQuestion(std::shared_ptr<Question> question)
+{
+    if (!question)
+    {
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+    QSqlQuery queryDelete;
+    queryDelete.prepare("DELETE FROM Questions WHERE id = :id");
+    queryDelete.bindValue(":id", question->getIdDb());
+    if(queryDelete.exec())
+    {
+        return;
+    }
+    else
+    {
+        throw DatabaseException(queryDelete.lastError().text().toStdString().c_str());
+    }
+}
+
+void DbManager::deleteTest(std::shared_ptr<Test> test)
+{
+    if (!test)
+    {
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+    m_db.transaction();
+    try
+    {
+        deleteAllQuestionsForTest(test);
+    }
+    catch(DatabaseException &e)
+    {
+        m_db.rollback();
+        throw DatabaseException(e.what());
+    }
+
+    QSqlQuery queryDelete;
+    queryDelete.prepare("DELETE FROM Tests WHERE id = :id");
+    queryDelete.bindValue(":id", test->getIdDb());
+    if(queryDelete.exec())
+    {
+        m_db.commit();
+        return;
+    }
+    else
+    {
+        throw DatabaseException(queryDelete.lastError().text().toStdString().c_str());
+    }
+}
+
+void DbManager::modifyTest(std::shared_ptr<Test> test, const QString& name)
+{
+    if (name.isEmpty() || !test)
+    {
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+    QSqlQuery queryUpdate;
+    queryUpdate.prepare("UPDATE Tests SET name = :test_name WHERE id = :id");
+    queryUpdate.bindValue(":test_name", name);
+    queryUpdate.bindValue(":id", test->getIdDb());
+    if(queryUpdate.exec())
+    {
+        return;
+    }
+    else
+    {
+        throw DatabaseException(queryUpdate.lastError().text().toStdString().c_str());
+    }
+}
+
+void DbManager::deleteAllQuestionsForTest(std::shared_ptr<Test> test)
+{
+    if (!test)
+    {
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+    QSqlQuery queryDelete;
+    queryDelete.prepare("DELETE FROM Questions WHERE test_id = :id");
+    queryDelete.bindValue(":id", test->getIdDb());
+    if(queryDelete.exec())
+    {
+        return;
+    }
+    else
+    {
+        throw DatabaseException(queryDelete.lastError().text().toStdString().c_str());
+    }
+}
+
