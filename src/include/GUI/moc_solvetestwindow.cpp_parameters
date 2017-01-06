@@ -1,9 +1,0 @@
--I/usr/include
--I/home/jedi/Dokumenty/ZPR/src/include
--I/home/jedi/Dokumenty/ZPR/src/include/GUI
--I/home/jedi/Dokumenty/ZPR/src/include/logic
--I/home/jedi/Dokumenty/ZPR/src
--I/home/jedi/Dokumenty/ZPR/src
--o
-/home/jedi/Dokumenty/ZPR/src/include/GUI/moc_solvetestwindow.cpp
-/home/jedi/Dokumenty/ZPR/src/include/GUI/solvetestwindow.h

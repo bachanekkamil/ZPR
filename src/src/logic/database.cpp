@@ -296,7 +296,7 @@ std::shared_ptr<Question> DbManager::getRealQuestion(unsigned long long id)
     if (id > 0)
     {
         QSqlQuery queryGet;
-        queryGet.prepare("Select id, question_text, correct_answer Questions Users WHERE id = :id");
+        queryGet.prepare("Select id, question_text, correct_answer FROM Questions WHERE id = :id");
         queryGet.bindValue(":id", id);
 
         if(queryGet.exec())

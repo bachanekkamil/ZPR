@@ -1,7 +1,0 @@
-/home/jedi/Dokumenty/ZPR/src/CMakeFiles/test.dir
-/home/jedi/Dokumenty/ZPR/src/CMakeFiles/answer.dir
-/home/jedi/Dokumenty/ZPR/src/CMakeFiles/SuperMemo.dir
-/home/jedi/Dokumenty/ZPR/src/CMakeFiles/rebuild_cache.dir
-/home/jedi/Dokumenty/ZPR/src/CMakeFiles/edit_cache.dir
-/home/jedi/Dokumenty/ZPR/src/CMakeFiles/answer_automoc.dir
-/home/jedi/Dokumenty/ZPR/src/CMakeFiles/SuperMemo_automoc.dir
