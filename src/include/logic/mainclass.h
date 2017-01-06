@@ -4,6 +4,7 @@
 #include <logic/concretetest.h>
 #include <logic/game.h>
 #include <logic/newtestcreator.h>
+#include <logic/database.h>
 
 enum state{
     RUNNING_TEST = 0,
@@ -16,13 +17,18 @@ enum state{
 class MainClass
 {
 public:
-    MainClass();
+    static MainClass& getInstance()
+    {
+        static MainClass instance;
+        return instance;
+    }
     ~MainClass();
 
     QStringList getAllUsers();
     void setUser(int index);
     void addNewUser(const QString& name);
     void deleteUser(int index);
+    int iloscDB();
 
     //not used now
     void createNewTest();
@@ -37,6 +43,7 @@ public:
     void startNewTest(unsigned int, Test*);
 
 private:
+    MainClass();
     std::vector<std::shared_ptr<User>> mUsers;
     std::vector<std::shared_ptr<Test>> mTests;
 

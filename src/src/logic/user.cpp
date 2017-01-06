@@ -29,9 +29,9 @@ unsigned int User::getIdDb() const{
 }
 
 
-const QString* User::getName() const{
+const QString &User::getName() const{
 
-    return &mName;
+    return mName;
 }
 
 const QDateTime* User::getTimeCreated() const{

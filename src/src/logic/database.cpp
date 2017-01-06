@@ -7,6 +7,7 @@
 #include <QDateTime>
 #include <logic/questionproxy.h>
 
+int DbManager::ilosc=0;
 
 DbManager::DbManager(const QString &path)
 {
@@ -24,6 +25,8 @@ DbManager::DbManager(const QString &path)
     QSqlQuery query;
     query.prepare("PRAGMA foreign_keys = ON");
     query.exec();
+
+    ilosc++;
 }
 
 DbManager::~DbManager()

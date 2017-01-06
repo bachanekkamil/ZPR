@@ -5,18 +5,20 @@
 
 MainClass::MainClass()
 {
+
+
     //create db
     DbManager db = DbManager::getInstance();
 
     /////////////
 
-    try{
+    /*try{
     db.addUser("Olson");
     }
     catch(DatabaseException& e)
     {
-        qDebug() << "Database exception: " << e.what();
-    }
+        qDebug() << "Database exception in MainClass constructor: " << e.what();
+    }*/
 
     //get all users
     try
@@ -28,6 +30,7 @@ MainClass::MainClass()
         qDebug() << "Database exception during method getAllUsers(): " << e.what();
     }
 
+    /*
 
     //add test test
     int test_id;
@@ -85,7 +88,7 @@ MainClass::MainClass()
     foreach(std::shared_ptr<Test> test, mTests)
     {
 
-        qDebug() << "Test ID: " << QString::number(test->getIdDb()) << ". Test name: " << *test->getTestName() << ". Test owner name: " << *test->getTestOwner()->getName();
+        //qDebug() << "Test ID: " << QString::number(test->getIdDb()) << ". Test name: " << *test->getTestName() << ". Test owner name: " << *test->getTestOwner()->getName();
 
 
         foreach(std::shared_ptr<Question> question, test->getAllQuestions())
@@ -107,7 +110,7 @@ MainClass::MainClass()
 
 
 
-
+*/
 
 
 
@@ -196,9 +199,8 @@ MainClass::~MainClass()
 QStringList MainClass::getAllUsers(){
     QStringList list;
     for (std::shared_ptr<User> item: mUsers){
-        list << item->mName;
+        list << item->getName();
     }
-
     return list;
 }
 
@@ -208,28 +210,33 @@ void MainClass::setUser(int index){
 
 void MainClass::addNewUser(const QString &name){
     DbManager db = DbManager::getInstance();
-    db.addUser(name);
     try
     {
-        mUsers = db.getAllUsers();
+        db.addUser("name");
+        //db.addUser(name);
     }
     catch(DatabaseException &e)
     {
-        qDebug() << "Database exception during method getAllUsers(): " << e.what();
+        qDebug() << "Database exception during method addUser() newUser: " << e.what();
     }
 }
 
 void MainClass::deleteUser(int index){
     DbManager db = DbManager::getInstance();
-    // sprawdzić czy remove
     try
     {
-        db.removeUser(mUsers[index]);
+        db.removeUser("name");
+        //db.removeUser(mUsers[index]->getName());
     }
     catch(DatabaseException &e)
     {
-        qDebug() << "Database exception during method removeUser(mUsers[index]): " << e.what();
+        qDebug() << "Database exception during method removeUser(): " << e.what();
     }
+}
+
+int MainClass::iloscDB(){
+    DbManager db = DbManager::getInstance();
+    return db.zwrocIlosc();
 }
 
 void MainClass::createNewTest(){

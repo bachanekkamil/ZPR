@@ -13,6 +13,11 @@ class DbManager
 {
 public:
 
+    static int ilosc;
+    static int zwrocIlosc(){
+        return ilosc;
+    }
+
     static DbManager& getInstance()
     {
         static DbManager instance("db_test.db");
@@ -54,6 +59,8 @@ private:
 
     std::vector<std::shared_ptr<User>> all_users;
 };
+
+
 
 #endif // DATABASE_H
 

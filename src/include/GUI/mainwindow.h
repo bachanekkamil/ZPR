@@ -6,7 +6,6 @@
 #include "secondwindow.h"
 #include <deque>
 #include <memory>
-#include <logic/mainclass.h>
 #include "addnewuserwindow.h"
 
 
@@ -21,6 +20,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+public slots:
+    void userListChanged();
+
 private slots:
     void on_pushButtonLogin_clicked();
     void on_pushButtonDeleteUser_clicked();
@@ -30,7 +33,6 @@ private:
     SecondWindow *mSecondWindow;
     AddNewUserWindow *mAddNewUserWindow;
     Ui::MainWindow *ui;
-    MainClass mMainClass;
 };
 
 #endif // MAINWINDOW_H
