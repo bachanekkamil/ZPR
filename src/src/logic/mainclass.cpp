@@ -4,9 +4,19 @@
 #include <QDebug>
 
 MainClass::MainClass()
-{/*
+{
     //create db
     DbManager db = DbManager::getInstance();
+
+    /////////////
+
+    try{
+    db.addUser("Olson");
+    }
+    catch(DatabaseException& e)
+    {
+        qDebug() << "Database exception: " << e.what();
+    }
 
     //get all users
     try
@@ -18,6 +28,22 @@ MainClass::MainClass()
         qDebug() << "Database exception during method getAllUsers(): " << e.what();
     }
 
+
+    //add test test
+    int test_id;
+    try
+    {
+    test_id = db.addTest("Test1234", mUsers.at(0));
+    qDebug() << "Added new test to DB. ID:" << QString::number(test_id);
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception: " << e.what();
+    }
+
+
+
+
     //get all test
     try
     {
@@ -27,6 +53,24 @@ MainClass::MainClass()
     {
         qDebug() << "Database exception during method getAllTests(): " << e.what();
     }
+
+
+    QString question_text = "How are you?";
+    QString answert_text = "OK";
+    try
+    {
+    db.addQuestionAndAnswer(mTests.at(0), question_text, answert_text);
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception: " << e.what();
+    }
+
+    /////////////
+
+
+
+
 
 
 
@@ -42,6 +86,8 @@ MainClass::MainClass()
     {
 
         qDebug() << "Test ID: " << QString::number(test->getIdDb()) << ". Test name: " << *test->getTestName() << ". Test owner name: " << *test->getTestOwner()->getName();
+
+
         foreach(std::shared_ptr<Question> question, test->getAllQuestions())
         {
             try
@@ -55,44 +101,16 @@ MainClass::MainClass()
             qDebug() << "Answer: " << *question->getCorrectAnswerText();
         }
 
-    }
 
-
-
-    try{
-    db.addUser("Olson");
-    }
-    catch(DatabaseException& e)
-    {
-        qDebug() << "Database exception: " << e.what();
     }
 
 
 
 
-    //add test test
-    int test_id;
-    try
-    {
-    test_id = db.addTest("Test123", mUsers.at(0));
-    qDebug() << "Added new test to DB. ID:" << QString::number(test_id);
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception: " << e.what();
-    }
 
 
 
-//unsigned int DbManager::addQuestionAndAnswers(std::shared_ptr<Test> test, QString& question_text, std::vector<QString>& answers_text, unsigned short which_correct)
 
-    QString question_text = "How are you?";
-    QString answert_text = "OK";
-    db.addQuestionAndAnswer(mTests.at(0), question_text, answert_text);
-
-
-
-*/
 //////////////???????????????
 
         /*/

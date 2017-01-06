@@ -1,1 +1,0 @@
-/usr/bin/g++      CMakeFiles/answer.dir/src_test/answer.cpp.o CMakeFiles/answer.dir/answer_automoc.cpp.o  -o answer -rdynamic -lboost_filesystem -lboost_system -lboost_unit_test_framework /opt/Qt5.7.0/5.7/gcc_64/lib/libQt5Widgets.so.5.7.0 /opt/Qt5.7.0/5.7/gcc_64/lib/libQt5Gui.so.5.7.0 /opt/Qt5.7.0/5.7/gcc_64/lib/libQt5Core.so.5.7.0 -Wl,-rpath,/opt/Qt5.7.0/5.7/gcc_64/lib 
