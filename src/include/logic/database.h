@@ -15,11 +15,6 @@ class DbManager
 {
 public:
 
-    static int ilosc;
-    static int zwrocIlosc(){
-        return ilosc;
-    }
-
     static DbManager* getInstance()
     {
         if(mInstance == nullptr)

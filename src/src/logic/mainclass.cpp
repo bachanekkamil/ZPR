@@ -3,36 +3,15 @@
 #include <logic/database_exception.h>
 #include <QDebug>
 
+MainClass* MainClass::mInstance = nullptr;
+
 MainClass::MainClass()
 {
-
 
     //create db
     db = DbManager::getInstance();
 
-    /////////////
-
-
-
     //get all users
-    try
-    {
-        mUsers = db->getAllUsers();
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during method getAllUsers(): " << e.what();
-    }
-
-
-    try{
-    db->addUser("Paulina");
-    }
-    catch(DatabaseException& e)
-    {
-        qDebug() << "Database exception in MainClass constructor: " << e.what();
-    }
-
     try
     {
         mUsers = db->getAllUsers();
@@ -98,6 +77,7 @@ MainClass::MainClass()
     }
     /*/
 
+    /*
     qDebug() << "delete quest ";
 
     try
@@ -147,7 +127,7 @@ MainClass::MainClass()
         qDebug() << "Database exception during modifyTest method: " << e.what();
     }
 
-
+*/
     /////////////
 
 
@@ -276,69 +256,55 @@ MainClass::~MainClass()
 }
 
 QStringList MainClass::getAllUsers(){
-    try
-    {
-        mUsers = db->getAllUsers();
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during method getAllUsers(): " << e.what();
-    }
-
     QStringList list;
-    for (std::shared_ptr<User> item: mUsers){
-        list << item->getName();
+    for (std::vector<std::shared_ptr<User>>::iterator it = mUsers.begin(); it!=mUsers.end(); ++it){
+        list << (*it)->getName();
     }
     return list;
 }
 
-void MainClass::setUser(int index){
-    mUser=mUsers[index];
+void MainClass::setUser(const QString &name){
+    for (std::vector<std::shared_ptr<User>>::iterator it = mUsers.begin(); it!=mUsers.end(); ++it){
+        if(name.compare((*it)->getName())==0){
+            mUser=*it;
+            break;
+        }
+    }
 }
 
 void MainClass::addNewUser(const QString &name){
+
     try
     {
-        db->addUser(name);
+        std::shared_ptr<User> new_user = db->addUser(name);
+        if(new_user != nullptr){
+            mUsers.push_back(new_user);
+        }else{
+            qDebug() << "addUser returned nullptr";
+        }
     }
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception during method addUser() newUser: " << e.what();
     }
 
-    try
-    {
-        mUsers = db->getAllUsers();
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during method getAllUsers(): " << e.what();
-    }
-
 }
 
-void MainClass::deleteUser(int index){
+void MainClass::deleteUser(const QString &name){
     try
     {
-        db->removeUser(mUsers[index]->getName());
+        db->removeUser(name);
+        for (std::vector<std::shared_ptr<User>>::iterator it = mUsers.begin(); it!=mUsers.end(); ++it){
+            if(name.compare((*it)->getName())==0){
+                mUsers.erase(it);
+                break;
+            }
+        }
     }
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception during method removeUser(): " << e.what();
     }
-
-    try
-    {
-        mUsers = db->getAllUsers();
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during method getAllUsers(): " << e.what();
-    }
-}
-
-int MainClass::iloscDB(){
-    return db->zwrocIlosc();
 }
 
 void MainClass::createNewTest(){

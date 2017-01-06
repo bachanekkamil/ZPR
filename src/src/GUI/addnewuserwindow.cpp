@@ -20,10 +20,9 @@ AddNewUserWindow::~AddNewUserWindow()
 void AddNewUserWindow::on_pushButtonAddNewUser_clicked()
 {
     if(!ui->lineEditLogin->text().isEmpty()){
-        MainClass main_class=MainClass::getInstance();
-        main_class.addNewUser(ui->lineEditLogin->text());
+        MainClass *main_class=MainClass::getInstance();
+        main_class->addNewUser(ui->lineEditLogin->text());
         emit newUserAdded();
-        qDebug() << "DbManager ilość " << main_class.iloscDB();
         mPrevious->show();
         this->close();
     }

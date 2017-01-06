@@ -18,18 +18,18 @@ enum state{
 class MainClass
 {
 public:
-    static MainClass& getInstance()
+    static MainClass* getInstance()
     {
-        static MainClass instance;
-        return instance;
+        if(mInstance == nullptr)
+            mInstance = new MainClass();
+        return mInstance;
     }
     ~MainClass();
 
     QStringList getAllUsers();
-    void setUser(int index);
+    void setUser(const QString& name);
     void addNewUser(const QString& name);
-    void deleteUser(int index);
-    int iloscDB();
+    void deleteUser(const QString& name);
     std::shared_ptr<User> getUser(unsigned int idDb);
     std::shared_ptr<Test> getTest(unsigned int idDb);
     std::shared_ptr<ConcreteTest> getConcreteTest(unsigned int idDB);
@@ -52,6 +52,7 @@ private:
     std::vector<std::shared_ptr<User>> mUsers;
     std::vector<std::shared_ptr<Test>> mTests;
     std::vector<std::shared_ptr<ConcreteTest>> mConcreteTests;
+    static MainClass* mInstance;
 
     std::shared_ptr<User> mUser;
     DbManager* db;

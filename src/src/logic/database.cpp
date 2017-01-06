@@ -9,8 +9,6 @@
 #include <logic/mainclass.h>
 
 
-int DbManager::ilosc=0;
-
 DbManager* DbManager::mInstance = nullptr;
 
 DbManager::DbManager(const QString &path)
@@ -30,7 +28,6 @@ DbManager::DbManager(const QString &path)
     query.prepare("PRAGMA foreign_keys = ON");
     query.exec();
 
-    ilosc++;
 }
 
 DbManager::~DbManager()
@@ -528,7 +525,7 @@ std::vector<std::shared_ptr<ConcreteTest>> DbManager::getAllConcreteTests()
         QString date = queryGet.value(4).toString();
         QString format = "yyyy-MM-dd HH:mm:ss";
         QDateTime dt = QDateTime::fromString(date, format);
-        std::shared_ptr<ConcreteTest> contest(new ConcreteTest(id, MainClass::getInstance().getTest(test_id), MainClass::getInstance().getUser(user_id), name, dt));
+        std::shared_ptr<ConcreteTest> contest(new ConcreteTest(id, MainClass::getInstance()->getTest(test_id), MainClass::getInstance()->getUser(user_id), name, dt));
         concTests.push_back(contest);
     }
     return concTests;

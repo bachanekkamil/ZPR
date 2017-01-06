@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    MainClass main_class=MainClass::getInstance();
-    ui->comboBoxChooseUser->addItems(main_class.getAllUsers());
+    MainClass *main_class=MainClass::getInstance();
+    ui->comboBoxChooseUser->addItems(main_class->getAllUsers());
     //ui->comboBoxChooseUser->setEditable(false);
 }
 
@@ -24,19 +24,16 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::userListChanged(){
-    qDebug() << "Slot userListChanged() activated";
     ui->comboBoxChooseUser->clear();
-    MainClass main_class=MainClass::getInstance();
-    QStringList test=main_class.getAllUsers();
-    qDebug() << "userList after userListChanged()" << test;
-    ui->comboBoxChooseUser->addItems(main_class.getAllUsers());
+    MainClass *main_class=MainClass::getInstance();
+    ui->comboBoxChooseUser->addItems(main_class->getAllUsers());
 }
 
 void MainWindow::on_pushButtonLogin_clicked()
 {
     if(ui->comboBoxChooseUser->count()!=0 && ui->comboBoxChooseUser->currentIndex()!=-1){
-        MainClass main_class=MainClass::getInstance();
-        main_class.setUser(ui->comboBoxChooseUser->currentIndex());
+        MainClass *main_class=MainClass::getInstance();
+        main_class->setUser(ui->comboBoxChooseUser->currentText());
         mSecondWindow = new SecondWindow(this);
         mSecondWindow->show();
         this->hide();
@@ -46,8 +43,8 @@ void MainWindow::on_pushButtonLogin_clicked()
 void MainWindow::on_pushButtonDeleteUser_clicked()
 {
     if(ui->comboBoxChooseUser->count()!=0 && ui->comboBoxChooseUser->currentIndex()!=-1){
-        MainClass main_class=MainClass::getInstance();
-        main_class.deleteUser(ui->comboBoxChooseUser->currentIndex());
+        MainClass *main_class=MainClass::getInstance();
+        main_class->deleteUser(ui->comboBoxChooseUser->currentText());
         userListChanged();
     }
 }
