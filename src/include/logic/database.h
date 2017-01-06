@@ -46,9 +46,9 @@ public:
     //questions
     std::shared_ptr<Question> getRealQuestion(unsigned long long id);
     std::vector<std::shared_ptr<Question>> getAllQuestionForTest(unsigned int id);
-
-
     unsigned int addQuestionAndAnswer(std::shared_ptr<Test> test, QString& question_text, QString& answer_text);
+    void modifyQuestion(std::shared_ptr<Question> question, QString& question_text, QString& answer_text);
+    void deleteQuestion(std::shared_ptr<Question> question);
 
 
 private:

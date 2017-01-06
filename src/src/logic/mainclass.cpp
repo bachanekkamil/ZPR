@@ -30,7 +30,7 @@ MainClass::MainClass()
         qDebug() << "Database exception during method getAllUsers(): " << e.what();
     }
 
-    /*
+
 
     //add test test
     int test_id;
@@ -46,6 +46,7 @@ MainClass::MainClass()
 
 
 
+    qDebug() << "get all test " ;
 
     //get all test
     try
@@ -58,6 +59,8 @@ MainClass::MainClass()
     }
 
 
+    qDebug() << "add question ";
+
     QString question_text = "How are you?";
     QString answert_text = "OK";
     try
@@ -69,6 +72,21 @@ MainClass::MainClass()
         qDebug() << "Database exception: " << e.what();
     }
 
+
+
+
+    qDebug() << "delete quest ";
+
+    try
+    {
+    db->deleteQuestion(mTests.at(0)->getAllQuestions().at(0));
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during deleteQuestion method: " << e.what();
+    }
+
+    /*/
     /////////////
 
 
@@ -76,13 +94,14 @@ MainClass::MainClass()
 
 
 
-
+    /*
 
 
 
 
     //PIERDOŁY
     //add user test
+
 
 
     foreach(std::shared_ptr<Test> test, mTests)
@@ -106,7 +125,6 @@ MainClass::MainClass()
 
 
     }
-
 
 
 

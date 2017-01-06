@@ -150,14 +150,13 @@ void DbManager::removeUser(unsigned int id)
 
 std::vector<std::shared_ptr<User>> DbManager::getAllUsers()
 {
-    if(all_users.size() > 0)
-        return all_users;
     QSqlQuery queryGet;
     queryGet.prepare("Select name, datetime_created, id FROM Users");
     if(!queryGet.exec())
     {
         throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
     }
+    all_users.clear();
     while (queryGet.next())
     {
         QString name = queryGet.value(0).toString();
@@ -373,7 +372,46 @@ unsigned int DbManager::addQuestionAndAnswer(std::shared_ptr<Test> test, QString
     }
     else
     {
-        QSqlDatabase::database().rollback();
         throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+}
+
+void DbManager::modifyQuestion(std::shared_ptr<Question> question, QString& question_text, QString& answer_text)
+{
+    if (question_text.isEmpty() || answer_text.isEmpty() || !question)
+    {
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+    QSqlQuery queryUpdate;
+    queryUpdate.prepare("UPDATE Questions SET question_text = :question_text, correct_answer = :answer_text WHERE id = :id");
+    queryUpdate.bindValue(":question_text", question_text);
+    queryUpdate.bindValue(":answer_text", answer_text);
+    queryUpdate.bindValue(":id", question->getIdDb());
+    if(queryUpdate.exec())
+    {
+        return;
+    }
+    else
+    {
+        throw DatabaseException(queryUpdate.lastError().text().toStdString().c_str());
+    }
+}
+
+void DbManager::deleteQuestion(std::shared_ptr<Question> question)
+{
+    if (!question)
+    {
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+    QSqlQuery queryDelete;
+    queryDelete.prepare("DELETE FROM Questions WHERE id = :id");
+    queryDelete.bindValue(":id", question->getIdDb());
+    if(queryDelete.exec())
+    {
+        return;
+    }
+    else
+    {
+        throw DatabaseException(queryDelete.lastError().text().toStdString().c_str());
     }
 }
