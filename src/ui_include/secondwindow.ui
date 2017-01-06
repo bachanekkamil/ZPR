@@ -85,7 +85,6 @@
      <string>Opcje</string>
     </property>
     <addaction name="actionLogout"/>
-    <addaction name="actionEditUserInfo"/>
    </widget>
    <addaction name="menuOpcje"/>
   </widget>

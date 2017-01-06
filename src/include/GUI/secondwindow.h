@@ -5,7 +5,6 @@
 #include "solvetestwindow.h"
 #include "addnewtestwindow.h"
 #include "newtestname.h"
-#include "edituserwindow.h"
 
 namespace Ui {
 class SecondWindow;
@@ -24,8 +23,6 @@ private slots:
 
     void on_actionLogout_triggered();
 
-    void on_actionEditUserInfo_triggered();
-
     void on_pushButtonAddTest_clicked();
 
     void on_pushButtonEditTest_clicked();
@@ -35,7 +32,6 @@ private:
     SolveTestWindow *mSolveTestWindow;
     NewTestName *mNewTestName;
     AddNewTestWindow *mEditTestWindow;
-    EditUserWindow *mEditUserWindow;
     Ui::SecondWindow *ui;
 };
 

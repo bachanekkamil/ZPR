@@ -14,7 +14,6 @@ SecondWindow::~SecondWindow()
     delete mSolveTestWindow;
     delete mNewTestName;
     delete mEditTestWindow;
-    delete mEditUserWindow;
     delete ui;
 }
 
@@ -31,12 +30,6 @@ void SecondWindow::on_actionLogout_triggered()
     this->close();
 }
 
-void SecondWindow::on_actionEditUserInfo_triggered()
-{
-    mEditUserWindow = new EditUserWindow(this);
-    mEditUserWindow->show();
-    this->hide();
-}
 
 void SecondWindow::on_pushButtonAddTest_clicked()
 {

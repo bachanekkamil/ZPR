@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+/////////// KLASA NIE UŻYWANA
+
+/*
 namespace Ui {
 class EditUserWindow;
 }
@@ -22,6 +25,6 @@ private slots:
 private:
     QMainWindow *mPrevious;
     Ui::EditUserWindow *ui;
-};
+};*/
 
 #endif // EDITUSERWINDOW_H

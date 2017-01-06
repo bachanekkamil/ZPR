@@ -1,6 +1,10 @@
 #include "edituserwindow.h"
 #include "ui_edituserwindow.h"
 
+
+///////// KLASA NIE UZYWANA
+
+/*
 EditUserWindow::EditUserWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::EditUserWindow)
@@ -25,3 +29,4 @@ void EditUserWindow::on_pushButtonAccept_clicked()
     mPrevious->show();
     this->close();
 }
+*/

@@ -175,6 +175,45 @@ MainClass::~MainClass()
 
 }
 
+QStringList MainClass::getAllUsers(){
+    QStringList list;
+    for (std::shared_ptr<User> item: mUsers){
+        list << item->mName;
+    }
+
+    return list;
+}
+
+void MainClass::setUser(int index){
+    mUser=mUsers[index];
+}
+
+void MainClass::addNewUser(const QString &name){
+    DbManager db = DbManager::getInstance();
+    db.addUser(name);
+    try
+    {
+        mUsers = db.getAllUsers();
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during method getAllUsers(): " << e.what();
+    }
+}
+
+void MainClass::deleteUser(int index){
+    DbManager db = DbManager::getInstance();
+    // sprawdzić czy remove
+    try
+    {
+        db.removeUser(mUsers[index]);
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during method removeUser(mUsers[index]): " << e.what();
+    }
+}
+
 void MainClass::createNewTest(){
 
 }
@@ -203,7 +242,7 @@ NewTestCreator* MainClass::getNewTestCreator(){
     return NULL;
 }
 
-User* MainClass::getUser(){
+std::shared_ptr<User> MainClass::getUser(){
     return mUser;
 }
 

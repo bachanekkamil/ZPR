@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->comboBoxChooseUser->addItems(mMainClass->getAllUsers());
+    ui->comboBoxChooseUser->setEditable(false);
 }
 
 MainWindow::~MainWindow()
@@ -22,14 +24,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButtonLogin_clicked()
 {
+    mMainClass->setUser(ui->comboBoxChooseUser->currentIndex());
     mSecondWindow = new SecondWindow(this);
     mSecondWindow->show();
     this->hide();
 }
 
+void MainWindow::on_pushButtonDeleteUser_clicked()
+{
+
+}
+
 void MainWindow::on_pushButtonAddUser_clicked()
 {
-    mAddNewUserWindow = new AddNewUserWindow(this);
+    mAddNewUserWindow = new AddNewUserWindow(this, mMainClass);
     mAddNewUserWindow->show();
     this->hide();
 }

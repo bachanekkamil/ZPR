@@ -19,15 +19,20 @@ public:
     MainClass();
     ~MainClass();
 
+    QStringList getAllUsers();
+    void setUser(int index);
+    void addNewUser(const QString& name);
+    void deleteUser(int index);
+
     //not used now
     void createNewTest();
     void endConcreteTest();
     void endCreatingNewTest();
     std::vector<ConcreteTest*> getAvailableConcreteTests();
     std::vector<Test*> getAvailableTest();
-    Game* getGame();
+    Game *getGame();
     NewTestCreator* getNewTestCreator();
-    User *getUser();
+    std::shared_ptr<User> getUser();
     void startConcreteTest(unsigned int, ConcreteTest*);
     void startNewTest(unsigned int, Test*);
 
@@ -35,9 +40,10 @@ private:
     std::vector<std::shared_ptr<User>> mUsers;
     std::vector<std::shared_ptr<Test>> mTests;
 
+    std::shared_ptr<User> mUser;
+
     //not used now
     state mState;
-    User* mUser;
     std::vector<ConcreteTest*> mConcreteTests;
     Game* mGame;
     NewTestCreator* mNewTestCreator;

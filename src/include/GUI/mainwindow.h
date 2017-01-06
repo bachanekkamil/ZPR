@@ -23,6 +23,7 @@ public:
     ~MainWindow();
 private slots:
     void on_pushButtonLogin_clicked();
+    void on_pushButtonDeleteUser_clicked();
     void on_pushButtonAddUser_clicked();
 
 private:
