@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include "logic/mainclass.h"
 #include <QVBoxLayout>
-
 #include <QDebug>
 
 
@@ -14,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     MainClass main_class=MainClass::getInstance();
     ui->comboBoxChooseUser->addItems(main_class.getAllUsers());
-    ui->comboBoxChooseUser->setEditable(false);
+    //ui->comboBoxChooseUser->setEditable(false);
 }
 
 MainWindow::~MainWindow()
@@ -25,8 +24,11 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::userListChanged(){
+    qDebug() << "Slot userListChanged() activated";
     ui->comboBoxChooseUser->clear();
     MainClass main_class=MainClass::getInstance();
+    QStringList test=main_class.getAllUsers();
+    qDebug() << "userList after userListChanged()" << test;
     ui->comboBoxChooseUser->addItems(main_class.getAllUsers());
 }
 

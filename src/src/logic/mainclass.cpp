@@ -12,13 +12,7 @@ MainClass::MainClass()
 
     /////////////
 
-    /*try{
-    db->addUser("Olson");
-    }
-    catch(DatabaseException& e)
-    {
-        qDebug() << "Database exception in MainClass constructor: " << e.what();
-    }*/
+
 
     //get all users
     try
@@ -29,6 +23,26 @@ MainClass::MainClass()
     {
         qDebug() << "Database exception during method getAllUsers(): " << e.what();
     }
+
+
+    try{
+    db->addUser("Paulina");
+    }
+    catch(DatabaseException& e)
+    {
+        qDebug() << "Database exception in MainClass constructor: " << e.what();
+    }
+
+    try
+    {
+        mUsers = db->getAllUsers();
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during method getAllUsers(): " << e.what();
+    }
+
+
 
     /*
 
@@ -197,6 +211,15 @@ MainClass::~MainClass()
 }
 
 QStringList MainClass::getAllUsers(){
+    try
+    {
+        mUsers = db->getAllUsers();
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during method getAllUsers(): " << e.what();
+    }
+
     QStringList list;
     for (std::shared_ptr<User> item: mUsers){
         list << item->getName();
@@ -211,24 +234,41 @@ void MainClass::setUser(int index){
 void MainClass::addNewUser(const QString &name){
     try
     {
-        db->addUser("name");
-        //db->addUser(name);
+        db->addUser(name);
     }
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception during method addUser() newUser: " << e.what();
     }
+
+    try
+    {
+        mUsers = db->getAllUsers();
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during method getAllUsers(): " << e.what();
+    }
+
 }
 
 void MainClass::deleteUser(int index){
     try
     {
-        db->removeUser("name");
-        //db->removeUser(mUsers[index]->getName());
+        db->removeUser(mUsers[index]->getName());
     }
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception during method removeUser(): " << e.what();
+    }
+
+    try
+    {
+        mUsers = db->getAllUsers();
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during method getAllUsers(): " << e.what();
     }
 }
 
