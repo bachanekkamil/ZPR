@@ -86,7 +86,45 @@ MainClass::MainClass()
         qDebug() << "Database exception during deleteQuestion method: " << e.what();
     }
 
+
+
+    qDebug() << "delete test";
+
+    try
+    {
+    db->deleteTest(mTests.at(0));
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during deleteTest method: " << e.what();
+    }
+
     /*/
+    qDebug() << "delete all questions";
+
+    try
+    {
+    db->deleteAllQuestionsForTest(mTests.at(0));
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during deleteAllQuestionsForTest method: " << e.what();
+    }
+
+
+
+    qDebug() << "modify test ";
+    QString newTestName = "lalala";
+    try
+    {
+    db->modifyTest(mTests.at(0), newTestName);
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during modifyTest method: " << e.what();
+    }
+
+
     /////////////
 
 

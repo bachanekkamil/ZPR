@@ -42,6 +42,8 @@ public:
     //tests
     unsigned int addTest(const QString& name, const std::shared_ptr<User> user);
     std::vector<std::shared_ptr<Test>> getAllTests();
+    void deleteTest(std::shared_ptr<Test> test);
+    void modifyTest(std::shared_ptr<Test> test, const QString& name);
 
     //questions
     std::shared_ptr<Question> getRealQuestion(unsigned long long id);
@@ -49,6 +51,7 @@ public:
     unsigned int addQuestionAndAnswer(std::shared_ptr<Test> test, QString& question_text, QString& answer_text);
     void modifyQuestion(std::shared_ptr<Question> question, QString& question_text, QString& answer_text);
     void deleteQuestion(std::shared_ptr<Question> question);
+    void deleteAllQuestionsForTest(std::shared_ptr<Test> test);
 
 
 private:
