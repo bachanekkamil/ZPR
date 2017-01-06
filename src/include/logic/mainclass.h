@@ -48,6 +48,7 @@ private:
     std::vector<std::shared_ptr<Test>> mTests;
 
     std::shared_ptr<User> mUser;
+    DbManager* db;
 
     //not used now
     state mState;

@@ -39,6 +39,6 @@ const QString* QuestionProxy::getCorrectAnswerText()
 std::shared_ptr<Question> QuestionProxy::getQuestion()
 {
     if(!mQuestionReal)
-    mQuestionReal = DbManager::getInstance().getRealQuestion(mIdDb);
+    mQuestionReal = DbManager::getInstance()->getRealQuestion(mIdDb);
     return mQuestionReal;
 }

@@ -9,6 +9,8 @@
 
 int DbManager::ilosc=0;
 
+DbManager* DbManager::mInstance = nullptr;
+
 DbManager::DbManager(const QString &path)
 {
     m_db = QSqlDatabase::addDatabase("QSQLITE");
@@ -46,7 +48,7 @@ unsigned int DbManager::addUser(const QString& name)
 {
     if (!name.isEmpty())
     {
-        QSqlQuery queryAdd;
+        QSqlQuery queryAdd(m_db);
         queryAdd.prepare("INSERT INTO Users (name) VALUES (:name)");
         queryAdd.bindValue(":name", name);
 

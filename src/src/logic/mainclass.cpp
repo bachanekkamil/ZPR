@@ -8,12 +8,12 @@ MainClass::MainClass()
 
 
     //create db
-    DbManager db = DbManager::getInstance();
+    db = DbManager::getInstance();
 
     /////////////
 
     /*try{
-    db.addUser("Olson");
+    db->addUser("Olson");
     }
     catch(DatabaseException& e)
     {
@@ -23,7 +23,7 @@ MainClass::MainClass()
     //get all users
     try
     {
-        mUsers = db.getAllUsers();
+        mUsers = db->getAllUsers();
     }
     catch(DatabaseException &e)
     {
@@ -36,8 +36,8 @@ MainClass::MainClass()
     int test_id;
     try
     {
-    test_id = db.addTest("Test1234", mUsers.at(0));
-    qDebug() << "Added new test to DB. ID:" << QString::number(test_id);
+    test_id = db->addTest("Test1234", mUsers.at(0));
+    qDebug() << "Added new test to db-> ID:" << QString::number(test_id);
     }
     catch(DatabaseException &e)
     {
@@ -50,7 +50,7 @@ MainClass::MainClass()
     //get all test
     try
     {
-        mTests = db.getAllTests();
+        mTests = db->getAllTests();
     }
     catch(DatabaseException &e)
     {
@@ -62,7 +62,7 @@ MainClass::MainClass()
     QString answert_text = "OK";
     try
     {
-    db.addQuestionAndAnswer(mTests.at(0), question_text, answert_text);
+    db->addQuestionAndAnswer(mTests.at(0), question_text, answert_text);
     }
     catch(DatabaseException &e)
     {
@@ -128,7 +128,7 @@ MainClass::MainClass()
 
     //add user test
     try{
-    db.addUser("Olson");
+    db->addUser("Olson");
     }
     catch(DatabaseException& e)
     {
@@ -137,16 +137,16 @@ MainClass::MainClass()
     }
 
 
-    if(db.isUserExists(1))
+    if(db->isUserExists(1))
     qDebug() << "User exists";
 
-    db.removeUser("Kamil");
+    db->removeUser("Kamil");
             qDebug() << "User deleted";
 
 
     try{
     //add user test
-    unsigned int id = db.addUser("Kamil");
+    unsigned int id = db->addUser("Kamil");
     qDebug() << "Added user with id: ";
     qDebug() << QString::number(id);
     }
@@ -158,7 +158,7 @@ MainClass::MainClass()
 
     try{
     //add user test
-    db.addUser("");
+    db->addUser("");
     }
     catch(DatabaseException& e)
     {
@@ -169,7 +169,7 @@ MainClass::MainClass()
 
     try{
     //get user test
-    std::shared_ptr<User> us = db.getUser(1);
+    std::shared_ptr<User> us = db->getUser(1);
     qDebug() << "Name: ";
     qDebug() << *us->getName();
     qDebug() << "Time created: ";
@@ -209,11 +209,10 @@ void MainClass::setUser(int index){
 }
 
 void MainClass::addNewUser(const QString &name){
-    DbManager db = DbManager::getInstance();
     try
     {
-        db.addUser("name");
-        //db.addUser(name);
+        db->addUser("name");
+        //db->addUser(name);
     }
     catch(DatabaseException &e)
     {
@@ -222,11 +221,10 @@ void MainClass::addNewUser(const QString &name){
 }
 
 void MainClass::deleteUser(int index){
-    DbManager db = DbManager::getInstance();
     try
     {
-        db.removeUser("name");
-        //db.removeUser(mUsers[index]->getName());
+        db->removeUser("name");
+        //db->removeUser(mUsers[index]->getName());
     }
     catch(DatabaseException &e)
     {
@@ -235,8 +233,7 @@ void MainClass::deleteUser(int index){
 }
 
 int MainClass::iloscDB(){
-    DbManager db = DbManager::getInstance();
-    return db.zwrocIlosc();
+    return db->zwrocIlosc();
 }
 
 void MainClass::createNewTest(){

@@ -18,10 +18,11 @@ public:
         return ilosc;
     }
 
-    static DbManager& getInstance()
+    static DbManager* getInstance()
     {
-        static DbManager instance("db_test.db");
-        return instance;
+        if(mInstance == nullptr)
+            mInstance = new DbManager("db_test.db");
+        return mInstance;
     }
 
     ~DbManager();
@@ -52,6 +53,8 @@ public:
 
 private:
     QSqlDatabase m_db;
+
+    static DbManager* mInstance;
 
     DbManager(const QString& path);
 
