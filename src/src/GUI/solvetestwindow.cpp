@@ -19,3 +19,7 @@ void SolveTestWindow::on_pushButtonEndTest_clicked()
     mPrevious->show();
     this->close();
 }
+
+void SolveTestWindow::closeEvent (QCloseEvent *event){
+    mPrevious->show();
+}

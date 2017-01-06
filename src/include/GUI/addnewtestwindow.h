@@ -19,6 +19,7 @@ private slots:
     void on_pushButtonEndTestEditing_clicked();
 
 private:
+    void closeEvent(QCloseEvent *event);
     QMainWindow *mPrevious;
     Ui::AddNewTestWindow *ui;
 };

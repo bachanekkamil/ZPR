@@ -20,6 +20,7 @@ private slots:
     void on_pushButtonEndTest_clicked();
 
 private:
+    void closeEvent(QCloseEvent *event);
     QMainWindow *mPrevious;
     Ui::SolveTestWindow *ui;
 };

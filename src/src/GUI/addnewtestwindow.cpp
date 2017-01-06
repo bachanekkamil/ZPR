@@ -19,3 +19,7 @@ void AddNewTestWindow::on_pushButtonEndTestEditing_clicked()
     mPrevious->show();
     this->close();
 }
+
+void AddNewTestWindow::closeEvent (QCloseEvent *event){
+    mPrevious->show();
+}
