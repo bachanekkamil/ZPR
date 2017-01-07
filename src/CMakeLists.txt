@@ -17,6 +17,7 @@ SET ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 add_definitions(-std=c++0x)
 
+#add_definitions (-DBOOST_TEST_DYN_LINK)
 
 # Coverage test
 SET(CMAKE_CXX_FLAGS "-g -O0 --coverage")
@@ -84,9 +85,6 @@ target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::Sql)
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
 
 ################TESTS################################
-
-enable_testing()
-
 find_package(Boost COMPONENTS system filesystem unit_test_framework REQUIRED)
 
 #I like to keep test files in a separate source directory called test
@@ -97,6 +95,7 @@ foreach(testSrc ${TEST_SRCS})
         #Extract the filename without an extension (NAME_WE)
         get_filename_component(testName ${testSrc} NAME_WE)
 
+
         #Add compile target
         add_executable(${testName} ${testSrc})
 		
@@ -106,8 +105,8 @@ foreach(testSrc ${TEST_SRCS})
                       ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
                       )
 		
-		# Use the Widgets module from Qt 5.
-		target_link_libraries(${testName} Qt5::Widgets)
+        # Use the Widgets module from Qt 5.
+		target_link_libraries(${testName} Qt5::Widgets Qt5::Sql)
 
         #Finally add it to test execution - 
         #Notice the WORKING_DIRECTORY and COMMAND
@@ -117,21 +116,5 @@ foreach(testSrc ${TEST_SRCS})
 
 endforeach(testSrc)
 
-if (CMAKE_BUILD_TYPE STREQUAL "Coverage")
-    include(CodeCoverage)
-    setup_target_for_coverage(${PROJECT_NAME}_coverage ${testSrc} coverage)
-
- 
-    SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
-
-foreach(testSrc ${TEST_SRCS})
-        add_test(NAME ${testName} 
-                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src_test 
-                 COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/src_test/${testName} )
-
-endforeach(testSrc)
-
-
-endif() #CMAKE_BUILD_TYPE STREQUAL "Coverage"
 
 
