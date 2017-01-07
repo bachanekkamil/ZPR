@@ -28,6 +28,7 @@ public:
 
     QStringList getAllUsers();
     void setUser(const QString& name);
+    void logoutUser();
     void addNewUser(const QString& name);
     void deleteUser(const QString& name);
     std::shared_ptr<User> getUser(unsigned int idDb);

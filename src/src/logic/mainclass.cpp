@@ -7,7 +7,8 @@ MainClass* MainClass::mInstance = nullptr;
 
 MainClass::MainClass()
 {
-
+    mUser=nullptr;
+    mState=NOT_LOGGED;
     //create db
     db = DbManager::getInstance();
 
@@ -22,7 +23,7 @@ MainClass::MainClass()
     }
 
 
-    /*
+
 
     //add test test
     try
@@ -63,7 +64,7 @@ MainClass::MainClass()
         qDebug() << "Database exception: " << e.what();
     }
 
-
+/*
     qDebug() << "add concrete test ";
 
     QString contestname = "My first concrete test";
@@ -270,6 +271,12 @@ void MainClass::setUser(const QString &name){
             break;
         }
     }
+    mState=NOT_LOGGED;
+}
+
+void MainClass::logoutUser(){
+    mUser=nullptr;
+    mState=NOT_LOGGED;
 }
 
 void MainClass::addNewUser(const QString &name){

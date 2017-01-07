@@ -18,8 +18,13 @@ public:
     explicit SecondWindow(QMainWindow *previous, QWidget *parent = 0);
     ~SecondWindow();
 
+public slots:
+    void newTestAdded();
+
 private slots:
     void on_pushButtonTakeTest_clicked();
+
+    void on_pushButtonTakeNewTest_clicked();
 
     void on_actionLogout_triggered();
 
@@ -31,6 +36,7 @@ private:
     QMainWindow *mPrevious;
     SolveTestWindow *mSolveTestWindow;
     NewTestName *mNewTestName;
+    AddNewTestWindow *mAddNewTestWindow;
     AddNewTestWindow *mEditTestWindow;
     Ui::SecondWindow *ui;
 };

@@ -74,7 +74,7 @@
       <item>
        <widget class="QPushButton" name="pushButtonEvaluate">
         <property name="text">
-         <string>Niepoprawnie</string>
+         <string>Oceń</string>
         </property>
        </widget>
       </item>

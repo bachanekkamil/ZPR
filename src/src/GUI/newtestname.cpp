@@ -11,19 +11,16 @@ NewTestName::NewTestName(QMainWindow *previous, QWidget *parent) :
 
 NewTestName::~NewTestName()
 {
-    delete mAddNewTestWindow;
     delete ui;
 }
 
 void NewTestName::on_buttonBox_accepted()
 {
-    mAddNewTestWindow = new AddNewTestWindow(mPrevious);
-    mAddNewTestWindow->show();
+    emit newTestNameAccepted();
     this->close();
 }
 
 void NewTestName::on_buttonBox_rejected()
 {
-    mPrevious->show();
     this->close();
 }

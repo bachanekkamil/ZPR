@@ -16,6 +16,9 @@ public:
     explicit NewTestName(QMainWindow *previous, QWidget *parent = 0);
     ~NewTestName();
 
+signals:
+    void newTestNameAccepted();
+
 private slots:
     void on_buttonBox_accepted();
 
@@ -23,7 +26,6 @@ private slots:
 
 private:
     QMainWindow *mPrevious;
-    AddNewTestWindow *mAddNewTestWindow;
     Ui::NewTestName *ui;
 };
 
