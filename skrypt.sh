@@ -7,6 +7,7 @@ then
 else
 	rm -rf build
 	mkdir build
+	cp src/db_test.db build
 	cd build
 	cmake ../src
 	make
