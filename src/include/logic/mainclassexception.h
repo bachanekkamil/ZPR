@@ -4,6 +4,7 @@
 
 #include <exception>
 #include <iostream>
+#include <cstring>
 
 enum error_type_main_class
 {

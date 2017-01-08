@@ -7,6 +7,7 @@
 #include "../src/logic/database_exception.cpp"
 #include "../src/logic/game.cpp"
 #include "../src/logic/mainclass.cpp"
+#include "../src/logic/mainclassexception.cpp"
 #include "../src/logic/newtestcreator.cpp"
 #include "../src/logic/olduseranswer.cpp"
 #include "../src/logic/question.cpp"
@@ -35,6 +36,7 @@ BOOST_AUTO_TEST_CASE( database )
     users = db->getAllUsers();
     std::shared_ptr<User> usr2 = db->addUser("testUsr23");
     usr = db->getUser(1);
+
 //    BOOST_CHECK(users);
 
 //    BOOST_CHECK((db->getUser(0)) =="user2");

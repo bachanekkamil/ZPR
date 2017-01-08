@@ -356,7 +356,7 @@ void MainClass::editTest(const QString& name){
     }
 }
 
-void MainClass::addQuestion(QString& question,QString& answer){
+void MainClass::addQuestion(QString question,QString answer){
     try
     {
         unsigned int idDb=db->addQuestionAndAnswer(mTest,question,answer);
@@ -370,7 +370,7 @@ void MainClass::addQuestion(QString& question,QString& answer){
     }
 }
 
-void MainClass::modifyQuestion(unsigned int index, QString& question, QString& answer){
+void MainClass::modifyQuestion(unsigned int index, QString question, QString answer){
     try
     {
         db->modifyQuestion(mTest->getAllQuestions().at(index), question, answer);

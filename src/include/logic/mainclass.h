@@ -37,8 +37,8 @@ public:
     QStringList getAvailableTests();
     void addNewTest(const QString& name);
     void editTest(const QString& name);
-    void addQuestion(QString &question, QString &answer);
-    void modifyQuestion(unsigned int index, QString &question, QString &answer);
+    void addQuestion(QString question, QString answer);
+    void modifyQuestion(unsigned int index, QString question, QString answer);
     std::shared_ptr<Test> getCurrentlyEditedTest();
 
     //not used now
