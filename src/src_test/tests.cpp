@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE( database )
     bool cond = db->isOpen();
     BOOST_CHECK_EQUAL(cond, true);
 
-//    db->removeAllUsers();
+    db->removeAllUsers();
     std::vector<std::shared_ptr<User>> users;
     std::shared_ptr<User> usr = db->addUser("testUsr");
 
