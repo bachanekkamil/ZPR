@@ -8,7 +8,7 @@ struct OldUserAnswer
 public:
     OldUserAnswer();
     bool correct;
-    boost::posix_time::ptime time;
+//    boost::posix_time::ptime time;
 //    AnswersDone *m_AnswersDone;
 
 };

@@ -23,6 +23,7 @@ public:
 
 public slots:
     void userListChanged();
+    void exitRequested();
 
 private slots:
     void on_pushButtonLogin_clicked();

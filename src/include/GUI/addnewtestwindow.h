@@ -2,6 +2,7 @@
 #define ADDNEWTESTWINDOW_H
 
 #include <QMainWindow>
+#include "warningmessagedialog.h"
 
 namespace Ui {
 class AddNewTestWindow;
@@ -17,11 +18,16 @@ public:
 
 private slots:
     void on_pushButtonEndTestEditing_clicked();
+    void on_pushButtonNext_clicked();
+    void on_pushButtonPrevious_clicked();
 
 private:
     void closeEvent(QCloseEvent *event);
     QMainWindow *mPrevious;
+    WarningMessageDialog *mWarningMessageDialog;
     Ui::AddNewTestWindow *ui;
+    unsigned int mProgress;
+    unsigned int mInitialQuestionNumber;
 };
 
 #endif // ADDNEWTESTWINDOW_H

@@ -29,12 +29,17 @@ void MainWindow::userListChanged(){
     ui->comboBoxChooseUser->addItems(main_class->getAllUsers());
 }
 
+void MainWindow::exitRequested(){
+    this->close();
+}
+
 void MainWindow::on_pushButtonLogin_clicked()
 {
     if(ui->comboBoxChooseUser->count()!=0 && ui->comboBoxChooseUser->currentIndex()!=-1){
         MainClass *main_class=MainClass::getInstance();
         main_class->setUser(ui->comboBoxChooseUser->currentText());
         mSecondWindow = new SecondWindow(this);
+        QObject::connect(mSecondWindow, SIGNAL(exit()), this, SLOT(exitRequested()));
         mSecondWindow->show();
         this->hide();
     }

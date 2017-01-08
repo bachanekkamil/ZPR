@@ -11,8 +11,9 @@ class Question
 public:
     virtual ~Question() { }
     virtual const unsigned int getIdDb() = 0;
-    virtual const QString* getText() = 0;
-    virtual const QString* getCorrectAnswerText() = 0;
+    virtual const QString& getText() = 0;
+    virtual const QString& getCorrectAnswerText() = 0;
+    virtual void modifyQuestion(const QString& question, const QString& answer)=0;
 
 private:
 };

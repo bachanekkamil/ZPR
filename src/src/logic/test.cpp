@@ -9,9 +9,9 @@ Test::Test(unsigned int id_test_db, QString name, std::shared_ptr<User> createdB
 
 }
 
-const QString* Test::getTestName() const{
+const QString& Test::getTestName() const{
 
-    return &mName;
+    return mName;
 }
 
 
@@ -25,9 +25,17 @@ unsigned int Test::getIdDb() const
     return mIdTestDb;
 }
 
+int Test::getNumberOfQuestions(){
+    return mQuestions.size();
+}
 
+void Test::addQuestion(std::shared_ptr<Question> question){
+    mQuestions.push_back(question);
+}
 
-
+void Test::modifyQuestion(unsigned int index, const QString& question, const QString& answer){
+    mQuestions.at(index)->modifyQuestion(question,answer);
+}
 
 //not used now
 
@@ -46,15 +54,12 @@ Test::~Test(){
 }
 
 
-void Test::addQuestion(Question* _question){
 
-}
 
 std::vector<std::shared_ptr<Question>> Test::getAllQuestions(){
 
     return mQuestions;
 }
-
 
 Test* Test::getParentTest(){
 

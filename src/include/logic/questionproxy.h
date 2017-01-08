@@ -14,8 +14,9 @@ public:
 
     QuestionProxy(unsigned int id_db);
     virtual const unsigned int getIdDb();
-    virtual const QString* getText();
-    virtual const QString* getCorrectAnswerText();
+    virtual const QString& getText();
+    virtual const QString& getCorrectAnswerText();
+    virtual void modifyQuestion(const QString& question, const QString& answer);
 
 
 private:

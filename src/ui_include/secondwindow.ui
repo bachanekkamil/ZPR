@@ -43,7 +43,7 @@
        <attribute name="title">
         <string>Moje testy</string>
        </attribute>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -54,7 +54,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QTableWidget" name="tableWidgetChooseTest"/>
+          <widget class="QTableWidget" name="tableWidgetChooseMyTest"/>
          </item>
          <item>
           <widget class="QPushButton" name="pushButtonTakeTest">
@@ -70,7 +70,7 @@
        <attribute name="title">
         <string>Baza testow</string>
        </attribute>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -81,7 +81,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QTableWidget" name="tableWidget"/>
+          <widget class="QTableWidget" name="tableWidgetChooseAvaliableTest"/>
          </item>
          <item>
           <widget class="QPushButton" name="pushButtonTakeNewTest">

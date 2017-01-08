@@ -1,5 +1,6 @@
 #include "GUI/newtestname.h"
 #include "ui_newtestname.h"
+#include "logic/mainclass.h"
 
 NewTestName::NewTestName(QMainWindow *previous, QWidget *parent) :
     QDialog(parent),
@@ -16,7 +17,11 @@ NewTestName::~NewTestName()
 
 void NewTestName::on_buttonBox_accepted()
 {
-    emit newTestNameAccepted();
+    if(!ui->lineEditTestName->text().isEmpty()){
+        MainClass *main_class=MainClass::getInstance();
+        main_class->addNewTest(ui->lineEditTestName->text());
+        emit newTestNameAccepted();
+    }
     this->close();
 }
 

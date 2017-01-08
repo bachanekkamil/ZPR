@@ -22,16 +22,19 @@ const unsigned int QuestionProxy::getIdDb()
 
 
 
-const QString* QuestionProxy::getText()
+const QString& QuestionProxy::getText()
 {
     return getQuestion()->getText();
 }
 
-const QString* QuestionProxy::getCorrectAnswerText()
+const QString& QuestionProxy::getCorrectAnswerText()
 {
     return getQuestion()->getCorrectAnswerText();
 }
 
+void QuestionProxy::modifyQuestion(const QString& question, const QString& answer){
+    getQuestion()->modifyQuestion(question,answer);
+}
 
 /**
  * returns real Question

@@ -17,11 +17,16 @@ const unsigned int QuestionReal::getIdDb(){
     return mIdDb;
 }
 
-const QString* QuestionReal::getText(){
-    return &mText;
+const QString& QuestionReal::getText(){
+    return mText;
 }
 
-const QString* QuestionReal::getCorrectAnswerText()
+const QString& QuestionReal::getCorrectAnswerText()
 {
-    return &mCorrectAnswerText;
+    return mCorrectAnswerText;
+}
+
+void QuestionReal::modifyQuestion(const QString& question, const QString& answer){
+    mText=question;
+    mCorrectAnswerText=answer;
 }

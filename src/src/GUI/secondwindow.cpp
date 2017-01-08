@@ -1,6 +1,8 @@
 #include "GUI/secondwindow.h"
 #include "ui_secondwindow.h"
 #include "logic/mainclass.h"
+#include <QDebug>
+
 
 SecondWindow::SecondWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),
@@ -8,6 +10,27 @@ SecondWindow::SecondWindow(QMainWindow *previous, QWidget *parent) :
 {
     this->mPrevious=previous;
     ui->setupUi(this);
+    MainClass *main_class=MainClass::getInstance();
+    QStringList list=main_class->getAvailableTests();
+    qDebug() << "Second window, list.length()" << list.length();
+    qDebug() << "Second window, getAvailableTests()" << list;
+    ui->tableWidgetChooseAvaliableTest->setRowCount(list.length());
+    ui->tableWidgetChooseAvaliableTest->setColumnCount(1);
+    QStringList labels;
+    labels << "Nazwa testu";
+    ui->tableWidgetChooseAvaliableTest->horizontalHeader()->setStretchLastSection(true);
+    ui->tableWidgetChooseAvaliableTest->setHorizontalHeaderLabels(labels);
+    ui->tableWidgetChooseAvaliableTest->verticalHeader()->setVisible(false);
+    ui->tableWidgetChooseAvaliableTest->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidgetChooseAvaliableTest->setSelectionMode(QAbstractItemView::SingleSelection);
+
+    QStringList::const_iterator constIterator;
+    int i=0;
+    for (constIterator = list.constBegin(); constIterator != list.constEnd(); ++constIterator){
+        ui->tableWidgetChooseAvaliableTest->setItem(i,0, new QTableWidgetItem((*constIterator).toLocal8Bit().constData()));
+        ++i;
+    }
+
 }
 
 SecondWindow::~SecondWindow()
@@ -16,10 +39,22 @@ SecondWindow::~SecondWindow()
     delete mNewTestName;
     delete mAddNewTestWindow;
     delete mEditTestWindow;
+    delete mWarningMessageDialog;
     delete ui;
 }
 
 void SecondWindow::newTestAdded(){
+    MainClass *main_class=MainClass::getInstance();
+    QStringList list=main_class->getAvailableTests();
+    ui->tableWidgetChooseAvaliableTest->setRowCount(0);
+    ui->tableWidgetChooseAvaliableTest->setRowCount(list.length());
+    QStringList::const_iterator constIterator;
+    int i=0;
+    for (constIterator = list.constBegin(); constIterator != list.constEnd(); ++constIterator){
+        ui->tableWidgetChooseAvaliableTest->setItem(i,0, new QTableWidgetItem((*constIterator).toLocal8Bit().constData()));
+        ++i;
+    }
+
     mAddNewTestWindow = new AddNewTestWindow(this);
     mAddNewTestWindow->show();
     this->hide();
@@ -54,7 +89,14 @@ void SecondWindow::on_pushButtonAddTest_clicked()
 
 void SecondWindow::on_pushButtonEditTest_clicked()
 {
+    MainClass *main_class=MainClass::getInstance();
+    QModelIndex index= ui->tableWidgetChooseAvaliableTest->currentIndex();
+    main_class->editTest(ui->tableWidgetChooseAvaliableTest->item(index.row(),0)->text());
     mEditTestWindow = new AddNewTestWindow(this);
     mEditTestWindow->show();
     this->hide();
+}
+
+void SecondWindow::closeEvent (QCloseEvent *event){
+    emit exit();
 }

@@ -1,7 +1,6 @@
 #include "addnewuserwindow.h"
 #include "ui_addnewuserwindow.h"
 #include "logic/mainclass.h"
-#include <QDebug>
 
 AddNewUserWindow::AddNewUserWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),

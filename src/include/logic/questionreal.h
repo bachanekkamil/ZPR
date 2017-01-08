@@ -11,8 +11,9 @@ public:
     QuestionReal(unsigned int id_db, QString answerText, QString text);
     ~QuestionReal();
     const unsigned int getIdDb();
-    virtual const QString* getCorrectAnswerText();
-    const QString* getText();
+    virtual const QString& getCorrectAnswerText();
+    virtual const QString& getText();
+    virtual void modifyQuestion(const QString& question, const QString& answer);
 
 private:
     QString mCorrectAnswerText;

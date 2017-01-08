@@ -23,7 +23,7 @@ MainClass::MainClass()
     }
 
 
-
+/*
 
     //add test test
     try
@@ -34,7 +34,7 @@ MainClass::MainClass()
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception: " << e.what();
-    }
+    }*/
 
 
 
@@ -49,7 +49,7 @@ MainClass::MainClass()
     {
         qDebug() << "Database exception during method getAllTests(): " << e.what();
     }
-
+/*
 
     qDebug() << "add question ";
 
@@ -62,7 +62,7 @@ MainClass::MainClass()
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception: " << e.what();
-    }
+    }*/
 
 /*
     qDebug() << "add concrete test ";
@@ -284,11 +284,7 @@ void MainClass::addNewUser(const QString &name){
     try
     {
         std::shared_ptr<User> new_user = db->addUser(name);
-        if(new_user != nullptr){
-            mUsers.push_back(new_user);
-        }else{
-            qDebug() << "addUser returned nullptr";
-        }
+        mUsers.push_back(new_user);
     }
     catch(DatabaseException &e)
     {
@@ -330,7 +326,65 @@ std::vector<std::shared_ptr<ConcreteTest>> MainClass::getAvailableConcreteTests(
     return mConcreteTests;
 }
 
-std::vector<Test*> MainClass::getAvailableTest(){
+QStringList MainClass::getAvailableTests(){
+    QStringList list;
+    for (std::vector<std::shared_ptr<Test>>::iterator it = mTests.begin(); it!=mTests.end(); ++it){
+        list << (*it)->getTestName();
+        //list << QString::number((*it)->getNumberOfQuestions());
+    }
+    return list;
+}
+
+void MainClass::addNewTest(const QString& name){
+    try
+    {
+        mTest = db->addTest(name, mUser);
+        mTests.push_back(mTest);
+        qDebug() << "Added new test to db-> ID:" << QString::number(mTest->getIdDb());
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception: " << e.what();
+    }
+}
+
+void MainClass::editTest(const QString& name){
+    for (std::vector<std::shared_ptr<Test>>::iterator it = mTests.begin(); it!=mTests.end(); ++it){
+        if(name.compare((*it)->getTestName())==0){
+            mTest=*it;
+            break;
+        }
+    }
+}
+
+void MainClass::addQuestion(QString& question,QString& answer){
+    try
+    {
+        unsigned int idDb=db->addQuestionAndAnswer(mTest,question,answer);
+        std::shared_ptr<QuestionReal> question_real(new QuestionReal(idDb,answer,question));
+        mTest->addQuestion(question_real);
+
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception: " << e.what();
+    }
+}
+
+void MainClass::modifyQuestion(unsigned int index, QString& question, QString& answer){
+    try
+    {
+        db->modifyQuestion(mTest->getAllQuestions().at(index), question, answer);
+        mTest->modifyQuestion(index,question,answer);
+
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception: " << e.what();
+    }
+}
+
+std::shared_ptr<Test> MainClass::getCurrentlyEditedTest(){
     return mTest;
 }
 

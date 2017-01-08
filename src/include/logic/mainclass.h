@@ -34,14 +34,19 @@ public:
     std::shared_ptr<User> getUser(unsigned int idDb);
     std::shared_ptr<Test> getTest(unsigned int idDb);
     std::shared_ptr<ConcreteTest> getConcreteTest(unsigned int idDB);
-
+    QStringList getAvailableTests();
+    void addNewTest(const QString& name);
+    void editTest(const QString& name);
+    void addQuestion(QString &question, QString &answer);
+    void modifyQuestion(unsigned int index, QString &question, QString &answer);
+    std::shared_ptr<Test> getCurrentlyEditedTest();
 
     //not used now
     void createNewTest();
     void endConcreteTest();
     void endCreatingNewTest();
     std::vector<std::shared_ptr<ConcreteTest>> getAvailableConcreteTests();
-    std::vector<Test*> getAvailableTest();
+
     Game *getGame();
     NewTestCreator* getNewTestCreator();
     std::shared_ptr<User> getUser();
@@ -56,13 +61,15 @@ private:
     static MainClass* mInstance;
 
     std::shared_ptr<User> mUser;
+
+    // wskaznik na aktualnie tworzony przez uzytkownika nowy test/ aktualnie edytowany test
+    std::shared_ptr<Test> mTest;
     DbManager* db;
 
     //not used now
     state mState;
     Game* mGame;
     NewTestCreator* mNewTestCreator;
-    std::vector<Test*> mTest;
 };
 
 #endif // MAINCLASS_H
