@@ -33,6 +33,7 @@ private slots:
 private:
     SecondWindow *mSecondWindow;
     AddNewUserWindow *mAddNewUserWindow;
+    WarningMessageDialog *mWarningMessageDialog;
     Ui::MainWindow *ui;
 };
 

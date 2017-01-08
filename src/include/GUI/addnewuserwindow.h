@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <logic/mainclass.h>
 #include <QCloseEvent>
+#include "warningmessagedialog.h"
 
 namespace Ui {
 class AddNewUserWindow;
@@ -27,8 +28,8 @@ private slots:
 private:
     void closeEvent(QCloseEvent *event);
     QMainWindow *mPrevious;
+    WarningMessageDialog *mWarningMessageDialog;
     Ui::AddNewUserWindow *ui;
-    MainClass *mMainClass;
 };
 
 #endif // ADDNEWUSERWINDOW_H

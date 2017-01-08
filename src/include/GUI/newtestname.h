@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "addnewtestwindow.h"
+#include "warningmessagedialog.h"
 
 namespace Ui {
 class NewTestName;
@@ -26,6 +27,7 @@ private slots:
 
 private:
     QMainWindow *mPrevious;
+    WarningMessageDialog *mWarningMessageDialog;
     Ui::NewTestName *ui;
 };
 

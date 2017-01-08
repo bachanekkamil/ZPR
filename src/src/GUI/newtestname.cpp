@@ -1,6 +1,8 @@
 #include "GUI/newtestname.h"
 #include "ui_newtestname.h"
 #include "logic/mainclass.h"
+#include "logic/mainclassexception.h"
+
 
 NewTestName::NewTestName(QMainWindow *previous, QWidget *parent) :
     QDialog(parent),
@@ -12,6 +14,7 @@ NewTestName::NewTestName(QMainWindow *previous, QWidget *parent) :
 
 NewTestName::~NewTestName()
 {
+    delete mWarningMessageDialog;
     delete ui;
 }
 
@@ -19,10 +22,15 @@ void NewTestName::on_buttonBox_accepted()
 {
     if(!ui->lineEditTestName->text().isEmpty()){
         MainClass *main_class=MainClass::getInstance();
-        main_class->addNewTest(ui->lineEditTestName->text());
-        emit newTestNameAccepted();
+        try{
+            main_class->addNewTest(ui->lineEditTestName->text());
+            emit newTestNameAccepted();
+            this->close();
+        }catch(MainClassException &e){
+            mWarningMessageDialog = new WarningMessageDialog("Nie udało się dodać testu do bazy.");
+            mWarningMessageDialog->show();
+        }
     }
-    this->close();
 }
 
 void NewTestName::on_buttonBox_rejected()

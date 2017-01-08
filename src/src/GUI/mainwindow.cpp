@@ -3,8 +3,7 @@
 #include "logic/mainclass.h"
 #include <QVBoxLayout>
 #include <QDebug>
-
-
+#include "logic/mainclassexception.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,6 +19,7 @@ MainWindow::~MainWindow()
 {
     delete mSecondWindow;
     delete mAddNewUserWindow;
+    delete mWarningMessageDialog;
     delete ui;
 }
 
@@ -49,8 +49,13 @@ void MainWindow::on_pushButtonDeleteUser_clicked()
 {
     if(ui->comboBoxChooseUser->count()!=0 && ui->comboBoxChooseUser->currentIndex()!=-1){
         MainClass *main_class=MainClass::getInstance();
-        main_class->deleteUser(ui->comboBoxChooseUser->currentText());
-        userListChanged();
+        try{
+            main_class->deleteUser(ui->comboBoxChooseUser->currentText());
+            userListChanged();
+        }catch(MainClassException &e){
+            mWarningMessageDialog = new WarningMessageDialog("Nie udało się usunąć użytkownika z bazy.");
+            mWarningMessageDialog->show();
+        }
     }
 }
 

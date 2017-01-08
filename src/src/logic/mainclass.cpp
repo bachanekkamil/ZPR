@@ -1,4 +1,5 @@
 #include "logic/mainclass.h"
+#include "logic/mainclassexception.h"
 #include "logic/database.h"
 #include <logic/database_exception.h>
 #include <QDebug>
@@ -21,22 +22,6 @@ MainClass::MainClass()
     {
         qDebug() << "Database exception during method getAllUsers(): " << e.what();
     }
-
-
-/*
-
-    //add test test
-    try
-    {
-    shared_ptr<Test> test = db->addTest("Test12345", mUsers.at(0));
-    qDebug() << "Added new test to db-> ID:" << QString::number(test->getIdDb());
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception: " << e.what();
-    }*/
-
-
 
     qDebug() << "get all test " ;
 
@@ -253,7 +238,7 @@ MainClass::MainClass()
 
 MainClass::~MainClass()
 {
-
+    delete db;
 }
 
 QStringList MainClass::getAllUsers(){
@@ -289,6 +274,7 @@ void MainClass::addNewUser(const QString &name){
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception during method addUser() newUser: " << e.what();
+        throw MainClassException(e.what());
     }
 
 }
@@ -307,23 +293,35 @@ void MainClass::deleteUser(const QString &name){
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception during method removeUser(): " << e.what();
+        throw MainClassException(e.what());
     }
 }
 
-void MainClass::createNewTest(){
-
+std::shared_ptr<User> MainClass::getUser(unsigned int idDb)
+{
+    foreach (std::shared_ptr<User> us, mUsers) {
+        if(us->getIdDb() == idDb)
+            return us;
+    }
+    return nullptr;
 }
 
-void MainClass::endConcreteTest(){
-
+std::shared_ptr<Test> MainClass::getTest(unsigned int idDb)
+{
+    foreach (std::shared_ptr<Test> us, mTests) {
+        if(us->getIdDb() == idDb)
+            return us;
+    }
+    return nullptr;
 }
 
-void MainClass::endCreatingNewTest(){
-
-}
-
-std::vector<std::shared_ptr<ConcreteTest>> MainClass::getAvailableConcreteTests(){
-    return mConcreteTests;
+std::shared_ptr<ConcreteTest> MainClass::getConcreteTest(unsigned int idDb)
+{
+    foreach (std::shared_ptr<ConcreteTest> us, mConcreteTests) {
+        if(us->getIdDb() == idDb)
+            return us;
+    }
+    return nullptr;
 }
 
 QStringList MainClass::getAvailableTests(){
@@ -345,6 +343,7 @@ void MainClass::addNewTest(const QString& name){
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception: " << e.what();
+        throw MainClassException(e.what());
     }
 }
 
@@ -388,6 +387,22 @@ std::shared_ptr<Test> MainClass::getCurrentlyEditedTest(){
     return mTest;
 }
 
+void MainClass::createNewTest(){
+
+}
+
+void MainClass::endConcreteTest(){
+
+}
+
+void MainClass::endCreatingNewTest(){
+
+}
+
+std::vector<std::shared_ptr<ConcreteTest>> MainClass::getAvailableConcreteTests(){
+    return mConcreteTests;
+}
+
 Game* MainClass::getGame(){
     return NULL;
 }
@@ -408,29 +423,4 @@ void MainClass::startNewTest(unsigned int, Test *){
 
 }
 
-std::shared_ptr<User> MainClass::getUser(unsigned int idDb)
-{
-    foreach (std::shared_ptr<User> us, mUsers) {
-        if(us->getIdDb() == idDb)
-            return us;
-    }
-    return nullptr;
-}
 
-std::shared_ptr<Test> MainClass::getTest(unsigned int idDb)
-{
-    foreach (std::shared_ptr<Test> us, mTests) {
-        if(us->getIdDb() == idDb)
-            return us;
-    }
-    return nullptr;
-}
-
-std::shared_ptr<ConcreteTest> MainClass::getConcreteTest(unsigned int idDb)
-{
-    foreach (std::shared_ptr<ConcreteTest> us, mConcreteTests) {
-        if(us->getIdDb() == idDb)
-            return us;
-    }
-    return nullptr;
-}

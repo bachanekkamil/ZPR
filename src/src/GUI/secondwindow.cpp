@@ -89,12 +89,17 @@ void SecondWindow::on_pushButtonAddTest_clicked()
 
 void SecondWindow::on_pushButtonEditTest_clicked()
 {
-    MainClass *main_class=MainClass::getInstance();
     QModelIndex index= ui->tableWidgetChooseAvaliableTest->currentIndex();
-    main_class->editTest(ui->tableWidgetChooseAvaliableTest->item(index.row(),0)->text());
-    mEditTestWindow = new AddNewTestWindow(this);
-    mEditTestWindow->show();
-    this->hide();
+    if(index.row()!=-1){
+        MainClass *main_class=MainClass::getInstance();
+        main_class->editTest(ui->tableWidgetChooseAvaliableTest->item(index.row(),0)->text());
+        mEditTestWindow = new AddNewTestWindow(this);
+        mEditTestWindow->show();
+        this->hide();
+    }else{
+        mWarningMessageDialog = new WarningMessageDialog("Nie wybrano testu do edycji!");
+        mWarningMessageDialog->show();
+    }
 }
 
 void SecondWindow::closeEvent (QCloseEvent *event){
