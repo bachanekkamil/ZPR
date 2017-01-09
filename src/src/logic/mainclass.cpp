@@ -8,6 +8,11 @@ MainClass* MainClass::mInstance = nullptr;
 
 MainClass::MainClass()
 {
+
+}
+
+void MainClass::Initialize()
+{
     mUser=nullptr;
     mState=NOT_LOGGED;
     //create db
@@ -23,9 +28,7 @@ MainClass::MainClass()
         qDebug() << "Database exception during method getAllUsers(): " << e.what();
     }
 
-    qDebug() << "get all test " ;
-
-    //get all test
+    qDebug() << "get all tests" ;
     try
     {
         mTests = db->getAllTests();
@@ -34,6 +37,49 @@ MainClass::MainClass()
     {
         qDebug() << "Database exception during method getAllTests(): " << e.what();
     }
+
+    try
+    {
+        mConcreteTests = db->getAllConcreteTests();
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during method getAllConcreteTests(): " << e.what();
+    }
+
+    QString format = "yyyy-MM-dd HH:mm:ss";
+    foreach(std::shared_ptr<ConcreteTest> ct, mConcreteTests)
+    {
+        qDebug() << "Concrete test: " << *ct->getTestName();
+        foreach(std::shared_ptr<OldUserAnswer> oua, ct->getAllOldAnswers())
+            qDebug() << "Answer Text: " << oua->getQuestion()->getText() << " Grade: " << oua->getGrade() << " Date: " << oua->getDateTimeCreated()->toString(format);
+    }
+
+    QString new_ct_name = "Teścik";
+    try
+    {
+        db->modifyConcreteTest(mConcreteTests.at(0), new_ct_name);
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during method modifyConcreteTest(): " << e.what();
+    }
+
+/*/
+    try
+    {
+    db->deleteConcreteTest(mConcreteTests.at(1));
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during method deleteConcreteTest(): " << e.what();
+    }
+/*/
+
+
+
+
+
 /*
 
     qDebug() << "add question ";
@@ -232,9 +278,8 @@ MainClass::MainClass()
     qDebug() << "Time created: ";
     qDebug() << deq.at(0)->getTimeCreated()->toString();
     /*/
-
-
 }
+
 
 MainClass::~MainClass()
 {
@@ -385,6 +430,17 @@ void MainClass::modifyQuestion(unsigned int index, QString question, QString ans
 
 std::shared_ptr<Test> MainClass::getCurrentlyEditedTest(){
     return mTest;
+}
+
+std::shared_ptr<Question> MainClass::getQuestion(long long id_db)
+{
+    foreach(std::shared_ptr<Test> test, mTests)
+    {
+        std::shared_ptr<Question> q = test->getQuestion(id_db);
+        if(q != nullptr)
+                return q;
+    }
+    return nullptr;
 }
 
 void MainClass::createNewTest(){

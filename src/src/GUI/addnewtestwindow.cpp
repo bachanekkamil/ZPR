@@ -16,7 +16,7 @@ AddNewTestWindow::AddNewTestWindow(QMainWindow *previous, QWidget *parent) :
     mProgress=1;
     mInitialQuestionNumber=main_class->getCurrentlyEditedTest()->getNumberOfQuestions();
     unsigned int temp=1;
-    QString progress_label= QString::number(mProgress) + "/" + QString::number(max(temp,mInitialQuestionNumber));
+    QString progress_label= QString::number(mProgress) + "/" + QString::number(std::max(temp,mInitialQuestionNumber));
     ui->labelProgressValue->setText(progress_label);
 
     if(mInitialQuestionNumber!=0){

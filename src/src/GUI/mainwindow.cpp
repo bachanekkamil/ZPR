@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     MainClass *main_class=MainClass::getInstance();
+    main_class->Initialize();
     ui->comboBoxChooseUser->addItems(main_class->getAllUsers());
     //ui->comboBoxChooseUser->setEditable(false);
 }

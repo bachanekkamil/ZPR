@@ -1,7 +1,6 @@
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE Tests
 
-#include "../src/logic/answersdone.cpp"
 #include "../src/logic/concretetest.cpp"
 #include "../src/logic/database.cpp"
 #include "../src/logic/database_exception.cpp"

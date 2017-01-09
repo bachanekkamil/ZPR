@@ -37,6 +37,14 @@ void Test::modifyQuestion(unsigned int index, const QString& question, const QSt
     mQuestions.at(index)->modifyQuestion(question,answer);
 }
 
+std::shared_ptr<Question> Test::getQuestion(unsigned int idDb)
+{
+    foreach(std::shared_ptr<Question> question, mQuestions)
+        if(question->getIdDb() == idDb)
+            return question;
+    return nullptr;
+}
+
 //not used now
 
 Test::Test(): mIdTestDb(0)
@@ -67,10 +75,7 @@ Test* Test::getParentTest(){
 }
 
 
-Question* Test::getQuestion(unsigned int _id_db){
 
-    return  NULL;
-}
 
 
 

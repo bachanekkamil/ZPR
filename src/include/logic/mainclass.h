@@ -6,6 +6,7 @@
 #include <logic/newtestcreator.h>
 #include <logic/database.h>
 #include <logic/concretetest.h>
+#include <QDebug>
 
 enum state{
     RUNNING_TEST = 0,
@@ -21,10 +22,13 @@ public:
     static MainClass* getInstance()
     {
         if(mInstance == nullptr)
+        {
             mInstance = new MainClass();
+        }
         return mInstance;
     }
     ~MainClass();
+    void Initialize();
 
     QStringList getAllUsers();
     void setUser(const QString& name);
@@ -40,12 +44,12 @@ public:
     void addQuestion(QString question, QString answer);
     void modifyQuestion(unsigned int index, QString question, QString answer);
     std::shared_ptr<Test> getCurrentlyEditedTest();
-
+    std::vector<std::shared_ptr<ConcreteTest>> getAvailableConcreteTests();
+    std::shared_ptr<Question> getQuestion(long long id_db);
     //not used now
     void createNewTest();
     void endConcreteTest();
     void endCreatingNewTest();
-    std::vector<std::shared_ptr<ConcreteTest>> getAvailableConcreteTests();
 
     Game *getGame();
     NewTestCreator* getNewTestCreator();

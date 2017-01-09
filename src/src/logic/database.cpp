@@ -494,7 +494,8 @@ std::shared_ptr<ConcreteTest> DbManager::addConcreteTest(const QString& name, co
         if(queryAdd.exec())
         {
             unsigned int idd = getLastInsertedRowId();
-            std::shared_ptr<ConcreteTest> contest(new ConcreteTest(idd, test, user, name, QDateTime::currentDateTimeUtc()));
+            std::vector<std::shared_ptr<OldUserAnswer>> logs;
+            std::shared_ptr<ConcreteTest> contest(new ConcreteTest(idd, test, user, name, QDateTime::currentDateTimeUtc(), logs));
             return contest;
         }
         else
@@ -526,7 +527,7 @@ std::vector<std::shared_ptr<ConcreteTest>> DbManager::getAllConcreteTests()
         QString date = queryGet.value(4).toString();
         QString format = "yyyy-MM-dd HH:mm:ss";
         QDateTime dt = QDateTime::fromString(date, format);
-        std::shared_ptr<ConcreteTest> contest(new ConcreteTest(id, MainClass::getInstance()->getTest(test_id), MainClass::getInstance()->getUser(user_id), name, dt));
+        std::shared_ptr<ConcreteTest> contest(new ConcreteTest(id, MainClass::getInstance()->getTest(test_id), MainClass::getInstance()->getUser(user_id), name, dt, getLogsForConcreteTests(id)));
         concTests.push_back(contest);
     }
     return concTests;
@@ -534,11 +535,106 @@ std::vector<std::shared_ptr<ConcreteTest>> DbManager::getAllConcreteTests()
 
 void DbManager::deleteConcreteTest(std::shared_ptr<ConcreteTest> test)
 {
+    if (!test)
+    {
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
 
+    QSqlQuery queryDelete;
+    queryDelete.prepare("DELETE FROM ConcreteTests WHERE id = :id");
+    queryDelete.bindValue(":id", test->getIdDb());
+    if(queryDelete.exec())
+    {
+        return;
+    }
+    else
+    {
+        throw DatabaseException(queryDelete.lastError().text().toStdString().c_str());
+    }
 }
 
 void DbManager::modifyConcreteTest(std::shared_ptr<ConcreteTest> test, const QString& name)
 {
+    if (name.isEmpty() || !test)
+    {
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+    QSqlQuery queryUpdate;
+    queryUpdate.prepare("UPDATE ConcreteTests SET name = :test_name WHERE id = :id");
+    queryUpdate.bindValue(":test_name", name);
+    queryUpdate.bindValue(":id", test->getIdDb());
+    if(queryUpdate.exec())
+    {
+        return;
+    }
+    else
+    {
+        throw DatabaseException(queryUpdate.lastError().text().toStdString().c_str());
+    }
+}
 
+std::shared_ptr<OldUserAnswer> DbManager::addAnswerToLogs(std::shared_ptr<ConcreteTest> conc_test, std::shared_ptr<Question> quest, unsigned short grade)
+{
+
+    if (conc_test && quest && grade >= 0)
+    {
+        QSqlQuery queryAdd;
+        queryAdd.prepare("INSERT INTO Logs(question_id, concrete_test_id, grade) VALUES(:question_id, :concrete_test_id, :grade)");
+        queryAdd.bindValue(":concrete_test_id", conc_test->getIdDb());
+        queryAdd.bindValue(":question_id", quest->getIdDb());
+        queryAdd.bindValue(":grade", grade);
+
+        if(queryAdd.exec())
+        {
+            std::shared_ptr<OldUserAnswer> oua(new OldUserAnswer(getLastInsertedRowId(), QDateTime::currentDateTimeUtc(), quest, grade));
+            return oua;
+        }
+        else
+        {
+            throw DatabaseException(queryAdd.lastError().text().toStdString().c_str());
+        }
+    }
+    else
+    {
+        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+    }
+
+}
+
+
+
+std::vector<std::shared_ptr<OldUserAnswer>> DbManager::getLogsForConcreteTests(unsigned int concreteTestId)
+{
+    if (concreteTestId <= 0)
+    throw DatabaseException(error_type::PASSED_WRONG_ID);
+
+    QSqlQuery queryGet;
+    queryGet.prepare("SELECT id, question_id, grade, datetime_created FROM Logs WHERE concrete_test_id = :test_id");
+    queryGet.bindValue(":test_id", concreteTestId);
+    if(!queryGet.exec())
+    {
+        throw DatabaseException(queryGet.lastError().text().toStdString().c_str());
+    }
+    std::vector<std::shared_ptr<OldUserAnswer>> allAnswers;
+    while (queryGet.next())
+    {
+        unsigned int id_log = queryGet.value(0).toUInt();
+        long long id_question = queryGet.value(1).toLongLong();
+        unsigned short grade = queryGet.value(2).toUInt();
+        QString dt_string = queryGet.value(3).toString();
+        QString format = "yyyy-MM-dd HH:mm:ss";
+        QDateTime dt = QDateTime::fromString(dt_string, format);
+        std::shared_ptr<Question> quest = MainClass::getInstance()->getQuestion(id_question);
+        if(!quest)
+            throw DatabaseException("Didn't find question for that answer in memory.");
+        std::shared_ptr<OldUserAnswer> oua(new OldUserAnswer(id_log, dt, quest, grade));
+        allAnswers.push_back(oua);
+    }
+    return allAnswers;
+}
+
+std::vector<std::shared_ptr<OldUserAnswer>> DbManager::getLogsForConcreteTests(std::shared_ptr<ConcreteTest> conc_test)
+{
+    return getLogsForConcreteTests(conc_test->getIdDb());
 }
 
