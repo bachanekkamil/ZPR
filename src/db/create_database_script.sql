@@ -18,6 +18,7 @@ CREATE TABLE Logs
 	concrete_test_id INTEGER NOT NULL,
 	grade INTEGER,
 	datetime_created TEXT DEFAULT(datetime('now')),
+    factor INTEGER DEFAULT(0),
 	CONSTRAINT PK_Logs PRIMARY KEY (id),
 	CONSTRAINT FK_Logs_Answers FOREIGN KEY (question_id)
 		REFERENCES Questions(id) ON DELETE RESTRICT ON UPDATE RESTRICT,

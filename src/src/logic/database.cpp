@@ -573,20 +573,21 @@ void DbManager::modifyConcreteTest(std::shared_ptr<ConcreteTest> test, const QSt
     }
 }
 
-std::shared_ptr<OldUserAnswer> DbManager::addAnswerToLogs(std::shared_ptr<ConcreteTest> conc_test, std::shared_ptr<Question> quest, unsigned short grade)
+std::shared_ptr<OldUserAnswer> DbManager::addAnswerToLogs(std::shared_ptr<ConcreteTest> conc_test, std::shared_ptr<Question> quest, unsigned short grade, double factor)
 {
 
     if (conc_test && quest && grade >= 0)
     {
         QSqlQuery queryAdd;
-        queryAdd.prepare("INSERT INTO Logs(question_id, concrete_test_id, grade) VALUES(:question_id, :concrete_test_id, :grade)");
+        queryAdd.prepare("INSERT INTO Logs(question_id, concrete_test_id, grade, factor) VALUES(:question_id, :concrete_test_id, :grade, :factor)");
         queryAdd.bindValue(":concrete_test_id", conc_test->getIdDb());
         queryAdd.bindValue(":question_id", quest->getIdDb());
         queryAdd.bindValue(":grade", grade);
+        queryAdd.bindValue(":factor", factor);
 
         if(queryAdd.exec())
         {
-            std::shared_ptr<OldUserAnswer> oua(new OldUserAnswer(getLastInsertedRowId(), QDateTime::currentDateTimeUtc(), quest, grade));
+            std::shared_ptr<OldUserAnswer> oua(new OldUserAnswer(getLastInsertedRowId(), QDateTime::currentDateTimeUtc(), quest, grade, factor));
             return oua;
         }
         else
@@ -609,7 +610,7 @@ std::vector<std::shared_ptr<OldUserAnswer>> DbManager::getLogsForConcreteTests(u
     throw DatabaseException(error_type::PASSED_WRONG_ID);
 
     QSqlQuery queryGet;
-    queryGet.prepare("SELECT id, question_id, grade, datetime_created FROM Logs WHERE concrete_test_id = :test_id");
+    queryGet.prepare("SELECT id, question_id, grade, datetime_created, factor FROM Logs WHERE concrete_test_id = :test_id");
     queryGet.bindValue(":test_id", concreteTestId);
     if(!queryGet.exec())
     {
@@ -622,12 +623,13 @@ std::vector<std::shared_ptr<OldUserAnswer>> DbManager::getLogsForConcreteTests(u
         long long id_question = queryGet.value(1).toLongLong();
         unsigned short grade = queryGet.value(2).toUInt();
         QString dt_string = queryGet.value(3).toString();
+        double factor = queryGet.value(4).toDouble();
         QString format = "yyyy-MM-dd HH:mm:ss";
         QDateTime dt = QDateTime::fromString(dt_string, format);
         std::shared_ptr<Question> quest = MainClass::getInstance()->getQuestion(id_question);
         if(!quest)
             throw DatabaseException("Didn't find question for that answer in memory.");
-        std::shared_ptr<OldUserAnswer> oua(new OldUserAnswer(id_log, dt, quest, grade));
+        std::shared_ptr<OldUserAnswer> oua(new OldUserAnswer(id_log, dt, quest, grade, factor));
         allAnswers.push_back(oua);
     }
     return allAnswers;

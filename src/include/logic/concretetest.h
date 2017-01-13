@@ -16,6 +16,8 @@ public:
     unsigned int getIdDb() const;
     const QDateTime* getTimeCreated() const;
     std::vector<std::shared_ptr<OldUserAnswer>> getAllOldAnswers();
+    std::vector<std::shared_ptr<Question>> getQuestionsForToday();
+
 
 
 
@@ -30,6 +32,8 @@ public:
     void prepareListOfQuestions(unsigned int _number_of_questions);
 
 private:
+    void generateScheduler();
+
     const unsigned int mIdDb;
     std::shared_ptr<Test> mTest;
     std::shared_ptr<User> mUser;

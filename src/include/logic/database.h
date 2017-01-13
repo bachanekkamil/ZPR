@@ -58,7 +58,7 @@ public:
     void modifyConcreteTest(std::shared_ptr<ConcreteTest> test, const QString& name);
 
     //logs
-    std::shared_ptr<OldUserAnswer> addAnswerToLogs(std::shared_ptr<ConcreteTest> conc_test, std::shared_ptr<Question> quest, unsigned short grade);
+    std::shared_ptr<OldUserAnswer> addAnswerToLogs(std::shared_ptr<ConcreteTest> conc_test, std::shared_ptr<Question> quest, unsigned short grade, double factor);
     std::vector<std::shared_ptr<OldUserAnswer>> getLogsForConcreteTests(std::shared_ptr<ConcreteTest> conc_test);
     std::vector<std::shared_ptr<OldUserAnswer>> getLogsForConcreteTests(unsigned int concreteTestId);
 

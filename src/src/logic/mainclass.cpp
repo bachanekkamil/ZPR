@@ -38,6 +38,9 @@ void MainClass::Initialize()
         qDebug() << "Database exception during method getAllTests(): " << e.what();
     }
 
+
+
+
     try
     {
         mConcreteTests = db->getAllConcreteTests();
@@ -47,14 +50,18 @@ void MainClass::Initialize()
         qDebug() << "Database exception during method getAllConcreteTests(): " << e.what();
     }
 
+    db->addAnswerToLogs(mConcreteTests.at(0), mConcreteTests.at(0)->getTest()->getQuestion(1), 5, 0);
+
     QString format = "yyyy-MM-dd HH:mm:ss";
     foreach(std::shared_ptr<ConcreteTest> ct, mConcreteTests)
     {
         qDebug() << "Concrete test: " << *ct->getTestName();
         foreach(std::shared_ptr<OldUserAnswer> oua, ct->getAllOldAnswers())
-            qDebug() << "Answer Text: " << oua->getQuestion()->getText() << " Grade: " << oua->getGrade() << " Date: " << oua->getDateTimeCreated()->toString(format);
+            qDebug() << "Answer Text: " << oua->getQuestion()->getText() << " Grade: " << oua->getGrade() << " Factor: " << QString::number(oua->getFactor()) << " Date: " << oua->getDateTimeCreated()->toString(format);
     }
 
+
+/*/
     QString new_ct_name = "Teścik";
     try
     {
@@ -65,7 +72,7 @@ void MainClass::Initialize()
         qDebug() << "Database exception during method modifyConcreteTest(): " << e.what();
     }
 
-/*/
+
     try
     {
     db->deleteConcreteTest(mConcreteTests.at(1));

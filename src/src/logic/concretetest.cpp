@@ -34,3 +34,8 @@ std::vector<std::shared_ptr<OldUserAnswer>> ConcreteTest::getAllOldAnswers()
 {
     return mOldAnswers;
 }
+
+void ConcreteTest::generateScheduler()
+{
+
+}
