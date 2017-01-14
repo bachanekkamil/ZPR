@@ -38,8 +38,7 @@ void MainClass::Initialize()
         qDebug() << "Database exception during method getAllTests(): " << e.what();
     }
 
-
-
+    qDebug() << "get all ConcreteTests" ;
 
     try
     {
@@ -50,15 +49,20 @@ void MainClass::Initialize()
         qDebug() << "Database exception during method getAllConcreteTests(): " << e.what();
     }
 
-    db->addAnswerToLogs(mConcreteTests.at(0), mConcreteTests.at(0)->getTest()->getQuestion(1), 5, 0);
+    qDebug() << "addAnswerToLogs" ;
+
+    /*db->addAnswerToLogs(mConcreteTests.at(0), mConcreteTests.at(0)->getTest()->getQuestion(1), 5, 0);
 
     QString format = "yyyy-MM-dd HH:mm:ss";
+
+    qDebug() << "foreach" ;
+
     foreach(std::shared_ptr<ConcreteTest> ct, mConcreteTests)
     {
         qDebug() << "Concrete test: " << *ct->getTestName();
         foreach(std::shared_ptr<OldUserAnswer> oua, ct->getAllOldAnswers())
             qDebug() << "Answer Text: " << oua->getQuestion()->getText() << " Grade: " << oua->getGrade() << " Factor: " << QString::number(oua->getFactor()) << " Date: " << oua->getDateTimeCreated()->toString(format);
-    }
+    }*/
 
 
 /*/
@@ -380,7 +384,6 @@ QStringList MainClass::getAvailableTests(){
     QStringList list;
     for (std::vector<std::shared_ptr<Test>>::iterator it = mTests.begin(); it!=mTests.end(); ++it){
         list << (*it)->getTestName();
-        //list << QString::number((*it)->getNumberOfQuestions());
     }
     return list;
 }
@@ -450,8 +453,38 @@ std::shared_ptr<Question> MainClass::getQuestion(long long id_db)
     return nullptr;
 }
 
-void MainClass::createNewTest(){
+void MainClass::addNewConcreteTest(QString& name){
+    try{
+        std::shared_ptr<Test> wsk;
+        foreach(std::shared_ptr<Test> test, mTests)
+        {
+            if(test->getTestName()==name){
+                wsk=test;
+                break;
+            }
+        }
+        std::shared_ptr<ConcreteTest> t=db->addConcreteTest(name,mUser,wsk);
+        mConcreteTests.push_back(t);
+        mConcreteTest=t;
+    }catch(DatabaseException &e){
+        qDebug() << "Database exception: " << e.what();
+    }
 
+}
+
+QStringList MainClass::getAvailableConcreteTests(){
+    QStringList list;
+
+    foreach(std::shared_ptr<ConcreteTest> test, mConcreteTests)
+    {
+        if(test->getTestOwner()->getIdDb()==mUser->getIdDb()){
+
+            list << test->getTestName();
+            list << test->getTimeCreated().toString("yyyy.MM.dd");
+        }
+    }
+
+    return list;
 }
 
 void MainClass::endConcreteTest(){
@@ -460,10 +493,6 @@ void MainClass::endConcreteTest(){
 
 void MainClass::endCreatingNewTest(){
 
-}
-
-std::vector<std::shared_ptr<ConcreteTest>> MainClass::getAvailableConcreteTests(){
-    return mConcreteTests;
 }
 
 Game* MainClass::getGame(){

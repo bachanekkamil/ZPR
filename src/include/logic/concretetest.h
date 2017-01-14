@@ -12,22 +12,21 @@ public:
     ConcreteTest(unsigned int id, std::shared_ptr<Test> test, std::shared_ptr<User> user, QString name, QDateTime date, std::vector<std::shared_ptr<OldUserAnswer>> oldUserAnswers);
     std::shared_ptr<User> getTestOwner() const;
     std::shared_ptr<Test> getTest() const;
-    const QString* getTestName() const;
+    QString getTestName() const;
     unsigned int getIdDb() const;
-    const QDateTime* getTimeCreated() const;
+    QDateTime getTimeCreated() const;
     std::vector<std::shared_ptr<OldUserAnswer>> getAllOldAnswers();
     std::vector<std::shared_ptr<Question>> getQuestionsForToday();
-
-
-
 
     //not used now
     User *m_User;
     Test *m_Test;
+    std::shared_ptr<User> getConcreteTestOwner();
+
 
     ~ConcreteTest() {}
     const QString* getConcreteTestName();
-    User* getConcreteTestOwner();
+
     Question* getNextQuestion();
     void prepareListOfQuestions(unsigned int _number_of_questions);
 

@@ -30,24 +30,34 @@ public:
     ~MainClass();
     void Initialize();
 
+    // user
     QStringList getAllUsers();
     void setUser(const QString& name);
     void logoutUser();
     void addNewUser(const QString& name);
     void deleteUser(const QString& name);
+
+    // used by database class
     std::shared_ptr<User> getUser(unsigned int idDb);
     std::shared_ptr<Test> getTest(unsigned int idDb);
     std::shared_ptr<ConcreteTest> getConcreteTest(unsigned int idDB);
+
+    // test
     QStringList getAvailableTests();
     void addNewTest(const QString& name);
     void editTest(const QString& name);
     void addQuestion(QString question, QString answer);
     void modifyQuestion(unsigned int index, QString question, QString answer);
     std::shared_ptr<Test> getCurrentlyEditedTest();
-    std::vector<std::shared_ptr<ConcreteTest>> getAvailableConcreteTests();
+
+    //
     std::shared_ptr<Question> getQuestion(long long id_db);
+
+    //concrete test
+    void addNewConcreteTest(QString& name);
+    QStringList getAvailableConcreteTests();
+
     //not used now
-    void createNewTest();
     void endConcreteTest();
     void endCreatingNewTest();
 
@@ -68,6 +78,8 @@ private:
 
     // wskaznik na aktualnie tworzony przez uzytkownika nowy test/ aktualnie edytowany test
     std::shared_ptr<Test> mTest;
+
+    std::shared_ptr<ConcreteTest> mConcreteTest;
     DbManager* db;
 
     //not used now

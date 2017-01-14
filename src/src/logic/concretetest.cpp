@@ -6,28 +6,27 @@ mIdDb(id), mTest(test), mUser(user), mName(name), mDateTimeCreated(date), mOldAn
 
 }
 
-
-unsigned int ConcreteTest::getIdDb() const
+std::shared_ptr<User> ConcreteTest::getTestOwner() const
 {
-    return mIdDb;
+    return  mUser;
 }
 
 std::shared_ptr<Test> ConcreteTest::getTest() const{
     return  mTest;
 }
 
-std::shared_ptr<User> ConcreteTest::getTestOwner() const
+QString ConcreteTest::getTestName() const{
+
+    return mName;
+}
+
+unsigned int ConcreteTest::getIdDb() const
 {
-    return  mUser;
+    return mIdDb;
 }
 
-const QString* ConcreteTest::getTestName() const{
-
-    return &mName;
-}
-
-const QDateTime* ConcreteTest::getTimeCreated() const{
-    return &mDateTimeCreated;
+QDateTime ConcreteTest::getTimeCreated() const{
+    return mDateTimeCreated;
 }
 
 std::vector<std::shared_ptr<OldUserAnswer>> ConcreteTest::getAllOldAnswers()
