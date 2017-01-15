@@ -17,6 +17,8 @@ public:
     virtual const QString& getText();
     virtual const QString& getCorrectAnswerText();
     virtual void modifyQuestion(const QString& question, const QString& answer);
+    virtual void setFactor(double factor);
+    virtual const double getFactor();
 
 
 private:

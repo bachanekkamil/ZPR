@@ -30,3 +30,13 @@ void QuestionReal::modifyQuestion(const QString& question, const QString& answer
     mText=question;
     mCorrectAnswerText=answer;
 }
+
+void QuestionReal::setFactor(double factor)
+{
+    mFactor = factor;
+}
+
+const double QuestionReal::getFactor()
+{
+    return mFactor;
+}

@@ -573,7 +573,7 @@ void DbManager::modifyConcreteTest(std::shared_ptr<ConcreteTest> test, const QSt
     }
 }
 
-std::shared_ptr<OldUserAnswer> DbManager::addAnswerToLogs(std::shared_ptr<ConcreteTest> conc_test, std::shared_ptr<Question> quest, unsigned short grade, double factor)
+std::shared_ptr<OldUserAnswer> DbManager::addAnswerToLogs(std::shared_ptr<ConcreteTest> conc_test, std::shared_ptr<Question> quest, unsigned short grade)
 {
 
     if (conc_test && quest && grade >= 0)
@@ -583,11 +583,11 @@ std::shared_ptr<OldUserAnswer> DbManager::addAnswerToLogs(std::shared_ptr<Concre
         queryAdd.bindValue(":concrete_test_id", conc_test->getIdDb());
         queryAdd.bindValue(":question_id", quest->getIdDb());
         queryAdd.bindValue(":grade", grade);
-        queryAdd.bindValue(":factor", factor);
+        queryAdd.bindValue(":factor", quest->getFactor());
 
         if(queryAdd.exec())
         {
-            std::shared_ptr<OldUserAnswer> oua(new OldUserAnswer(getLastInsertedRowId(), QDateTime::currentDateTimeUtc(), quest, grade, factor));
+            std::shared_ptr<OldUserAnswer> oua(new OldUserAnswer(getLastInsertedRowId(), QDateTime::currentDateTimeUtc(), quest, grade, quest->getFactor()));
             return oua;
         }
         else

@@ -45,3 +45,13 @@ std::shared_ptr<Question> QuestionProxy::getQuestion()
     mQuestionReal = DbManager::getInstance()->getRealQuestion(mIdDb);
     return mQuestionReal;
 }
+
+void QuestionProxy::setFactor(double factor)
+{
+    getQuestion()->setFactor(factor);
+}
+
+const double QuestionProxy::getFactor()
+{
+    return getQuestion()->getFactor();
+}

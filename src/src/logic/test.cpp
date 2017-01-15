@@ -45,41 +45,9 @@ std::shared_ptr<Question> Test::getQuestion(unsigned int idDb)
     return nullptr;
 }
 
-//not used now
-
-Test::Test(): mIdTestDb(0)
-{
-
-}
-
-Test::Test(QString _name, User _user): mIdTestDb(0){
-
-}
-
-
-Test::~Test(){
-
-}
-
-
-
 
 std::vector<std::shared_ptr<Question>> Test::getAllQuestions(){
 
     return mQuestions;
 }
 
-Test* Test::getParentTest(){
-
-    return  NULL;
-}
-
-
-
-
-
-
-
-void Test::setTestName(QString _name){
-
-}

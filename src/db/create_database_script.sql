@@ -43,11 +43,11 @@ CREATE TABLE Tests
 (
 	id INTEGER,
 	name TEXT NOT NULL,
-	user_who_made INTEGER NOT NULL,
+	user_who_made INTEGER,
 	UNIQUE(name, user_who_made),
 	CONSTRAINT PK_Tests PRIMARY KEY (id),
 	CONSTRAINT FK_Tests_Users FOREIGN KEY (user_who_made)
-		REFERENCES Users(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+		REFERENCES Users(id) ON DELETE SET NULL ON UPDATE SET NULL
 )
 ;
 

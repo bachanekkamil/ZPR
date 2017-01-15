@@ -2,8 +2,6 @@
 #define MAINCLASS_H
 #include <vector>
 #include <logic/concretetest.h>
-#include <logic/game.h>
-#include <logic/newtestcreator.h>
 #include <logic/database.h>
 #include <logic/concretetest.h>
 #include <QDebug>
@@ -60,14 +58,14 @@ public:
     std::shared_ptr<ConcreteTest> getCurrentConcreteTest();
     void addAnswerToCurrentConcreteTest(unsigned int question_id, unsigned short grade);
     void startConcreteTest(QString& name);
+    void generateNewScheduler();
 
 
     //not used now
     void endCurrentConcreteTest();
     void endCreatingNewTest();
 
-    Game *getGame();
-    NewTestCreator* getNewTestCreator();
+
     std::shared_ptr<User> getUser();
 
 private:
@@ -86,8 +84,6 @@ private:
 
     //not used now
     state mState;
-    Game* mGame;
-    NewTestCreator* mNewTestCreator;
 };
 
 #endif // MAINCLASS_H

@@ -49,262 +49,6 @@ void MainClass::Initialize()
         qDebug() << "Database exception during method getAllConcreteTests(): " << e.what();
     }
 
-    ////////////////////////
-
-    try
-    {
-        for(int i=0; i<mConcreteTests.size(); ++i){
-            db->deleteConcreteTest(mConcreteTests[i]);
-        }
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during method deleteConcreteTests(): " << e.what();
-    }
-
-
-    ///////////////////////
-
-    qDebug() << "addAnswerToLogs" ;
-
-    /*db->addAnswerToLogs(mConcreteTests.at(0), mConcreteTests.at(0)->getTest()->getQuestion(1), 5, 0);
-
-    QString format = "yyyy-MM-dd HH:mm:ss";
-
-    qDebug() << "foreach" ;
-
-    foreach(std::shared_ptr<ConcreteTest> ct, mConcreteTests)
-    {
-        qDebug() << "Concrete test: " << *ct->getTestName();
-        foreach(std::shared_ptr<OldUserAnswer> oua, ct->getAllOldAnswers())
-            qDebug() << "Answer Text: " << oua->getQuestion()->getText() << " Grade: " << oua->getGrade() << " Factor: " << QString::number(oua->getFactor()) << " Date: " << oua->getDateTimeCreated()->toString(format);
-    }*/
-
-
-/*/
-    QString new_ct_name = "Teścik";
-    try
-    {
-        db->modifyConcreteTest(mConcreteTests.at(0), new_ct_name);
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during method modifyConcreteTest(): " << e.what();
-    }
-
-
-    try
-    {
-    db->deleteConcreteTest(mConcreteTests.at(1));
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during method deleteConcreteTest(): " << e.what();
-    }
-/*/
-
-
-
-
-
-/*
-
-    qDebug() << "add question ";
-
-    QString question_text = "How are you?";
-    QString answert_text = "OK";
-    try
-    {
-    db->addQuestionAndAnswer(mTests.at(0), question_text, answert_text);
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception: " << e.what();
-    }*/
-
-/*
-    qDebug() << "add concrete test ";
-
-    QString contestname = "My first concrete test";
-    try
-    {
-    db->addConcreteTest(contestname, mUsers.at(0), mTests.at(0));
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during addConcreteTest method: " << e.what();
-    }
-    /*/
-
-    /*
-    qDebug() << "delete quest ";
-
-    try
-    {
-    db->deleteQuestion(mTests.at(0)->getAllQuestions().at(0));
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during deleteQuestion method: " << e.what();
-    }
-
-
-
-    qDebug() << "delete test";
-
-    try
-    {
-    db->deleteTest(mTests.at(0));
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during deleteTest method: " << e.what();
-    }
-
-
-    qDebug() << "delete all questions";
-
-    try
-    {
-    db->deleteAllQuestionsForTest(mTests.at(0));
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during deleteAllQuestionsForTest method: " << e.what();
-    }
-
-
-
-    qDebug() << "modify test ";
-    QString newTestName = "lalala";
-    try
-    {
-    db->modifyTest(mTests.at(0), newTestName);
-    }
-    catch(DatabaseException &e)
-    {
-        qDebug() << "Database exception during modifyTest method: " << e.what();
-    }
-
-*/
-    /////////////
-
-
-
-
-
-
-    /*
-
-
-
-
-    //PIERDOŁY
-    //add user test
-
-
-
-    foreach(std::shared_ptr<Test> test, mTests)
-    {
-
-        //qDebug() << "Test ID: " << QString::number(test->getIdDb()) << ". Test name: " << *test->getTestName() << ". Test owner name: " << *test->getTestOwner()->getName();
-
-
-        foreach(std::shared_ptr<Question> question, test->getAllQuestions())
-        {
-            try
-            {
-            qDebug() << "Question: " << *question->getText();
-            }
-            catch(exception &e)
-            {
-                qDebug() << "Exception: " << e.what();
-            }
-            qDebug() << "Answer: " << *question->getCorrectAnswerText();
-        }
-
-
-    }
-
-
-
-*/
-
-
-
-//////////////???????????????
-
-        /*/
-    Answer ans("sda",0);
-
-    ans.getIdDb();
-
-        for(unsigned int i = 0 ; i<mUsers.size() ; ++i)
-        {
-            qDebug() << "User: " << *mUsers.at(i)->getName();
-        }
-
-    //add user test
-    try{
-    db->addUser("Olson");
-    }
-    catch(DatabaseException& e)
-    {
-        qDebug() << "Database exception. Do sth";
-        qDebug() << e.what();
-    }
-
-
-    if(db->isUserExists(1))
-    qDebug() << "User exists";
-
-    db->removeUser("Kamil");
-            qDebug() << "User deleted";
-
-
-    try{
-    //add user test
-    unsigned int id = db->addUser("Kamil");
-    qDebug() << "Added user with id: ";
-    qDebug() << QString::number(id);
-    }
-    catch(DatabaseException& e)
-    {
-        qDebug() << "Database exception. Do sth";
-        qDebug() << e.what();
-    }
-
-    try{
-    //add user test
-    db->addUser("");
-    }
-    catch(DatabaseException& e)
-    {
-        qDebug() << "Database exception. Do sth";
-        qDebug() << e.what();
-    }
-
-
-    try{
-    //get user test
-    std::shared_ptr<User> us = db->getUser(1);
-    qDebug() << "Name: ";
-    qDebug() << *us->getName();
-    qDebug() << "Time created: ";
-    qDebug() << us->getTimeCreated()->toString();
-    deq.push_back(us);
-    }
-    catch(DatabaseException& e)
-    {
-        qDebug() << "Database exception. Do sth";
-        qDebug() << e.what();
-    }
-
-    qDebug() << "Name: ";
-    qDebug() << *deq.at(0)->getName();
-    qDebug() << "Time created: ";
-    qDebug() << deq.at(0)->getTimeCreated()->toString();
-    /*/
 }
 
 
@@ -540,10 +284,17 @@ std::shared_ptr<ConcreteTest> MainClass::getCurrentConcreteTest(){
 void MainClass::addAnswerToCurrentConcreteTest(unsigned int question_id, unsigned short grade){
     try{
         std::shared_ptr<Question> q= mConcreteTest->getQuestionsForToday()[question_id];
-        std::shared_ptr<OldUserAnswer> wsk = db->addAnswerToLogs(mConcreteTest, q, grade, 0.0);
+        std::shared_ptr<OldUserAnswer> wsk = db->addAnswerToLogs(mConcreteTest, q, grade);
+        mConcreteTest->addNewAnswer(wsk);
+
     }catch(DatabaseException &e){
         qDebug() << "Database exception: " << e.what();
     }
+}
+
+void MainClass::generateNewScheduler()
+{
+    mConcreteTest->refreshAnswers();
 }
 
 void MainClass::startConcreteTest(QString& name){
@@ -564,13 +315,7 @@ void MainClass::endCreatingNewTest(){
     mTest=nullptr;
 }
 
-Game* MainClass::getGame(){
-    return NULL;
-}
 
-NewTestCreator* MainClass::getNewTestCreator(){
-    return NULL;
-}
 
 std::shared_ptr<User> MainClass::getUser(){
     return mUser;

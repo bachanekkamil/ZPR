@@ -19,32 +19,11 @@ public:
     std::shared_ptr<Question> getQuestion(unsigned int idDb);
     std::vector<std::shared_ptr<Question> > getAllQuestions();
 
-
-    //not used now
-    Test();
-
-
-    Test(QString _name, User _user);
-    ~Test();
-
-
-
-    Test* getParentTest();
-    void setTestName(QString _name);
-
 private:
     std::shared_ptr<User> mCreatedBy;
     const unsigned int mIdTestDb;
     QString mName;
     std::vector<std::shared_ptr<Question>> mQuestions;
-
-    //not used now
-    std::shared_ptr<User> mParentTest;
-    /**
-     * container with questions
-     */
-
-
 };
 
 #endif // TEST_H

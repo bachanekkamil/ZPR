@@ -14,11 +14,14 @@ public:
     virtual const QString& getCorrectAnswerText();
     virtual const QString& getText();
     virtual void modifyQuestion(const QString& question, const QString& answer);
+    virtual void setFactor(double factor);
+    virtual const double getFactor();
 
 private:
     QString mCorrectAnswerText;
     unsigned int mIdDb;
     QString mText;
+    double mFactor = 2.5;
 
 };
 
