@@ -34,7 +34,7 @@ SolveTestWindow::~SolveTestWindow()
 
 void SolveTestWindow::on_pushButtonEndTest_clicked()
 {
-
+    MainClass::getInstance()->generateNewScheduler();
     mPrevious->show();
     this->close();
 }
