@@ -63,7 +63,7 @@ std::shared_ptr<User> DbManager::addUser(const QString& name)
     }
     else
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
 }
 
@@ -88,7 +88,7 @@ std::shared_ptr<User> DbManager::getUser(unsigned int id)
             }
             else
             {
-                throw DatabaseException(error_type::ROW_NOT_FOUND);
+                throw DatabaseException(ErrorType::ROW_NOT_FOUND);
             }
         }
         else
@@ -98,7 +98,7 @@ std::shared_ptr<User> DbManager::getUser(unsigned int id)
     }
     else
     {
-        throw DatabaseException(error_type::PASSED_WRONG_ID);
+        throw DatabaseException(ErrorType::PASSED_WRONG_ID);
     }
 }
 
@@ -118,7 +118,7 @@ void DbManager::removeUser(const QString& name)
     }
     else
     {
-        throw DatabaseException(error_type::ROW_NOT_FOUND);
+        throw DatabaseException(ErrorType::ROW_NOT_FOUND);
     }
 }
 
@@ -137,7 +137,7 @@ void DbManager::removeUser(unsigned int id)
     }
     else
     {
-        throw DatabaseException(error_type::ROW_NOT_FOUND);
+        throw DatabaseException(ErrorType::ROW_NOT_FOUND);
     }
 }
 
@@ -235,7 +235,7 @@ unsigned int DbManager::getLastInsertedRowId()
         }
         else
         {
-            throw DatabaseException(error_type::ROW_NOT_FOUND);
+            throw DatabaseException(ErrorType::ROW_NOT_FOUND);
         }
     }
     else
@@ -266,7 +266,7 @@ std::shared_ptr<Test> DbManager::addTest(const QString& name, const std::shared_
     }
     else
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
 }
 
@@ -310,7 +310,7 @@ std::shared_ptr<Question> DbManager::getRealQuestion(unsigned long long id)
             }
             else
             {
-                throw DatabaseException(error_type::ROW_NOT_FOUND);
+                throw DatabaseException(ErrorType::ROW_NOT_FOUND);
             }
         }
         else
@@ -320,14 +320,14 @@ std::shared_ptr<Question> DbManager::getRealQuestion(unsigned long long id)
     }
     else
     {
-        throw DatabaseException(error_type::PASSED_WRONG_ID);
+        throw DatabaseException(ErrorType::PASSED_WRONG_ID);
     }
 }
 
 std::vector<std::shared_ptr<Question>> DbManager::getAllQuestionForTest(unsigned int id)
 {
     if (id <= 0)
-    throw DatabaseException(error_type::PASSED_WRONG_ID);
+    throw DatabaseException(ErrorType::PASSED_WRONG_ID);
 
     std::vector<std::shared_ptr<Question>> all_questions;
     QSqlQuery queryGet;
@@ -367,7 +367,7 @@ unsigned int DbManager::addQuestionAndAnswer(std::shared_ptr<Test> test, QString
     }
     else
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
 }
 
@@ -375,7 +375,7 @@ void DbManager::modifyQuestion(std::shared_ptr<Question> question, QString& ques
 {
     if (question_text.isEmpty() || answer_text.isEmpty() || !question)
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
     QSqlQuery queryUpdate;
     queryUpdate.prepare("UPDATE Questions SET question_text = :question_text, correct_answer = :answer_text WHERE id = :id");
@@ -396,7 +396,7 @@ void DbManager::deleteQuestion(std::shared_ptr<Question> question)
 {
     if (!question)
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
     QSqlQuery queryDelete;
     queryDelete.prepare("DELETE FROM Questions WHERE id = :id");
@@ -415,7 +415,7 @@ void DbManager::deleteTest(std::shared_ptr<Test> test)
 {
     if (!test)
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
     m_db.transaction();
     try
@@ -446,7 +446,7 @@ void DbManager::modifyTest(std::shared_ptr<Test> test, const QString& name)
 {
     if (name.isEmpty() || !test)
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
     QSqlQuery queryUpdate;
     queryUpdate.prepare("UPDATE Tests SET name = :test_name WHERE id = :id");
@@ -466,7 +466,7 @@ void DbManager::deleteAllQuestionsForTest(std::shared_ptr<Test> test)
 {
     if (!test)
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
     QSqlQuery queryDelete;
     queryDelete.prepare("DELETE FROM Questions WHERE test_id = :id");
@@ -505,7 +505,7 @@ std::shared_ptr<ConcreteTest> DbManager::addConcreteTest(const QString& name, co
     }
     else
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
 }
 
@@ -537,7 +537,7 @@ void DbManager::deleteConcreteTest(std::shared_ptr<ConcreteTest> test)
 {
     if (!test)
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
 
     QSqlQuery queryDelete;
@@ -557,7 +557,7 @@ void DbManager::modifyConcreteTest(std::shared_ptr<ConcreteTest> test, const QSt
 {
     if (name.isEmpty() || !test)
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
     QSqlQuery queryUpdate;
     queryUpdate.prepare("UPDATE ConcreteTests SET name = :test_name WHERE id = :id");
@@ -597,7 +597,7 @@ std::shared_ptr<OldUserAnswer> DbManager::addAnswerToLogs(std::shared_ptr<Concre
     }
     else
     {
-        throw DatabaseException(error_type::PASSED_NULL_PARAMETER);
+        throw DatabaseException(ErrorType::PASSED_NULL_PARAMETER);
     }
 
 }
@@ -607,7 +607,7 @@ std::shared_ptr<OldUserAnswer> DbManager::addAnswerToLogs(std::shared_ptr<Concre
 std::vector<std::shared_ptr<OldUserAnswer>> DbManager::getLogsForConcreteTests(unsigned int concreteTestId)
 {
     if (concreteTestId <= 0)
-    throw DatabaseException(error_type::PASSED_WRONG_ID);
+    throw DatabaseException(ErrorType::PASSED_WRONG_ID);
 
     QSqlQuery queryGet;
     queryGet.prepare("SELECT id, question_id, grade, datetime_created, factor FROM Logs WHERE concrete_test_id = :test_id");

@@ -5,16 +5,28 @@
 #include <vector>
 #include <QDebug>
 
+//!  class Scheduler
+/*!
+  Stores date and date-related vector with questions
+*/
 struct Pair
 {
     QDate date;
     std::vector<std::shared_ptr<Question>> mQuestions;
 };
 
-
+//!  class Scheduler
+/*!
+  Stores info about date when user should answer the question
+*/
 class Scheduler
 {
 public:
+    //!  getQuestionsForDay method
+    /*!
+      \return vector with questions for that date
+      \param date date
+    */
     std::vector<std::shared_ptr<Question>> getQuestionsForDay(QDate date)
     {
         std::vector<std::shared_ptr<Question>> qqq;
@@ -30,6 +42,12 @@ public:
 
         return qqq;
     }
+
+    //!  getQuestionsForDay method
+    /*!
+      \param quest pointer to Question
+      \param date date when user should answer for that question
+    */
     void insertQuestionForDay(std::shared_ptr<Question> quest, QDate date)
     {
         foreach(std::shared_ptr<Pair> day, mAll)
@@ -59,6 +77,10 @@ public:
         }
     }
 
+    //!  getNearestDay method
+    /*!
+      \return nearest date when user should start a test
+    */
     QDate getNearestDay()
     {
         QDate min = QDate::currentDate().addYears(50);

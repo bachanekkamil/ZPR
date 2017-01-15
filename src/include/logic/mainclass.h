@@ -6,14 +6,6 @@
 #include <logic/concretetest.h>
 #include <QDebug>
 
-enum state{
-    RUNNING_TEST = 0,
-    CREATING_TEST = 1,
-    EDITING_TEST = 2,
-    NOT_LOGGED = 3,
-    NOT_BUSSY = 4,
-};
-
 class MainClass
 {
 public:
@@ -69,7 +61,7 @@ public:
     std::shared_ptr<User> getUser();
 
 private:
-    MainClass();
+    MainClass(){}
     std::vector<std::shared_ptr<User>> mUsers;
     std::vector<std::shared_ptr<Test>> mTests;
     std::vector<std::shared_ptr<ConcreteTest>> mConcreteTests;
@@ -81,9 +73,6 @@ private:
     std::shared_ptr<Test> mTest;
     std::shared_ptr<ConcreteTest> mConcreteTest;
     DbManager* db;
-
-    //not used now
-    state mState;
 };
 
 #endif // MAINCLASS_H

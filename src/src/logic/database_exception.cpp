@@ -11,7 +11,7 @@ DatabaseException::DatabaseException(const char* error)
      strcpy(text, error);
 }
 
-DatabaseException::DatabaseException(error_type err)
+DatabaseException::DatabaseException(ErrorType err)
 {
      switch(err)
      {

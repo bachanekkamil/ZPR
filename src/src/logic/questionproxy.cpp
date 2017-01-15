@@ -2,25 +2,15 @@
 #include "logic/database.h"
 #include <QDebug>
 
-
-
 QuestionProxy::QuestionProxy(unsigned int id_db) :mIdDb(id_db)
 {
 
 }
 
-QuestionProxy::~QuestionProxy()
-{
-
-}
-
-
 const unsigned int QuestionProxy::getIdDb()
 {
     return  mIdDb;
 }
-
-
 
 const QString& QuestionProxy::getText()
 {
@@ -36,9 +26,6 @@ void QuestionProxy::modifyQuestion(const QString& question, const QString& answe
     getQuestion()->modifyQuestion(question,answer);
 }
 
-/**
- * returns real Question
- */
 std::shared_ptr<Question> QuestionProxy::getQuestion()
 {
     if(!mQuestionReal)
