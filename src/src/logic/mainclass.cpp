@@ -51,7 +51,7 @@ void MainClass::Initialize()
 
     ////////////////////////
 
-    try
+    /*try
     {
         for(int i=0; i<mConcreteTests.size(); ++i){
             db->deleteConcreteTest(mConcreteTests[i]);
@@ -60,7 +60,7 @@ void MainClass::Initialize()
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception during method deleteConcreteTests(): " << e.what();
-    }
+    }*/
 
 
     ///////////////////////
