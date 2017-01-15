@@ -17,6 +17,7 @@ public:
     void addQuestion(std::shared_ptr<Question> question);
     void modifyQuestion(unsigned int index, const QString& question, const QString& answer);
     std::shared_ptr<Question> getQuestion(unsigned int idDb);
+    std::vector<std::shared_ptr<Question> > getAllQuestions();
 
 
     //not used now
@@ -26,7 +27,7 @@ public:
     Test(QString _name, User _user);
     ~Test();
 
-    std::vector<std::shared_ptr<Question> > getAllQuestions();
+
 
     Test* getParentTest();
     void setTestName(QString _name);

@@ -39,12 +39,12 @@ private:
     QString mName;
     QDateTime mDateTimeCreated;
     std::vector<std::shared_ptr<OldUserAnswer>> mOldAnswers;
+    std::vector<std::shared_ptr<Question>> mQuestionsForNow;
 
 
     //not used now
     const QString name_from_user;
     const User* owner;
-    std::vector<Question*> questions_for_now;
     const Test* test;
 
 };

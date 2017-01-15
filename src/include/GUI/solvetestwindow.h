@@ -2,6 +2,7 @@
 #define SOLVETESTWINDOW_H
 
 #include <QMainWindow>
+#include "warningmessagedialog.h"
 
 namespace Ui {
 class SolveTestWindow;
@@ -18,11 +19,16 @@ public:
 private slots:
 
     void on_pushButtonEndTest_clicked();
+    void on_pushButtonEvaluate_clicked();
+    void on_pushButtonShowAnswer_clicked();
 
 private:
     void closeEvent(QCloseEvent *event);
     QMainWindow *mPrevious;
     Ui::SolveTestWindow *ui;
+    unsigned int mProgress;
+    unsigned int mInitialQuestionNumber;
+    WarningMessageDialog *mWarningMessageDialog;
 };
 
 #endif // SOLVETESTWINDOW_H

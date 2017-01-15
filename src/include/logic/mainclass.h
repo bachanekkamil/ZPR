@@ -55,17 +55,20 @@ public:
 
     //concrete test
     void addNewConcreteTest(QString& name);
+    void deleteConcreteTest(QString& name);
     QStringList getAvailableConcreteTests();
+    std::shared_ptr<ConcreteTest> getCurrentConcreteTest();
+    void addAnswerToCurrentConcreteTest(unsigned int question_id, unsigned short grade);
+    void startConcreteTest(QString& name);
+
 
     //not used now
-    void endConcreteTest();
+    void endCurrentConcreteTest();
     void endCreatingNewTest();
 
     Game *getGame();
     NewTestCreator* getNewTestCreator();
     std::shared_ptr<User> getUser();
-    void startConcreteTest(unsigned int, ConcreteTest*);
-    void startNewTest(unsigned int, Test*);
 
 private:
     MainClass();
@@ -78,7 +81,6 @@ private:
 
     // wskaznik na aktualnie tworzony przez uzytkownika nowy test/ aktualnie edytowany test
     std::shared_ptr<Test> mTest;
-
     std::shared_ptr<ConcreteTest> mConcreteTest;
     DbManager* db;
 

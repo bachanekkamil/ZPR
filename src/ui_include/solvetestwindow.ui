@@ -16,6 +16,16 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <widget class="QLabel" name="labelTestName">
+      <property name="text">
+       <string>NazwaTestu</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayoutQuestionAndProgress">
       <item>
        <widget class="QLabel" name="labelQuestion">
@@ -57,7 +67,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QPlainTextEdit" name="plainTextEditAnswer"/>
+     <widget class="QTextEdit" name="textEditAnswer"/>
     </item>
     <item>
      <widget class="QPushButton" name="pushButtonShowAnswer">
@@ -74,7 +84,7 @@
       <item>
        <widget class="QPushButton" name="pushButtonEvaluate">
         <property name="text">
-         <string>Oceń</string>
+         <string> Oceń i przejdź do następnego pytania </string>
         </property>
        </widget>
       </item>

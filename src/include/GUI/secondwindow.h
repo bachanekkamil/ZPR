@@ -28,6 +28,8 @@ public slots:
 private slots:
     void on_pushButtonTakeTest_clicked();
 
+    void on_pushButtonDeleteTest_clicked();
+
     void on_pushButtonTakeNewTest_clicked();
 
     void on_actionLogout_triggered();
@@ -38,6 +40,7 @@ private slots:
 
 private:
     void closeEvent(QCloseEvent *event);
+    void concreteTestsListChanged();
     QMainWindow *mPrevious;
     SolveTestWindow *mSolveTestWindow;
     NewTestName *mNewTestName;

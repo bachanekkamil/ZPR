@@ -49,6 +49,22 @@ void MainClass::Initialize()
         qDebug() << "Database exception during method getAllConcreteTests(): " << e.what();
     }
 
+    ////////////////////////
+
+    try
+    {
+        for(int i=0; i<mConcreteTests.size(); ++i){
+            db->deleteConcreteTest(mConcreteTests[i]);
+        }
+    }
+    catch(DatabaseException &e)
+    {
+        qDebug() << "Database exception during method deleteConcreteTests(): " << e.what();
+    }
+
+
+    ///////////////////////
+
     qDebug() << "addAnswerToLogs" ;
 
     /*db->addAnswerToLogs(mConcreteTests.at(0), mConcreteTests.at(0)->getTest()->getQuestion(1), 5, 0);
@@ -454,22 +470,52 @@ std::shared_ptr<Question> MainClass::getQuestion(long long id_db)
 }
 
 void MainClass::addNewConcreteTest(QString& name){
-    try{
-        std::shared_ptr<Test> wsk;
-        foreach(std::shared_ptr<Test> test, mTests)
-        {
-            if(test->getTestName()==name){
-                wsk=test;
-                break;
-            }
+
+    bool concrete_test_already_exist=false;
+    foreach(std::shared_ptr<ConcreteTest> test, mConcreteTests)
+    {
+        if(test->getTestName()==name && test->getTestOwner()->getIdDb()==mUser->getIdDb()){
+            concrete_test_already_exist=true;
+            break;
         }
-        std::shared_ptr<ConcreteTest> t=db->addConcreteTest(name,mUser,wsk);
-        mConcreteTests.push_back(t);
-        mConcreteTest=t;
-    }catch(DatabaseException &e){
-        qDebug() << "Database exception: " << e.what();
     }
 
+    if(concrete_test_already_exist){
+        throw MainClassException("Dany test jest już rozwiązywany przez użytkownika");
+
+    }else{
+        try{
+            std::shared_ptr<Test> wsk;
+            foreach(std::shared_ptr<Test> test, mTests)
+            {
+                if(test->getTestName()==name){
+                    wsk=test;
+                    break;
+                }
+            }
+            std::shared_ptr<ConcreteTest> t=db->addConcreteTest(name,mUser,wsk);
+            mConcreteTests.push_back(t);
+            mConcreteTest=t;
+        }catch(DatabaseException &e){
+            qDebug() << "Database exception: " << e.what();
+        }
+    }
+
+}
+
+void MainClass::deleteConcreteTest(QString& name){
+
+    for (std::vector<std::shared_ptr<ConcreteTest>>::iterator it = mConcreteTests.begin(); it != mConcreteTests.end(); ++it){
+        if((name.compare((*it)->getTestName())==0) && (*it)->getTestOwner()->getIdDb()==mUser->getIdDb()){
+            try{
+                db->deleteConcreteTest((*it));
+                mConcreteTests.erase(it);
+            }catch(DatabaseException &e){
+                qDebug() << "Database exception: " << e.what();
+            }
+            break;
+        }
+    }
 }
 
 QStringList MainClass::getAvailableConcreteTests(){
@@ -487,12 +533,35 @@ QStringList MainClass::getAvailableConcreteTests(){
     return list;
 }
 
-void MainClass::endConcreteTest(){
+std::shared_ptr<ConcreteTest> MainClass::getCurrentConcreteTest(){
+    return mConcreteTest;
+}
 
+void MainClass::addAnswerToCurrentConcreteTest(unsigned int question_id, unsigned short grade){
+    try{
+        std::shared_ptr<Question> q= mConcreteTest->getQuestionsForToday()[question_id];
+        std::shared_ptr<OldUserAnswer> wsk = db->addAnswerToLogs(mConcreteTest, q, grade, 0.0);
+    }catch(DatabaseException &e){
+        qDebug() << "Database exception: " << e.what();
+    }
+}
+
+void MainClass::startConcreteTest(QString& name){
+    foreach(std::shared_ptr<ConcreteTest> test, mConcreteTests)
+    {
+        if(test->getTestOwner()->getIdDb()==mUser->getIdDb() && test->getTestName()==name){
+            mConcreteTest=test;
+            break;
+        }
+    }
+}
+
+void MainClass::endCurrentConcreteTest(){
+    mConcreteTest=nullptr;
 }
 
 void MainClass::endCreatingNewTest(){
-
+    mTest=nullptr;
 }
 
 Game* MainClass::getGame(){
@@ -505,14 +574,6 @@ NewTestCreator* MainClass::getNewTestCreator(){
 
 std::shared_ptr<User> MainClass::getUser(){
     return mUser;
-}
-
-void MainClass::startConcreteTest(unsigned int, ConcreteTest *){
-
-}
-
-void MainClass::startNewTest(unsigned int, Test *){
-
 }
 
 

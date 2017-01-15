@@ -38,31 +38,39 @@ void AddNewTestWindow::on_pushButtonEndTestEditing_clicked()
     MainClass *main_class=MainClass::getInstance();
     unsigned int current_number_of_question=main_class->getCurrentlyEditedTest()->getNumberOfQuestions();
 
-    // if we are viewing existing question
-    if(mProgress<=current_number_of_question){
+    if(current_number_of_question>0){
+        // if we are viewing existing question
+        if(mProgress<=current_number_of_question){
 
-        if(!ui->textEditQuestion->toPlainText().isEmpty() && !ui->textEditAnswer->toPlainText().isEmpty()){
-            main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
-            mPrevious->show();
-            this->close();
+            if(!ui->textEditQuestion->toPlainText().isEmpty() && !ui->textEditAnswer->toPlainText().isEmpty()){
+                main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+                mPrevious->show();
+                this->close();
+
+            }else{
+                mWarningMessageDialog= new WarningMessageDialog("Pytanie i odpowiedź nie mogą być puste!");
+                mWarningMessageDialog->show();
+            }
 
         }else{
-            mWarningMessageDialog= new WarningMessageDialog("Pytanie i odpowiedź nie mogą być puste!");
-            mWarningMessageDialog->show();
+
+            if(!ui->textEditQuestion->toPlainText().isEmpty() && !ui->textEditAnswer->toPlainText().isEmpty()){
+                main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+                mPrevious->show();
+                this->close();
+
+            }else{
+                mPrevious->show();
+                this->close();
+            }
         }
 
     }else{
-
-        if(!ui->textEditQuestion->toPlainText().isEmpty() && !ui->textEditAnswer->toPlainText().isEmpty()){
-            main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
-            mPrevious->show();
-            this->close();
-
-        }else{
-            mPrevious->show();
-            this->close();
-        }
+        mWarningMessageDialog= new WarningMessageDialog("Test nie może być pusty! Dodaj pytanie i odpowiedź!");
+        mWarningMessageDialog->show();
     }
+
+
 
 }
 

@@ -37,34 +37,31 @@
     <item>
      <widget class="QTabWidget" name="tabWidgetTestSelector">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabUserTests">
        <attribute name="title">
         <string>Moje testy</string>
        </attribute>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>351</width>
-          <height>351</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <widget class="QTableWidget" name="tableWidgetChooseMyTest"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButtonTakeTest">
-           <property name="text">
-            <string>Rozwiąż</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QTableWidget" name="tableWidgetChooseMyTest"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonTakeTest">
+          <property name="text">
+           <string>Rozwiąż test</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonDeleteTest">
+          <property name="text">
+           <string>Usuń test</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tabTestDataBase">
        <attribute name="title">
@@ -86,7 +83,7 @@
          <item>
           <widget class="QPushButton" name="pushButtonTakeNewTest">
            <property name="text">
-            <string>Rozwiąż</string>
+            <string>Rozwiąż test</string>
            </property>
           </widget>
          </item>
