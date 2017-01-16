@@ -101,7 +101,7 @@ private:
     QString mName;
     QDateTime mDateTimeCreated;
     std::vector<std::shared_ptr<OldUserAnswer>> mOldAnswers;
-    Scheduler* mScheduler = nullptr;
+    Scheduler mScheduler;
 };
 
 
