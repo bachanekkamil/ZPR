@@ -93,6 +93,11 @@ public:
         return min;
     }
 
+    void reset()
+    {
+        mAll.clear();
+    }
+
 
 
 private:

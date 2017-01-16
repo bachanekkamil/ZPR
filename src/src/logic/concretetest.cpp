@@ -3,14 +3,12 @@
 ConcreteTest::ConcreteTest(unsigned int id, std::shared_ptr<Test> test, std::shared_ptr<User> user, QString name, QDateTime date, std::vector<std::shared_ptr<OldUserAnswer> > oldUserAnswers):
 mIdDb(id), mTest(test), mUser(user), mName(name), mDateTimeCreated(date), mOldAnswers(oldUserAnswers)
 {
-    mScheduler = new Scheduler();
     generateScheduler();
-    mScheduler->printScheduler();
+    mScheduler.printScheduler();
 }
 
 ConcreteTest::~ConcreteTest()
 {
-    delete mScheduler;
 }
 
 std::shared_ptr<User> ConcreteTest::getTestOwner() const
@@ -43,7 +41,7 @@ std::vector<std::shared_ptr<OldUserAnswer>> ConcreteTest::getAllOldAnswers()
 
 std::vector<std::shared_ptr<Question>> ConcreteTest::getQuestionsForToday()
 {
-    return mScheduler->getQuestionsForDay(QDate::currentDate());
+    return mScheduler.getQuestionsForDay(QDate::currentDate());
 }
 
 void ConcreteTest::generateScheduler()
@@ -53,7 +51,7 @@ void ConcreteTest::generateScheduler()
         QuestionsToScheduler x = getLastAnswerFromHistory(quest);
         if(x.oua == nullptr)
         {
-           mScheduler->insertQuestionForDay(quest, QDate::currentDate());
+           mScheduler.insertQuestionForDay(quest, QDate::currentDate());
         }
         else
         {
@@ -71,7 +69,7 @@ void ConcreteTest::generateScheduler()
                     factor = x.oua->getFactor() + (0.1 - (5-x.oua->getGrade())*(0.08+(5-x.oua->getGrade())*0.02));
                     interval = x.last_interval*factor;
             }
-            mScheduler->insertQuestionForDay(quest, x.oua->getDateTimeCreated()->date().addDays(interval));
+            mScheduler.insertQuestionForDay(quest, x.oua->getDateTimeCreated()->date().addDays(interval));
             quest->setFactor(factor);
         }
     }
@@ -118,8 +116,7 @@ QuestionsToScheduler ConcreteTest::getLastAnswerFromHistory(std::shared_ptr<Ques
 
 void ConcreteTest::refreshAnswers()
 {
-    delete mScheduler;
-    mScheduler = new Scheduler();
+    mScheduler.reset();
     generateScheduler();
 }
 
@@ -130,5 +127,5 @@ void ConcreteTest::addNewAnswer(std::shared_ptr<OldUserAnswer> oua)
 
 QDate ConcreteTest::getDateForNextTest()
 {
-    return mScheduler->getNearestDay();
+    return mScheduler.getNearestDay();
 }
