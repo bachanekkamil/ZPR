@@ -284,8 +284,17 @@ std::vector<std::shared_ptr<Test>> DbManager::getAllTests()
         QString name = queryGet.value(0).toString();
         unsigned int user_id = queryGet.value(1).toUInt();
         unsigned int id = queryGet.value(2).toUInt();
-        std::shared_ptr<Test> test(new Test (id, name, getUser(user_id), getAllQuestionForTest(id)));
-        vec.push_back(test);
+        if(user_id != 0)
+        {
+            std::shared_ptr<Test> test(new Test (id, name, getUser(user_id), getAllQuestionForTest(id)));
+            vec.push_back(test);
+        }
+        else
+        {
+            std::shared_ptr<Test> test(new Test (id, name, nullptr, getAllQuestionForTest(id)));
+            vec.push_back(test);
+        }
+
     }
     return vec;
 }
