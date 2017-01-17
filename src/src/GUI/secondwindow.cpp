@@ -42,27 +42,13 @@ SecondWindow::SecondWindow(QMainWindow *previous, QWidget *parent) :
         ++i;
     }
 
-
-    QStringList concrete_tests_list=main_class->getAvailableConcreteTests();
-
-    qDebug() << "Second window, concrete_tests_list.length()" << concrete_tests_list.length();
-    qDebug() << "Second window, getAvailableConcreteTests()" << concrete_tests_list;
-    ui->tableWidgetChooseMyTest->setRowCount((concrete_tests_list.length()/2));
-    ui->tableWidgetChooseMyTest->setColumnCount(2);
     QStringList concrete_test_table_labels;
-    concrete_test_table_labels << "Nazwa testu" << "Data utworzenia";
+    concrete_test_table_labels << "Nazwa testu" << "Data następnej powtórki";
+
+    ui->tableWidgetChooseMyTest->setColumnCount(2);
     ui->tableWidgetChooseMyTest->setHorizontalHeaderLabels(concrete_test_table_labels);
 
-    i=0;
-    for (it = concrete_tests_list.constBegin(); it != concrete_tests_list.constEnd(); ++it){
-        QTableWidgetItem *item= new QTableWidgetItem((*it).toLocal8Bit().constData());
-        item->setFlags(item->flags() ^ Qt::ItemIsEditable);
-        ui->tableWidgetChooseMyTest->setItem(i,0, item);
-        ++it;
-        item= new QTableWidgetItem((*it).toLocal8Bit().constData());
-        ui->tableWidgetChooseMyTest->setItem(i,1, item);
-        ++i;
-    }
+    concreteTestsListChanged();
 
 }
 
@@ -98,7 +84,6 @@ void SecondWindow::concreteTestsListChanged(){
     QStringList concrete_tests_list=main_class->getAvailableConcreteTests();
 
     ui->tableWidgetChooseMyTest->setRowCount((concrete_tests_list.length()/2));
-    ui->tableWidgetChooseMyTest->setColumnCount(2);
 
     QStringList::const_iterator it;
     int i=0;
@@ -114,11 +99,17 @@ void SecondWindow::on_pushButtonTakeTest_clicked()
 {
     QModelIndex index= ui->tableWidgetChooseMyTest->currentIndex();
     if(index.row()!=-1){
-        MainClass *main_class=MainClass::getInstance();
-        main_class->startConcreteTest(ui->tableWidgetChooseMyTest->item(index.row(),0)->text());
-        mSolveTestWindow = new SolveTestWindow(this);
-        mSolveTestWindow->show();
-        this->hide();
+        try{
+            MainClass *main_class=MainClass::getInstance();
+            main_class->startConcreteTest(ui->tableWidgetChooseMyTest->item(index.row(),0)->text());
+            mSolveTestWindow = new SolveTestWindow(this);
+            QObject::connect(mSolveTestWindow, SIGNAL(testTaken()), this, SLOT(concreteTestsListChanged()));
+            mSolveTestWindow->show();
+            this->hide();
+        }catch (MainClassException &e){
+            mWarningMessageDialog = new WarningMessageDialog("Brak pytań na dziś dla wybranego testu!");
+            mWarningMessageDialog->show();
+        }
     }else{
         mWarningMessageDialog = new WarningMessageDialog("Nie wybrano testu do rozwiązania!");
         mWarningMessageDialog->show();
@@ -129,8 +120,14 @@ void SecondWindow::on_pushButtonDeleteTest_clicked(){
     QModelIndex index= ui->tableWidgetChooseMyTest->currentIndex();
     if(index.row()!=-1){
         MainClass *main_class=MainClass::getInstance();
-        main_class->deleteConcreteTest(ui->tableWidgetChooseMyTest->item(index.row(),0)->text());
-        concreteTestsListChanged();
+        try{
+            main_class->deleteConcreteTest(ui->tableWidgetChooseMyTest->item(index.row(),0)->text());
+            concreteTestsListChanged();
+        }catch(MainClassException &e){
+            mWarningMessageDialog= new WarningMessageDialog("Nie udało się usunąć testu!");
+            mWarningMessageDialog->show();
+        }
+
 
     }else{
         mWarningMessageDialog = new WarningMessageDialog("Nie wybrano testu do usunięcia!");
@@ -144,13 +141,17 @@ void SecondWindow::on_pushButtonTakeNewTest_clicked()
     if(index.row()!=-1){
         try{
             MainClass *main_class=MainClass::getInstance();
-            main_class->addNewConcreteTest(ui->tableWidgetChooseAvaliableTest->item(index.row(),0)->text());
-
-            concreteTestsListChanged();
-
-            mSolveTestWindow = new SolveTestWindow(this);
-            mSolveTestWindow->show();
-            this->hide();
+            try{
+                main_class->addNewConcreteTest(ui->tableWidgetChooseAvaliableTest->item(index.row(),0)->text());
+                concreteTestsListChanged();
+                mSolveTestWindow = new SolveTestWindow(this);
+                QObject::connect(mSolveTestWindow, SIGNAL(testTaken()), this, SLOT(concreteTestsListChanged()));
+                mSolveTestWindow->show();
+                this->hide();
+            }catch(MainClassException &e){
+                mWarningMessageDialog= new WarningMessageDialog("Nie udało się stworzyć testu dla użytkownika!");
+                mWarningMessageDialog->show();
+            }
 
         }catch(MainClassException &e){
             mWarningMessageDialog = new WarningMessageDialog(e.what());
@@ -168,6 +169,7 @@ void SecondWindow::on_actionLogout_triggered()
 {
     MainClass *main_class=MainClass::getInstance();
     main_class->logoutUser();
+    ui->tableWidgetChooseMyTest->clear();
     mPrevious->show();
     this->hide();
 }

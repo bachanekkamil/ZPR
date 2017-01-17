@@ -174,6 +174,7 @@ void MainClass::addQuestion(QString question,QString answer){
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception: " << e.what();
+        throw MainClassException(e.what());
     }
 }
 
@@ -187,6 +188,7 @@ void MainClass::modifyQuestion(unsigned int index, QString question, QString ans
     catch(DatabaseException &e)
     {
         qDebug() << "Database exception: " << e.what();
+        throw MainClassException(e.what());
     }
 }
 
@@ -234,6 +236,7 @@ void MainClass::addNewConcreteTest(QString& name){
             mConcreteTest=t;
         }catch(DatabaseException &e){
             qDebug() << "Database exception: " << e.what();
+            throw MainClassException(e.what());
         }
     }
 
@@ -248,6 +251,7 @@ void MainClass::deleteConcreteTest(QString& name){
                 mConcreteTests.erase(it);
             }catch(DatabaseException &e){
                 qDebug() << "Database exception: " << e.what();
+                throw MainClassException(e.what());
             }
             break;
         }
@@ -262,7 +266,10 @@ QStringList MainClass::getAvailableConcreteTests(){
         if(test->getTestOwner()->getIdDb()==mUser->getIdDb()){
 
             list << test->getTestName();
-            list << test->getTimeCreated().toString("yyyy.MM.dd");
+            list << test->getDateForNextTest().toString("yyyy.MM.dd");
+            qDebug() << test->getTestName();
+            qDebug() << " Data: ";
+            qDebug() << test->getDateForNextTest().toString("yyyy.MM.dd");
         }
     }
 
@@ -281,6 +288,7 @@ void MainClass::addAnswerToCurrentConcreteTest(unsigned int question_id, unsigne
 
     }catch(DatabaseException &e){
         qDebug() << "Database exception: " << e.what();
+        throw MainClassException(e.what());
     }
 }
 
@@ -294,6 +302,10 @@ void MainClass::startConcreteTest(QString& name){
     {
         if(test->getTestOwner()->getIdDb()==mUser->getIdDb() && test->getTestName()==name){
             mConcreteTest=test;
+            mConcreteTest->refreshAnswers();
+            if(mConcreteTest->getQuestionsForToday().size()==0){
+                throw MainClassException("Brak pytań na dziś dla wybranego testu!");
+            }
             break;
         }
     }
@@ -306,7 +318,6 @@ void MainClass::endCurrentConcreteTest(){
 void MainClass::endCreatingNewTest(){
     mTest=nullptr;
 }
-
 
 
 std::shared_ptr<User> MainClass::getUser(){

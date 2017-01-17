@@ -1,6 +1,7 @@
 #include "GUI/addnewtestwindow.h"
 #include "ui_addnewtestwindow.h"
 #include "logic/mainclass.h"
+#include "mainclassexception.h"
 #include <algorithm>
 
 AddNewTestWindow::AddNewTestWindow(QMainWindow *previous, QWidget *parent) :
@@ -43,9 +44,14 @@ void AddNewTestWindow::on_pushButtonEndTestEditing_clicked()
         if(mProgress<=current_number_of_question){
 
             if(!ui->textEditQuestion->toPlainText().isEmpty() && !ui->textEditAnswer->toPlainText().isEmpty()){
-                main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
-                mPrevious->show();
-                this->close();
+                try{
+                    main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+                    mPrevious->show();
+                    this->close();
+                }catch(MainClassException &e){
+                    mWarningMessageDialog= new WarningMessageDialog("Nie udało się zmodyfikować pytania!");
+                    mWarningMessageDialog->show();
+                }
 
             }else{
                 mWarningMessageDialog= new WarningMessageDialog("Pytanie i odpowiedź nie mogą być puste!");
@@ -55,9 +61,14 @@ void AddNewTestWindow::on_pushButtonEndTestEditing_clicked()
         }else{
 
             if(!ui->textEditQuestion->toPlainText().isEmpty() && !ui->textEditAnswer->toPlainText().isEmpty()){
-                main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
-                mPrevious->show();
-                this->close();
+                try{
+                    main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+                    mPrevious->show();
+                    this->close();
+                }catch(MainClassException &e){
+                    mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
+                    mWarningMessageDialog->show();
+                }
 
             }else{
                 mPrevious->show();
@@ -81,12 +92,28 @@ void AddNewTestWindow::on_pushButtonNext_clicked()
         unsigned int current_number_of_question=main_class->getCurrentlyEditedTest()->getNumberOfQuestions();
         // if current_number_of_question=0 it means user are creating new test's first question else it means user is editing existing question
         if(current_number_of_question==0){
-            main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+            try{
+                main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+            }catch(MainClassException &e){
+                mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
+                mWarningMessageDialog->show();
+            }
         }else{
             if(mProgress>current_number_of_question){
-                main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+                try{
+                    main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+                }catch(MainClassException &e){
+                    mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
+                    mWarningMessageDialog->show();
+                }
             }else{
-                main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+                try{
+                    main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+                }catch(MainClassException &e){
+                    mWarningMessageDialog= new WarningMessageDialog("Nie udało się zmodyfikować pytania!");
+                    mWarningMessageDialog->show();
+                }
+\
             }
         }
 
@@ -124,9 +151,20 @@ void AddNewTestWindow::on_pushButtonPrevious_clicked()
     if(!ui->textEditQuestion->toPlainText().isEmpty() && !ui->textEditAnswer->toPlainText().isEmpty()){
         // if we are viewing an existing question
         if(mProgress<=current_number_of_question){
-            main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+            try{
+                main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+            }catch(MainClassException &e){
+                mWarningMessageDialog= new WarningMessageDialog("Nie udało się zmodyfikować pytania!");
+                mWarningMessageDialog->show();
+            }
+
         }else{
-            main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+            try{
+                main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
+            }catch(MainClassException &e){
+                mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
+                mWarningMessageDialog->show();
+            }
         }
 
     }else{

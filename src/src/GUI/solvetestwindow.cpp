@@ -1,6 +1,9 @@
 #include "GUI/solvetestwindow.h"
 #include "ui_solvetestwindow.h"
 #include "logic/mainclass.h"
+#include "mainclassexception.h"
+
+#include <QDebug>
 
 SolveTestWindow::SolveTestWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),
@@ -24,6 +27,9 @@ SolveTestWindow::SolveTestWindow(QMainWindow *previous, QWidget *parent) :
     ui->comboBoxMark->addItems(marks);
 
     ui->textEditQuestion->setText(main_class->getCurrentConcreteTest()->getQuestionsForToday()[0]->getText());
+
+    ui->textEditAnswer->setReadOnly(true);
+    ui->textEditQuestion->setReadOnly(true);
 }
 
 SolveTestWindow::~SolveTestWindow()
@@ -35,22 +41,32 @@ SolveTestWindow::~SolveTestWindow()
 void SolveTestWindow::on_pushButtonEndTest_clicked()
 {
     MainClass::getInstance()->generateNewScheduler();
+    emit testTaken();
     mPrevious->show();
     this->close();
 }
 
 void SolveTestWindow::on_pushButtonEvaluate_clicked(){
 
-    if(ui->textEditAnswer->toPlainText().size()>1){
+    if(ui->textEditAnswer->toPlainText().size()>0){
+        MainClass *main_class=MainClass::getInstance();
         if(mInitialQuestionNumber>mProgress){
-            MainClass *main_class=MainClass::getInstance();
+            try{
+                main_class->addAnswerToCurrentConcreteTest(mProgress-1, ui->comboBoxMark->currentText().toShort());
+                qDebug() << "Dodanie oceny pytania do bazy";
+                ui->textEditAnswer->clear();
+                ui->textEditQuestion->setText(main_class->getCurrentConcreteTest()->getQuestionsForToday()[mProgress]->getText());
+                ++mProgress;
+                QString progress_label= QString::number(mProgress) + "/" + QString::number(mInitialQuestionNumber);
+                ui->labelProgressValue->setText(progress_label);
+            }catch(MainClassException &e){
+                mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać oceny do odpowiedzi!");
+                mWarningMessageDialog->show();
+            }
+
+        }else {
             main_class->addAnswerToCurrentConcreteTest(mProgress-1, ui->comboBoxMark->currentText().toShort());
-            ui->textEditAnswer->clear();
-            ui->textEditQuestion->setText(main_class->getCurrentConcreteTest()->getQuestionsForToday()[mProgress]->getText());
-            ++mProgress;
-            QString progress_label= QString::number(mProgress) + "/" + QString::number(mInitialQuestionNumber);
-            ui->labelProgressValue->setText(progress_label);
-        }else{
+            qDebug() << "Dodanie oceny pytania do bazy";
             on_pushButtonEndTest_clicked();
         }
     }else{

@@ -62,7 +62,7 @@
     <item>
      <widget class="QLabel" name="labelAnswer">
       <property name="text">
-       <string>Odpowiedź:</string>
+       <string>Poprawna odpowiedź:</string>
       </property>
      </widget>
     </item>

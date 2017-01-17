@@ -25,6 +25,8 @@ signals:
 public slots:
     void newTestAdded();
 
+    void concreteTestsListChanged();
+
 private slots:
     void on_pushButtonTakeTest_clicked();
 
@@ -40,7 +42,6 @@ private slots:
 
 private:
     void closeEvent(QCloseEvent *event);
-    void concreteTestsListChanged();
     QMainWindow *mPrevious;
     SolveTestWindow *mSolveTestWindow;
     NewTestName *mNewTestName;

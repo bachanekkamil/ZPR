@@ -16,6 +16,9 @@ public:
     explicit SolveTestWindow(QMainWindow *previous, QWidget *parent = 0);
     ~SolveTestWindow();
 
+signals:
+    void testTaken();
+
 private slots:
 
     void on_pushButtonEndTest_clicked();
