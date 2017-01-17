@@ -3,7 +3,7 @@
 #include "logic/mainclass.h"
 #include "logic/mainclassexception.h"
 #include <QDebug>
-
+#include <QDesktopWidget>
 
 SecondWindow::SecondWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),
@@ -75,6 +75,10 @@ void SecondWindow::newTestAdded(){
     }
 
     mAddNewTestWindow = new AddNewTestWindow(this);
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    int x = (screenGeometry.width()- mAddNewTestWindow->width()) / 2;
+    int y = (screenGeometry.height()- mAddNewTestWindow->height()) / 2;
+    mAddNewTestWindow->move(x, y);
     mAddNewTestWindow->show();
     this->hide();
 }
@@ -104,6 +108,10 @@ void SecondWindow::on_pushButtonTakeTest_clicked()
             main_class->startConcreteTest(ui->tableWidgetChooseMyTest->item(index.row(),0)->text());
             mSolveTestWindow = new SolveTestWindow(this);
             QObject::connect(mSolveTestWindow, SIGNAL(testTaken()), this, SLOT(concreteTestsListChanged()));
+            QRect screenGeometry = QApplication::desktop()->screenGeometry();
+            int x = (screenGeometry.width()- mSolveTestWindow->width()) / 2;
+            int y = (screenGeometry.height()- mSolveTestWindow->height()) / 2;
+            mSolveTestWindow->move(x, y);
             mSolveTestWindow->show();
             this->hide();
         }catch (MainClassException &e){
@@ -112,6 +120,10 @@ void SecondWindow::on_pushButtonTakeTest_clicked()
         }
     }else{
         mWarningMessageDialog = new WarningMessageDialog("Nie wybrano testu do rozwiązania!");
+        QRect screenGeometry = QApplication::desktop()->screenGeometry();
+        int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+        int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+        mWarningMessageDialog->move(x, y);
         mWarningMessageDialog->show();
     }
 }
@@ -125,12 +137,20 @@ void SecondWindow::on_pushButtonDeleteTest_clicked(){
             concreteTestsListChanged();
         }catch(MainClassException &e){
             mWarningMessageDialog= new WarningMessageDialog("Nie udało się usunąć testu!");
+            QRect screenGeometry = QApplication::desktop()->screenGeometry();
+            int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+            int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+            mWarningMessageDialog->move(x, y);
             mWarningMessageDialog->show();
         }
 
 
     }else{
         mWarningMessageDialog = new WarningMessageDialog("Nie wybrano testu do usunięcia!");
+        QRect screenGeometry = QApplication::desktop()->screenGeometry();
+        int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+        int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+        mWarningMessageDialog->move(x, y);
         mWarningMessageDialog->show();
     }
 }
@@ -150,17 +170,29 @@ void SecondWindow::on_pushButtonTakeNewTest_clicked()
                 this->hide();
             }catch(MainClassException &e){
                 mWarningMessageDialog= new WarningMessageDialog("Nie udało się stworzyć testu dla użytkownika!");
+                QRect screenGeometry = QApplication::desktop()->screenGeometry();
+                int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+                int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+                mWarningMessageDialog->move(x, y);
                 mWarningMessageDialog->show();
             }
 
         }catch(MainClassException &e){
             mWarningMessageDialog = new WarningMessageDialog(e.what());
+            QRect screenGeometry = QApplication::desktop()->screenGeometry();
+            int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+            int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+            mWarningMessageDialog->move(x, y);
             mWarningMessageDialog->show();
         }
 
 
     }else{
         mWarningMessageDialog = new WarningMessageDialog("Nie wybrano testu do rozwiązania!");
+        QRect screenGeometry = QApplication::desktop()->screenGeometry();
+        int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+        int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+        mWarningMessageDialog->move(x, y);
         mWarningMessageDialog->show();
     }
 }
@@ -188,10 +220,18 @@ void SecondWindow::on_pushButtonEditTest_clicked()
         MainClass *main_class=MainClass::getInstance();
         main_class->editTest(ui->tableWidgetChooseAvaliableTest->item(index.row(),0)->text());
         mEditTestWindow = new AddNewTestWindow(this);
+        QRect screenGeometry = QApplication::desktop()->screenGeometry();
+        int x = (screenGeometry.width()- mEditTestWindow->width()) / 2;
+        int y = (screenGeometry.height()- mEditTestWindow->height()) / 2;
+        mEditTestWindow->move(x, y);
         mEditTestWindow->show();
         this->hide();
     }else{
         mWarningMessageDialog = new WarningMessageDialog("Nie wybrano testu do edycji!");
+        QRect screenGeometry = QApplication::desktop()->screenGeometry();
+        int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+        int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+        mWarningMessageDialog->move(x, y);
         mWarningMessageDialog->show();
     }
 }

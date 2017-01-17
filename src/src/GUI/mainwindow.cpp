@@ -4,6 +4,7 @@
 #include <QVBoxLayout>
 #include <QDebug>
 #include "logic/mainclassexception.h"
+#include <QDesktopWidget>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -40,6 +41,10 @@ void MainWindow::on_pushButtonLogin_clicked()
         main_class->setUser(ui->comboBoxChooseUser->currentText());
         mSecondWindow = new SecondWindow(this);
         QObject::connect(mSecondWindow, SIGNAL(exit()), this, SLOT(exitRequested()));
+        QRect screenGeometry = QApplication::desktop()->screenGeometry();
+        int x = (screenGeometry.width()- mSecondWindow->width()) / 2;
+        int y = (screenGeometry.height()- mSecondWindow->height()) / 2;
+        mSecondWindow->move(x, y);
         mSecondWindow->show();
         this->hide();
     }
@@ -54,6 +59,10 @@ void MainWindow::on_pushButtonDeleteUser_clicked()
             userListChanged();
         }catch(MainClassException &e){
             mWarningMessageDialog = new WarningMessageDialog("Nie udało się usunąć użytkownika z bazy.");
+            QRect screenGeometry = QApplication::desktop()->screenGeometry();
+            int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+            int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+            mWarningMessageDialog->move(x, y);
             mWarningMessageDialog->show();
         }
     }
@@ -63,6 +72,10 @@ void MainWindow::on_pushButtonAddUser_clicked()
 {
     mAddNewUserWindow = new AddNewUserWindow(this);
     QObject::connect(mAddNewUserWindow, SIGNAL(newUserAdded()), this, SLOT(userListChanged()));
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    int x = (screenGeometry.width()- mAddNewUserWindow->width()) / 2;
+    int y = (screenGeometry.height()- mAddNewUserWindow->height()) / 2;
+    mAddNewUserWindow->move(x, y);
     mAddNewUserWindow->show();
     this->hide();
 }

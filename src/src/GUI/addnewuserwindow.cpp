@@ -2,6 +2,7 @@
 #include "ui_addnewuserwindow.h"
 #include "logic/mainclass.h"
 #include "logic/mainclassexception.h"
+#include <QDesktopWidget>
 
 AddNewUserWindow::AddNewUserWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),
@@ -29,10 +30,18 @@ void AddNewUserWindow::on_pushButtonAddNewUser_clicked()
             this->close();
         }catch(MainClassException &e){
             mWarningMessageDialog = new WarningMessageDialog("Nie udało się dodać użytkownika do bazy.");
+            QRect screenGeometry = QApplication::desktop()->screenGeometry();
+            int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+            int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+            mWarningMessageDialog->move(x, y);
             mWarningMessageDialog->show();
         }
     }else{
         mWarningMessageDialog = new WarningMessageDialog("Puste pole login! Proszę podać login nowego użytkownika.");
+        QRect screenGeometry = QApplication::desktop()->screenGeometry();
+        int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+        int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+        mWarningMessageDialog->move(x, y);
         mWarningMessageDialog->show();
     }
 }

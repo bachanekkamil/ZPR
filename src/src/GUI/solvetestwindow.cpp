@@ -2,7 +2,7 @@
 #include "ui_solvetestwindow.h"
 #include "logic/mainclass.h"
 #include "mainclassexception.h"
-
+#include <QDesktopWidget>
 #include <QDebug>
 
 SolveTestWindow::SolveTestWindow(QMainWindow *previous, QWidget *parent) :
@@ -61,6 +61,10 @@ void SolveTestWindow::on_pushButtonEvaluate_clicked(){
                 ui->labelProgressValue->setText(progress_label);
             }catch(MainClassException &e){
                 mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać oceny do odpowiedzi!");
+                QRect screenGeometry = QApplication::desktop()->screenGeometry();
+                int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+                int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+                mWarningMessageDialog->move(x, y);
                 mWarningMessageDialog->show();
             }
 
@@ -71,6 +75,10 @@ void SolveTestWindow::on_pushButtonEvaluate_clicked(){
         }
     }else{
         mWarningMessageDialog= new WarningMessageDialog("Przed podaniem oceny zobacz poprawną odpowiedź!");
+        QRect screenGeometry = QApplication::desktop()->screenGeometry();
+        int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+        int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+        mWarningMessageDialog->move(x, y);
         mWarningMessageDialog->show();
     }
 

@@ -3,6 +3,7 @@
 #include "logic/mainclass.h"
 #include "mainclassexception.h"
 #include <algorithm>
+#include <QDesktopWidget>
 
 AddNewTestWindow::AddNewTestWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),
@@ -10,6 +11,7 @@ AddNewTestWindow::AddNewTestWindow(QMainWindow *previous, QWidget *parent) :
 {
     this->mPrevious=previous;
     ui->setupUi(this);
+
     MainClass *main_class=MainClass::getInstance();
 
     ui->labelTestNameValue->setText(main_class->getCurrentlyEditedTest()->getTestName());
@@ -50,11 +52,19 @@ void AddNewTestWindow::on_pushButtonEndTestEditing_clicked()
                     this->close();
                 }catch(MainClassException &e){
                     mWarningMessageDialog= new WarningMessageDialog("Nie udało się zmodyfikować pytania!");
+                    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+                    int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+                    int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+                    mWarningMessageDialog->move(x, y);
                     mWarningMessageDialog->show();
                 }
 
             }else{
                 mWarningMessageDialog= new WarningMessageDialog("Pytanie i odpowiedź nie mogą być puste!");
+                QRect screenGeometry = QApplication::desktop()->screenGeometry();
+                int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+                int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+                mWarningMessageDialog->move(x, y);
                 mWarningMessageDialog->show();
             }
 
@@ -67,6 +77,10 @@ void AddNewTestWindow::on_pushButtonEndTestEditing_clicked()
                     this->close();
                 }catch(MainClassException &e){
                     mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
+                    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+                    int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+                    int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+                    mWarningMessageDialog->move(x, y);
                     mWarningMessageDialog->show();
                 }
 
@@ -78,6 +92,10 @@ void AddNewTestWindow::on_pushButtonEndTestEditing_clicked()
 
     }else{
         mWarningMessageDialog= new WarningMessageDialog("Test nie może być pusty! Dodaj pytanie i odpowiedź!");
+        QRect screenGeometry = QApplication::desktop()->screenGeometry();
+        int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+        int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+        mWarningMessageDialog->move(x, y);
         mWarningMessageDialog->show();
     }
 
@@ -96,6 +114,10 @@ void AddNewTestWindow::on_pushButtonNext_clicked()
                 main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
             }catch(MainClassException &e){
                 mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
+                QRect screenGeometry = QApplication::desktop()->screenGeometry();
+                int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+                int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+                mWarningMessageDialog->move(x, y);
                 mWarningMessageDialog->show();
             }
         }else{
@@ -104,6 +126,10 @@ void AddNewTestWindow::on_pushButtonNext_clicked()
                     main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
                 }catch(MainClassException &e){
                     mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
+                    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+                    int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+                    int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+                    mWarningMessageDialog->move(x, y);
                     mWarningMessageDialog->show();
                 }
             }else{
@@ -111,6 +137,10 @@ void AddNewTestWindow::on_pushButtonNext_clicked()
                     main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
                 }catch(MainClassException &e){
                     mWarningMessageDialog= new WarningMessageDialog("Nie udało się zmodyfikować pytania!");
+                    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+                    int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+                    int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+                    mWarningMessageDialog->move(x, y);
                     mWarningMessageDialog->show();
                 }
 \
@@ -136,6 +166,10 @@ void AddNewTestWindow::on_pushButtonNext_clicked()
 
     }else{
         mWarningMessageDialog = new WarningMessageDialog("Pytanie i odpowiedź nie mogą być puste!");
+        QRect screenGeometry = QApplication::desktop()->screenGeometry();
+        int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+        int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+        mWarningMessageDialog->move(x, y);
         mWarningMessageDialog->show();
     }
 
@@ -155,6 +189,10 @@ void AddNewTestWindow::on_pushButtonPrevious_clicked()
                 main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
             }catch(MainClassException &e){
                 mWarningMessageDialog= new WarningMessageDialog("Nie udało się zmodyfikować pytania!");
+                QRect screenGeometry = QApplication::desktop()->screenGeometry();
+                int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+                int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+                mWarningMessageDialog->move(x, y);
                 mWarningMessageDialog->show();
             }
 
@@ -163,6 +201,10 @@ void AddNewTestWindow::on_pushButtonPrevious_clicked()
                 main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
             }catch(MainClassException &e){
                 mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
+                QRect screenGeometry = QApplication::desktop()->screenGeometry();
+                int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+                int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+                mWarningMessageDialog->move(x, y);
                 mWarningMessageDialog->show();
             }
         }
@@ -171,6 +213,10 @@ void AddNewTestWindow::on_pushButtonPrevious_clicked()
         // if we are viewing an existing question
         if(mProgress<=current_number_of_question){
             mWarningMessageDialog = new WarningMessageDialog("Pytanie i odpowiedź nie mogą być puste!");
+            QRect screenGeometry = QApplication::desktop()->screenGeometry();
+            int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
+            int y = (screenGeometry.height()- mWarningMessageDialog->height()) / 2;
+            mWarningMessageDialog->move(x, y);
             mWarningMessageDialog->show();
             warning=true;
         }
