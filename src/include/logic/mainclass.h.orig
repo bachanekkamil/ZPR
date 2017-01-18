@@ -132,24 +132,30 @@ public:
     */
     std::shared_ptr<Question> getQuestion(long long id_db);
 
+<<<<<<< db4c1337931a3ab9ed7d2f38d45dd1524f3fa728
     //! addNewConcreteTest method
         /*!
       \param name new concrete test name
       \throws <MainClassException> { throws exception if adding new concrete test to data base was unsuccessful }
         */
-    void addNewConcreteTest(QString name);
+    void addNewConcreteTest(QString& name);
 
     //! deleteConcreteTest method
         /*!
       \param name name of test to be deleted
       \throws <MainClassException> { throws exception if deleting concrete test from data base was unsuccessful }
         */
-    void deleteConcreteTest(QString name);
+    void deleteConcreteTest(QString& name);
 
     //! getAvailableConcreteTests method
     /*!
       \return list of all concrete test available to current user, and date of next repetition
     */
+=======
+    //concrete test
+    void addNewConcreteTest(QString name);
+    void deleteConcreteTest(QString name);
+>>>>>>> Tests added.
     QStringList getAvailableConcreteTests();
 
     //! getCurrentConcreteTest method
@@ -165,13 +171,18 @@ public:
       \throws <MainClassException> { throws exception if adding new answer to concrete test to data base was unsuccessful }
         */
     void addAnswerToCurrentConcreteTest(unsigned int question_id, unsigned short grade);
+<<<<<<< db4c1337931a3ab9ed7d2f38d45dd1524f3fa728
+=======
+    void startConcreteTest(QString name);
+    void generateNewScheduler();
+>>>>>>> Tests added.
 
     //! startConcreteTest method
         /*!
       \param name concrete test name
       \throws <MainClassException> { throws exception if there are no question to be answered this day  }
         */
-    void startConcreteTest(QString name);
+    void startConcreteTest(QString& name);
 
     //! endCurrentConcreteTest method
     /*!

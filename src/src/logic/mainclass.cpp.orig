@@ -292,7 +292,16 @@ void MainClass::addAnswerToCurrentConcreteTest(unsigned int question_id, unsigne
     }
 }
 
+<<<<<<< db4c1337931a3ab9ed7d2f38d45dd1524f3fa728
+void MainClass::startConcreteTest(QString& name){
+=======
+void MainClass::generateNewScheduler()
+{
+    mConcreteTest->refreshAnswers();
+}
+
 void MainClass::startConcreteTest(QString name){
+>>>>>>> Tests added.
     foreach(std::shared_ptr<ConcreteTest> test, mConcreteTests)
     {
         if(test->getTestOwner()->getIdDb()==mUser->getIdDb() && test->getTestName()==name){
