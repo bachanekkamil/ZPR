@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains methods implementaion of DatabaseException Class
+  \author Kamil Bachanek
+*/
+
 #include "logic/database_exception.h"  
 
 char* DatabaseException::TEXT_PASSED_NULL_PARAMETER = "Passed NULL parameter/s";
@@ -8,7 +14,7 @@ char* DatabaseException::TEXT_ROW_NOT_FOUND = "Row was not found";
 DatabaseException::DatabaseException(const char* error)
 {
      text = new char[strlen(error) + 1];
-     strcpy(text, error);
+     strcpy_s(text, 1000, error);
 }
 
 DatabaseException::DatabaseException(ErrorType err)

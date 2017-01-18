@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class methods related to concrete instance of test (linked to user and done answers).
+  \author Kamil Bachanek
+*/
+
 #include "logic/concretetest.h"
 
 ConcreteTest::ConcreteTest(unsigned int id, std::shared_ptr<Test> test, std::shared_ptr<User> user, QString name, QDateTime date, std::vector<std::shared_ptr<OldUserAnswer> > oldUserAnswers):

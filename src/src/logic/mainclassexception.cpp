@@ -11,7 +11,7 @@ char* MainClassException::TEXT_MAIN_CLASS_EXCEPTION = "Main class exception";
 MainClassException::MainClassException(const char* error)
 {
      text = new char[strlen(error) + 1];
-     strcpy(text, error);
+     strcpy_s(text, 1000, error);
 }
 
 MainClassException::MainClassException(ErrorTypeMainClass err)

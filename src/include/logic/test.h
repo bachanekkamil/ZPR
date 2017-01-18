@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class Test - Stores info about test
+  \author Kamil Bachanek
+*/
+
 #ifndef TEST_H
 #define TEST_H
 

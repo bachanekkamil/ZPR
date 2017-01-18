@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class QuestionReal methods implementation used in proxy design patterns. Stores all info about question.
+  \author Kamil Bachanek
+*/
+
 #include "logic/questionreal.h"
 #include <QDebug>
 

@@ -1,0 +1,195 @@
+\hypertarget{class_test}{}\section{Test Class Reference}
+\label{class_test}\index{Test@{Test}}
+
+
+Contains class \hyperlink{class_test}{Test} -\/ Stores info about test.  
+
+
+
+
+{\ttfamily \#include $<$test.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_test_a8cf3248024edbd90bb067572c353eb52}{Test} (unsigned int id\+\_\+test\+\_\+db, Q\+String name, std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ created\+By, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$$>$ questions)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_test}{Test} constructor. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ \hyperlink{class_test_a1c8e2f9b62f0643ca5e2e1484e996df6}{get\+Test\+Owner} () const
+\begin{DoxyCompactList}\small\item\em get\+Test\+Owner method \end{DoxyCompactList}\item 
+const Q\+String \& \hyperlink{class_test_a022aa62fa86d7436c33ba58f8e410389}{get\+Test\+Name} () const
+\begin{DoxyCompactList}\small\item\em get\+Test\+Name method \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_test_a00aae8f1d964e34600ca99354e0aff66}{get\+Id\+Db} () const
+\begin{DoxyCompactList}\small\item\em get\+Id\+Db method \end{DoxyCompactList}\item 
+int \hyperlink{class_test_a9dea10c897bfbd2a7fa669c1b49a4b80}{get\+Number\+Of\+Questions} ()
+\begin{DoxyCompactList}\small\item\em get\+Number\+Of\+Questions method \end{DoxyCompactList}\item 
+void \hyperlink{class_test_a1bf71312e7d9de4dae91693d09ea5ed0}{add\+Question} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ question)
+\begin{DoxyCompactList}\small\item\em add\+Question method \end{DoxyCompactList}\item 
+void \hyperlink{class_test_a55f5d49e61340586c05e5b5099296af5}{modify\+Question} (unsigned int index, const Q\+String \&question, const Q\+String \&answer)
+\begin{DoxyCompactList}\small\item\em modify\+Question method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ \hyperlink{class_test_a4ce90338ac98d4d152d2e50a98645d73}{get\+Question} (unsigned int id\+Db)
+\begin{DoxyCompactList}\small\item\em get\+Question method \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ $>$ \hyperlink{class_test_a0e0a0ce90b46ea89e11200d242987e33}{get\+All\+Questions} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Questions method \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains class \hyperlink{class_test}{Test} -\/ Stores info about test. 
+
+\begin{DoxyAuthor}{Author}
+Kamil Bachanekclass \hyperlink{class_test}{Test}
+\end{DoxyAuthor}
+Stores info about test 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_test_a8cf3248024edbd90bb067572c353eb52}\label{class_test_a8cf3248024edbd90bb067572c353eb52}} 
+\index{Test@{Test}!Test@{Test}}
+\index{Test@{Test}!Test@{Test}}
+\subsubsection{\texorpdfstring{Test()}{Test()}}
+{\footnotesize\ttfamily Test\+::\+Test (\begin{DoxyParamCaption}\item[{unsigned int}]{id\+\_\+test\+\_\+db,  }\item[{Q\+String}]{name,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$}]{created\+By,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$$>$}]{questions }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_test}{Test} constructor. 
+
+Contains class \hyperlink{class_test}{Test} method implementation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+\_\+test\+\_\+db} & id test from DB \\
+\hline
+{\em name} & test name \\
+\hline
+{\em created\+By} & pointer to user (owner) \\
+\hline
+{\em questions} & vector with pointers to \hyperlink{class_question}{Question}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Kamil Bachanek 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_test_a1bf71312e7d9de4dae91693d09ea5ed0}\label{class_test_a1bf71312e7d9de4dae91693d09ea5ed0}} 
+\index{Test@{Test}!add\+Question@{add\+Question}}
+\index{add\+Question@{add\+Question}!Test@{Test}}
+\subsubsection{\texorpdfstring{add\+Question()}{addQuestion()}}
+{\footnotesize\ttfamily void Test\+::add\+Question (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$}]{question }\end{DoxyParamCaption})}
+
+
+
+add\+Question method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em question} & pointer to \hyperlink{class_question}{Question} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_test_a0e0a0ce90b46ea89e11200d242987e33}\label{class_test_a0e0a0ce90b46ea89e11200d242987e33}} 
+\index{Test@{Test}!get\+All\+Questions@{get\+All\+Questions}}
+\index{get\+All\+Questions@{get\+All\+Questions}!Test@{Test}}
+\subsubsection{\texorpdfstring{get\+All\+Questions()}{getAllQuestions()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ $>$ Test\+::get\+All\+Questions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+All\+Questions method 
+
+\begin{DoxyReturn}{Returns}
+vector with pointers to question 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_test_a00aae8f1d964e34600ca99354e0aff66}\label{class_test_a00aae8f1d964e34600ca99354e0aff66}} 
+\index{Test@{Test}!get\+Id\+Db@{get\+Id\+Db}}
+\index{get\+Id\+Db@{get\+Id\+Db}!Test@{Test}}
+\subsubsection{\texorpdfstring{get\+Id\+Db()}{getIdDb()}}
+{\footnotesize\ttfamily unsigned int Test\+::get\+Id\+Db (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Id\+Db method 
+
+\begin{DoxyReturn}{Returns}
+id from DB 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_test_a9dea10c897bfbd2a7fa669c1b49a4b80}\label{class_test_a9dea10c897bfbd2a7fa669c1b49a4b80}} 
+\index{Test@{Test}!get\+Number\+Of\+Questions@{get\+Number\+Of\+Questions}}
+\index{get\+Number\+Of\+Questions@{get\+Number\+Of\+Questions}!Test@{Test}}
+\subsubsection{\texorpdfstring{get\+Number\+Of\+Questions()}{getNumberOfQuestions()}}
+{\footnotesize\ttfamily int Test\+::get\+Number\+Of\+Questions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Number\+Of\+Questions method 
+
+\begin{DoxyReturn}{Returns}
+number of questions 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_test_a4ce90338ac98d4d152d2e50a98645d73}\label{class_test_a4ce90338ac98d4d152d2e50a98645d73}} 
+\index{Test@{Test}!get\+Question@{get\+Question}}
+\index{get\+Question@{get\+Question}!Test@{Test}}
+\subsubsection{\texorpdfstring{get\+Question()}{getQuestion()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ Test\+::get\+Question (\begin{DoxyParamCaption}\item[{unsigned int}]{id\+Db }\end{DoxyParamCaption})}
+
+
+
+get\+Question method 
+
+\begin{DoxyReturn}{Returns}
+pointer to question 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em id\+Db} & id from DB \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_test_a022aa62fa86d7436c33ba58f8e410389}\label{class_test_a022aa62fa86d7436c33ba58f8e410389}} 
+\index{Test@{Test}!get\+Test\+Name@{get\+Test\+Name}}
+\index{get\+Test\+Name@{get\+Test\+Name}!Test@{Test}}
+\subsubsection{\texorpdfstring{get\+Test\+Name()}{getTestName()}}
+{\footnotesize\ttfamily const Q\+String \& Test\+::get\+Test\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Test\+Name method 
+
+\begin{DoxyReturn}{Returns}
+test name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_test_a1c8e2f9b62f0643ca5e2e1484e996df6}\label{class_test_a1c8e2f9b62f0643ca5e2e1484e996df6}} 
+\index{Test@{Test}!get\+Test\+Owner@{get\+Test\+Owner}}
+\index{get\+Test\+Owner@{get\+Test\+Owner}!Test@{Test}}
+\subsubsection{\texorpdfstring{get\+Test\+Owner()}{getTestOwner()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ Test\+::get\+Test\+Owner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Test\+Owner method 
+
+\begin{DoxyReturn}{Returns}
+pointer to \hyperlink{class_user}{User} (test owner) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_test_a55f5d49e61340586c05e5b5099296af5}\label{class_test_a55f5d49e61340586c05e5b5099296af5}} 
+\index{Test@{Test}!modify\+Question@{modify\+Question}}
+\index{modify\+Question@{modify\+Question}!Test@{Test}}
+\subsubsection{\texorpdfstring{modify\+Question()}{modifyQuestion()}}
+{\footnotesize\ttfamily void Test\+::modify\+Question (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{const Q\+String \&}]{question,  }\item[{const Q\+String \&}]{answer }\end{DoxyParamCaption})}
+
+
+
+modify\+Question method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & question index to modify \\
+\hline
+{\em question} & question text \\
+\hline
+{\em answer} & answer text \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/include/logic/test.\+h\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/src/logic/test.\+cpp\end{DoxyCompactItemize}

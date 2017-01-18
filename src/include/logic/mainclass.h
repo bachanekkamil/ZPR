@@ -144,14 +144,14 @@ public:
       \param name new concrete test name
       \throws <MainClassException> { throws exception if adding new concrete test to data base was unsuccessful }
         */
-    void addNewConcreteTest(QString& name);
+    void addNewConcreteTest(QString name);
 
     //! deleteConcreteTest method
         /*!
       \param name name of test to be deleted
       \throws <MainClassException> { throws exception if deleting concrete test from data base was unsuccessful }
         */
-    void deleteConcreteTest(QString& name);
+    void deleteConcreteTest(QString name);
 
     //! getAvailableConcreteTests method
     /*!
@@ -178,7 +178,7 @@ public:
       \param name concrete test name
       \throws <MainClassException> { throws exception if there are no question to be answered this day  }
         */
-    void startConcreteTest(QString& name);
+    void startConcreteTest(QString name);
 
     //! endCurrentConcreteTest method
     /*!

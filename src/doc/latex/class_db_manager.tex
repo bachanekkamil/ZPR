@@ -1,0 +1,673 @@
+\hypertarget{class_db_manager}{}\section{Db\+Manager Class Reference}
+\label{class_db_manager}\index{Db\+Manager@{Db\+Manager}}
+
+
+Contains class used to create connection with D\+A\+T\+A\+B\+A\+SE and creates query to retrieve data and modify data.  
+
+
+
+
+{\ttfamily \#include $<$database.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_db_manager_ac5cdf8e5e932d1681ab807d8f256374c}{$\sim$\+Db\+Manager} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+bool \hyperlink{class_db_manager_ac04baba8f5d5197f8bcd9230393501de}{is\+Open} () const
+\begin{DoxyCompactList}\small\item\em is\+Open method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ \hyperlink{class_db_manager_afab938045b88229acbe9463f45289961}{add\+User} (const Q\+String \&name)
+\begin{DoxyCompactList}\small\item\em add\+User method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ \hyperlink{class_db_manager_aca4a4621da1651f4da64adddd9811cb1}{get\+User} (unsigned int id)
+\begin{DoxyCompactList}\small\item\em get\+User method \end{DoxyCompactList}\item 
+void \hyperlink{class_db_manager_a9a22cf827ee9cf0ba7b70ffea81c92e1}{remove\+User} (const Q\+String \&name)
+\begin{DoxyCompactList}\small\item\em remove\+User method \end{DoxyCompactList}\item 
+void \hyperlink{class_db_manager_ae9a11e4d2d53c2e4f63a835c43f2bab8}{remove\+User} (unsigned int id)
+\begin{DoxyCompactList}\small\item\em remove\+User method \end{DoxyCompactList}\item 
+bool \hyperlink{class_db_manager_aae0009d480007ab6bcd7cab246d1f6d8}{is\+User\+Exists} (const Q\+String \&name) const
+\begin{DoxyCompactList}\small\item\em is\+User\+Exists method \end{DoxyCompactList}\item 
+bool \hyperlink{class_db_manager_a19a6af3a00775430dd6083db3e79efdb}{is\+User\+Exists} (unsigned int id)
+\begin{DoxyCompactList}\small\item\em is\+User\+Exists method \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ $>$ \hyperlink{class_db_manager_a44c0415410d7bd27c7b0f1c0545b7a9c}{get\+All\+Users} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Users method \end{DoxyCompactList}\item 
+void \hyperlink{class_db_manager_ae88db6e7e58af05cb6da243fa1898398}{remove\+All\+Users} ()
+\begin{DoxyCompactList}\small\item\em remove\+All\+Users method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ \hyperlink{class_db_manager_a2e98860e52ef75cb949d244bded4c843}{add\+Test} (const Q\+String \&name, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ user)
+\begin{DoxyCompactList}\small\item\em add\+Test method \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ $>$ \hyperlink{class_db_manager_a8f581529cc754936b6a218723bc29d03}{get\+All\+Tests} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Tests method \end{DoxyCompactList}\item 
+void \hyperlink{class_db_manager_aad9f028c4b4754b1ac8fc133b0030b8e}{delete\+Test} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ test)
+\begin{DoxyCompactList}\small\item\em delete\+Test method \end{DoxyCompactList}\item 
+void \hyperlink{class_db_manager_a120137937bb81cd95b4445433b4ededc}{modify\+Test} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ test, const Q\+String \&name)
+\begin{DoxyCompactList}\small\item\em modify\+Test method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ \hyperlink{class_db_manager_ac703dfee1ede761a035076bdda1afb3a}{get\+Real\+Question} (unsigned long long id)
+\begin{DoxyCompactList}\small\item\em get\+Real\+Question method \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ $>$ \hyperlink{class_db_manager_a1b47ae876255a8aaee2d0cced76c83ab}{get\+All\+Question\+For\+Test} (unsigned int id)
+\begin{DoxyCompactList}\small\item\em get\+All\+Question\+For\+Test method \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_db_manager_aeae72a2221c4e01b1e6af1d5fef2facd}{add\+Question\+And\+Answer} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ test, Q\+String \&question\+\_\+text, Q\+String \&answer\+\_\+text)
+\begin{DoxyCompactList}\small\item\em add\+Question\+And\+Answer method \end{DoxyCompactList}\item 
+void \hyperlink{class_db_manager_aebcb87dba40f623d380310141714e837}{modify\+Question} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ question, Q\+String \&question\+\_\+text, Q\+String \&answer\+\_\+text)
+\begin{DoxyCompactList}\small\item\em modify\+Question method \end{DoxyCompactList}\item 
+void \hyperlink{class_db_manager_afd1ef019f752995c4b06f00c29b4ebdc}{delete\+Question} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ question)
+\begin{DoxyCompactList}\small\item\em delete\+Question method \end{DoxyCompactList}\item 
+void \hyperlink{class_db_manager_a1a68105f460a2c3bde0b8c97749588a9}{delete\+All\+Questions\+For\+Test} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ test)
+\begin{DoxyCompactList}\small\item\em delete\+All\+Questions\+For\+Test method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ \hyperlink{class_db_manager_afc16172b22f9c337dec284a49ec12b51}{add\+Concrete\+Test} (const Q\+String \&name, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ user, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ test)
+\begin{DoxyCompactList}\small\item\em add\+Concrete\+Test method \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ $>$ \hyperlink{class_db_manager_a78e619d59729619e3faaca7335b736c0}{get\+All\+Concrete\+Tests} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Concrete\+Tests method \end{DoxyCompactList}\item 
+void \hyperlink{class_db_manager_a3fa39305c4949868abcf131fc2dc25b8}{delete\+Concrete\+Test} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ test)
+\begin{DoxyCompactList}\small\item\em add\+Concrete\+Test method \end{DoxyCompactList}\item 
+void \hyperlink{class_db_manager_a2b2683ab2b91b3189538242c67f0bc45}{modify\+Concrete\+Test} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ test, const Q\+String \&name)
+\begin{DoxyCompactList}\small\item\em modify\+Concrete\+Test method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$ \hyperlink{class_db_manager_a055df452020e3af56d84cbec0a42baf9}{add\+Answer\+To\+Logs} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ conc\+\_\+test, std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ quest, unsigned short grade)
+\begin{DoxyCompactList}\small\item\em add\+Answer\+To\+Logs method \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$ $>$ \hyperlink{class_db_manager_a491adbd809f1a74913f4eb1b6e4497c9}{get\+Logs\+For\+Concrete\+Tests} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ conc\+\_\+test)
+\begin{DoxyCompactList}\small\item\em get\+Logs\+For\+Concrete\+Tests method \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$ $>$ \hyperlink{class_db_manager_af14965b28cc78d80bbf76bddf045e13c}{get\+Logs\+For\+Concrete\+Tests} (unsigned int concrete\+Test\+Id)
+\begin{DoxyCompactList}\small\item\em get\+Logs\+For\+Concrete\+Tests method \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_db_manager}{Db\+Manager} $\ast$ \hyperlink{class_db_manager_ab7a78daf74a668a26c4403a8c43ede3f}{get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em get\+Instance method \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains class used to create connection with D\+A\+T\+A\+B\+A\+SE and creates query to retrieve data and modify data. 
+
+\begin{DoxyAuthor}{Author}
+Kamil Bachanek\+Db\+Manager Class
+\end{DoxyAuthor}
+Class used to create connection with D\+A\+T\+A\+B\+A\+SE and creates query to retrieve data and modify data. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_db_manager_ac5cdf8e5e932d1681ab807d8f256374c}\label{class_db_manager_ac5cdf8e5e932d1681ab807d8f256374c}} 
+\index{Db\+Manager@{Db\+Manager}!````~Db\+Manager@{$\sim$\+Db\+Manager}}
+\index{````~Db\+Manager@{$\sim$\+Db\+Manager}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{$\sim$\+Db\+Manager()}{~DbManager()}}
+{\footnotesize\ttfamily Db\+Manager\+::$\sim$\+Db\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+Closes connection with DB 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_db_manager_a055df452020e3af56d84cbec0a42baf9}\label{class_db_manager_a055df452020e3af56d84cbec0a42baf9}} 
+\index{Db\+Manager@{Db\+Manager}!add\+Answer\+To\+Logs@{add\+Answer\+To\+Logs}}
+\index{add\+Answer\+To\+Logs@{add\+Answer\+To\+Logs}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{add\+Answer\+To\+Logs()}{addAnswerToLogs()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$ Db\+Manager\+::add\+Answer\+To\+Logs (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$}]{conc\+\_\+test,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$}]{quest,  }\item[{unsigned short}]{grade }\end{DoxyParamCaption})}
+
+
+
+add\+Answer\+To\+Logs method 
+
+\begin{DoxyReturn}{Returns}
+pointer to \hyperlink{class_concrete_test}{Concrete\+Test} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em conc\+\_\+test} & pointer to \hyperlink{class_concrete_test}{Concrete\+Test} \\
+\hline
+{\em quest} & pointer to \hyperlink{class_question}{Question} \\
+\hline
+{\em grade} & answer grade \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_afc16172b22f9c337dec284a49ec12b51}\label{class_db_manager_afc16172b22f9c337dec284a49ec12b51}} 
+\index{Db\+Manager@{Db\+Manager}!add\+Concrete\+Test@{add\+Concrete\+Test}}
+\index{add\+Concrete\+Test@{add\+Concrete\+Test}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{add\+Concrete\+Test()}{addConcreteTest()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ Db\+Manager\+::add\+Concrete\+Test (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$}]{user,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$}]{test }\end{DoxyParamCaption})}
+
+
+
+add\+Concrete\+Test method 
+
+\begin{DoxyReturn}{Returns}
+pointer to \hyperlink{class_concrete_test}{Concrete\+Test} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em question} & pointer to \hyperlink{class_test}{Test} \\
+\hline
+{\em user} & pointer to \hyperlink{class_user}{User} (owner of concrete test) \\
+\hline
+{\em test} & pointer to \hyperlink{class_test}{Test} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_aeae72a2221c4e01b1e6af1d5fef2facd}\label{class_db_manager_aeae72a2221c4e01b1e6af1d5fef2facd}} 
+\index{Db\+Manager@{Db\+Manager}!add\+Question\+And\+Answer@{add\+Question\+And\+Answer}}
+\index{add\+Question\+And\+Answer@{add\+Question\+And\+Answer}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{add\+Question\+And\+Answer()}{addQuestionAndAnswer()}}
+{\footnotesize\ttfamily unsigned int Db\+Manager\+::add\+Question\+And\+Answer (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$}]{test,  }\item[{Q\+String \&}]{question\+\_\+text,  }\item[{Q\+String \&}]{answer\+\_\+text }\end{DoxyParamCaption})}
+
+
+
+add\+Question\+And\+Answer method 
+
+\begin{DoxyReturn}{Returns}
+id qustion from DB 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em test} & pionter to \hyperlink{class_test}{Test} \\
+\hline
+{\em question\+\_\+text} & quesstion text \\
+\hline
+{\em answer\+\_\+text} & answer text \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_a2e98860e52ef75cb949d244bded4c843}\label{class_db_manager_a2e98860e52ef75cb949d244bded4c843}} 
+\index{Db\+Manager@{Db\+Manager}!add\+Test@{add\+Test}}
+\index{add\+Test@{add\+Test}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{add\+Test()}{addTest()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ Db\+Manager\+::add\+Test (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$}]{user }\end{DoxyParamCaption})}
+
+
+
+add\+Test method 
+
+Used to add new test \begin{DoxyReturn}{Returns}
+pointer to \hyperlink{class_test}{Test} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em name} & test name \\
+\hline
+{\em user} & pointer to \hyperlink{class_user}{User} (owner of \hyperlink{class_test}{Test}) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_afab938045b88229acbe9463f45289961}\label{class_db_manager_afab938045b88229acbe9463f45289961}} 
+\index{Db\+Manager@{Db\+Manager}!add\+User@{add\+User}}
+\index{add\+User@{add\+User}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{add\+User()}{addUser()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ Db\+Manager\+::add\+User (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name }\end{DoxyParamCaption})}
+
+
+
+add\+User method 
+
+\begin{DoxyReturn}{Returns}
+pointer to \hyperlink{class_user}{User} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em name} & user name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_a1a68105f460a2c3bde0b8c97749588a9}\label{class_db_manager_a1a68105f460a2c3bde0b8c97749588a9}} 
+\index{Db\+Manager@{Db\+Manager}!delete\+All\+Questions\+For\+Test@{delete\+All\+Questions\+For\+Test}}
+\index{delete\+All\+Questions\+For\+Test@{delete\+All\+Questions\+For\+Test}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{delete\+All\+Questions\+For\+Test()}{deleteAllQuestionsForTest()}}
+{\footnotesize\ttfamily void Db\+Manager\+::delete\+All\+Questions\+For\+Test (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$}]{test }\end{DoxyParamCaption})}
+
+
+
+delete\+All\+Questions\+For\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test} & pointer to \hyperlink{class_test}{Test} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_a3fa39305c4949868abcf131fc2dc25b8}\label{class_db_manager_a3fa39305c4949868abcf131fc2dc25b8}} 
+\index{Db\+Manager@{Db\+Manager}!delete\+Concrete\+Test@{delete\+Concrete\+Test}}
+\index{delete\+Concrete\+Test@{delete\+Concrete\+Test}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{delete\+Concrete\+Test()}{deleteConcreteTest()}}
+{\footnotesize\ttfamily void Db\+Manager\+::delete\+Concrete\+Test (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$}]{test }\end{DoxyParamCaption})}
+
+
+
+add\+Concrete\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test} & pointer to \hyperlink{class_concrete_test}{Concrete\+Test} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_afd1ef019f752995c4b06f00c29b4ebdc}\label{class_db_manager_afd1ef019f752995c4b06f00c29b4ebdc}} 
+\index{Db\+Manager@{Db\+Manager}!delete\+Question@{delete\+Question}}
+\index{delete\+Question@{delete\+Question}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{delete\+Question()}{deleteQuestion()}}
+{\footnotesize\ttfamily void Db\+Manager\+::delete\+Question (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$}]{question }\end{DoxyParamCaption})}
+
+
+
+delete\+Question method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em question} & pointer to \hyperlink{class_question}{Question} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_aad9f028c4b4754b1ac8fc133b0030b8e}\label{class_db_manager_aad9f028c4b4754b1ac8fc133b0030b8e}} 
+\index{Db\+Manager@{Db\+Manager}!delete\+Test@{delete\+Test}}
+\index{delete\+Test@{delete\+Test}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{delete\+Test()}{deleteTest()}}
+{\footnotesize\ttfamily void Db\+Manager\+::delete\+Test (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$}]{test }\end{DoxyParamCaption})}
+
+
+
+delete\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test} & pointer to \hyperlink{class_test}{Test} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_a78e619d59729619e3faaca7335b736c0}\label{class_db_manager_a78e619d59729619e3faaca7335b736c0}} 
+\index{Db\+Manager@{Db\+Manager}!get\+All\+Concrete\+Tests@{get\+All\+Concrete\+Tests}}
+\index{get\+All\+Concrete\+Tests@{get\+All\+Concrete\+Tests}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{get\+All\+Concrete\+Tests()}{getAllConcreteTests()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ $>$ Db\+Manager\+::get\+All\+Concrete\+Tests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+All\+Concrete\+Tests method 
+
+\begin{DoxyReturn}{Returns}
+vector with pointers to \hyperlink{class_concrete_test}{Concrete\+Test} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_a1b47ae876255a8aaee2d0cced76c83ab}\label{class_db_manager_a1b47ae876255a8aaee2d0cced76c83ab}} 
+\index{Db\+Manager@{Db\+Manager}!get\+All\+Question\+For\+Test@{get\+All\+Question\+For\+Test}}
+\index{get\+All\+Question\+For\+Test@{get\+All\+Question\+For\+Test}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{get\+All\+Question\+For\+Test()}{getAllQuestionForTest()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ $>$ Db\+Manager\+::get\+All\+Question\+For\+Test (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+get\+All\+Question\+For\+Test method 
+
+\begin{DoxyReturn}{Returns}
+pointer to \hyperlink{class_question_proxy}{Question\+Proxy} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & id test from DB \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_a8f581529cc754936b6a218723bc29d03}\label{class_db_manager_a8f581529cc754936b6a218723bc29d03}} 
+\index{Db\+Manager@{Db\+Manager}!get\+All\+Tests@{get\+All\+Tests}}
+\index{get\+All\+Tests@{get\+All\+Tests}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{get\+All\+Tests()}{getAllTests()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ $>$ Db\+Manager\+::get\+All\+Tests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+All\+Tests method 
+
+\begin{DoxyReturn}{Returns}
+vector with pointers to \hyperlink{class_test}{Test} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_a44c0415410d7bd27c7b0f1c0545b7a9c}\label{class_db_manager_a44c0415410d7bd27c7b0f1c0545b7a9c}} 
+\index{Db\+Manager@{Db\+Manager}!get\+All\+Users@{get\+All\+Users}}
+\index{get\+All\+Users@{get\+All\+Users}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{get\+All\+Users()}{getAllUsers()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ $>$ Db\+Manager\+::get\+All\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+All\+Users method 
+
+\begin{DoxyReturn}{Returns}
+vector with all users 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_ab7a78daf74a668a26c4403a8c43ede3f}\label{class_db_manager_ab7a78daf74a668a26c4403a8c43ede3f}} 
+\index{Db\+Manager@{Db\+Manager}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{get\+Instance()}{getInstance()}}
+{\footnotesize\ttfamily static \hyperlink{class_db_manager}{Db\+Manager}$\ast$ Db\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+get\+Instance method 
+
+Impelements signleton design pattern \mbox{\Hypertarget{class_db_manager_a491adbd809f1a74913f4eb1b6e4497c9}\label{class_db_manager_a491adbd809f1a74913f4eb1b6e4497c9}} 
+\index{Db\+Manager@{Db\+Manager}!get\+Logs\+For\+Concrete\+Tests@{get\+Logs\+For\+Concrete\+Tests}}
+\index{get\+Logs\+For\+Concrete\+Tests@{get\+Logs\+For\+Concrete\+Tests}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{get\+Logs\+For\+Concrete\+Tests()}{getLogsForConcreteTests()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$ $>$ Db\+Manager\+::get\+Logs\+For\+Concrete\+Tests (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$}]{conc\+\_\+test }\end{DoxyParamCaption})}
+
+
+
+get\+Logs\+For\+Concrete\+Tests method 
+
+\begin{DoxyReturn}{Returns}
+vevtor with pointers to \hyperlink{class_old_user_answer}{Old\+User\+Answer} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em conc\+\_\+test} & pointer to \hyperlink{class_concrete_test}{Concrete\+Test} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_af14965b28cc78d80bbf76bddf045e13c}\label{class_db_manager_af14965b28cc78d80bbf76bddf045e13c}} 
+\index{Db\+Manager@{Db\+Manager}!get\+Logs\+For\+Concrete\+Tests@{get\+Logs\+For\+Concrete\+Tests}}
+\index{get\+Logs\+For\+Concrete\+Tests@{get\+Logs\+For\+Concrete\+Tests}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{get\+Logs\+For\+Concrete\+Tests()}{getLogsForConcreteTests()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$ $>$ Db\+Manager\+::get\+Logs\+For\+Concrete\+Tests (\begin{DoxyParamCaption}\item[{unsigned int}]{concrete\+Test\+Id }\end{DoxyParamCaption})}
+
+
+
+get\+Logs\+For\+Concrete\+Tests method 
+
+\begin{DoxyReturn}{Returns}
+vevtor with pointers to \hyperlink{class_old_user_answer}{Old\+User\+Answer} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em concrete\+Test\+Id} & id concrete\+Test from DB \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_ac703dfee1ede761a035076bdda1afb3a}\label{class_db_manager_ac703dfee1ede761a035076bdda1afb3a}} 
+\index{Db\+Manager@{Db\+Manager}!get\+Real\+Question@{get\+Real\+Question}}
+\index{get\+Real\+Question@{get\+Real\+Question}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{get\+Real\+Question()}{getRealQuestion()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ Db\+Manager\+::get\+Real\+Question (\begin{DoxyParamCaption}\item[{unsigned long long}]{id }\end{DoxyParamCaption})}
+
+
+
+get\+Real\+Question method 
+
+\begin{DoxyReturn}{Returns}
+pointer to \hyperlink{class_question_real}{Question\+Real} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & id question from DB \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_aca4a4621da1651f4da64adddd9811cb1}\label{class_db_manager_aca4a4621da1651f4da64adddd9811cb1}} 
+\index{Db\+Manager@{Db\+Manager}!get\+User@{get\+User}}
+\index{get\+User@{get\+User}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{get\+User()}{getUser()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ Db\+Manager\+::get\+User (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+get\+User method 
+
+\begin{DoxyReturn}{Returns}
+pointer to \hyperlink{class_user}{User} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID from DB \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_ac04baba8f5d5197f8bcd9230393501de}\label{class_db_manager_ac04baba8f5d5197f8bcd9230393501de}} 
+\index{Db\+Manager@{Db\+Manager}!is\+Open@{is\+Open}}
+\index{is\+Open@{is\+Open}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{is\+Open()}{isOpen()}}
+{\footnotesize\ttfamily bool Db\+Manager\+::is\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+is\+Open method 
+
+\begin{DoxyReturn}{Returns}
+true if database is open 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_db_manager_aae0009d480007ab6bcd7cab246d1f6d8}\label{class_db_manager_aae0009d480007ab6bcd7cab246d1f6d8}} 
+\index{Db\+Manager@{Db\+Manager}!is\+User\+Exists@{is\+User\+Exists}}
+\index{is\+User\+Exists@{is\+User\+Exists}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{is\+User\+Exists()}{isUserExists()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Db\+Manager\+::is\+User\+Exists (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+is\+User\+Exists method 
+
+\begin{DoxyReturn}{Returns}
+true if user exists 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em name} & user name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_a19a6af3a00775430dd6083db3e79efdb}\label{class_db_manager_a19a6af3a00775430dd6083db3e79efdb}} 
+\index{Db\+Manager@{Db\+Manager}!is\+User\+Exists@{is\+User\+Exists}}
+\index{is\+User\+Exists@{is\+User\+Exists}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{is\+User\+Exists()}{isUserExists()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Db\+Manager\+::is\+User\+Exists (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+is\+User\+Exists method 
+
+\begin{DoxyReturn}{Returns}
+true if user exists 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & user ID from DB \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_a2b2683ab2b91b3189538242c67f0bc45}\label{class_db_manager_a2b2683ab2b91b3189538242c67f0bc45}} 
+\index{Db\+Manager@{Db\+Manager}!modify\+Concrete\+Test@{modify\+Concrete\+Test}}
+\index{modify\+Concrete\+Test@{modify\+Concrete\+Test}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{modify\+Concrete\+Test()}{modifyConcreteTest()}}
+{\footnotesize\ttfamily void Db\+Manager\+::modify\+Concrete\+Test (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$}]{test,  }\item[{const Q\+String \&}]{name }\end{DoxyParamCaption})}
+
+
+
+modify\+Concrete\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test} & pointer to \hyperlink{class_concrete_test}{Concrete\+Test} \\
+\hline
+{\em name} & new name for Concre\+Test \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_aebcb87dba40f623d380310141714e837}\label{class_db_manager_aebcb87dba40f623d380310141714e837}} 
+\index{Db\+Manager@{Db\+Manager}!modify\+Question@{modify\+Question}}
+\index{modify\+Question@{modify\+Question}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{modify\+Question()}{modifyQuestion()}}
+{\footnotesize\ttfamily void Db\+Manager\+::modify\+Question (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$}]{question,  }\item[{Q\+String \&}]{question\+\_\+text,  }\item[{Q\+String \&}]{answer\+\_\+text }\end{DoxyParamCaption})}
+
+
+
+modify\+Question method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em question} & pointer to \hyperlink{class_question}{Question} \\
+\hline
+{\em question\+\_\+text} & quesstion text \\
+\hline
+{\em answer\+\_\+text} & answer text \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_a120137937bb81cd95b4445433b4ededc}\label{class_db_manager_a120137937bb81cd95b4445433b4ededc}} 
+\index{Db\+Manager@{Db\+Manager}!modify\+Test@{modify\+Test}}
+\index{modify\+Test@{modify\+Test}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{modify\+Test()}{modifyTest()}}
+{\footnotesize\ttfamily void Db\+Manager\+::modify\+Test (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$}]{test,  }\item[{const Q\+String \&}]{name }\end{DoxyParamCaption})}
+
+
+
+modify\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test} & pointer to \hyperlink{class_test}{Test} \\
+\hline
+{\em name} & new test name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_ae88db6e7e58af05cb6da243fa1898398}\label{class_db_manager_ae88db6e7e58af05cb6da243fa1898398}} 
+\index{Db\+Manager@{Db\+Manager}!remove\+All\+Users@{remove\+All\+Users}}
+\index{remove\+All\+Users@{remove\+All\+Users}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{remove\+All\+Users()}{removeAllUsers()}}
+{\footnotesize\ttfamily void Db\+Manager\+::remove\+All\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+remove\+All\+Users method 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_a9a22cf827ee9cf0ba7b70ffea81c92e1}\label{class_db_manager_a9a22cf827ee9cf0ba7b70ffea81c92e1}} 
+\index{Db\+Manager@{Db\+Manager}!remove\+User@{remove\+User}}
+\index{remove\+User@{remove\+User}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{remove\+User()}{removeUser()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Db\+Manager\+::remove\+User (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name }\end{DoxyParamCaption})}
+
+
+
+remove\+User method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_db_manager_ae9a11e4d2d53c2e4f63a835c43f2bab8}\label{class_db_manager_ae9a11e4d2d53c2e4f63a835c43f2bab8}} 
+\index{Db\+Manager@{Db\+Manager}!remove\+User@{remove\+User}}
+\index{remove\+User@{remove\+User}!Db\+Manager@{Db\+Manager}}
+\subsubsection{\texorpdfstring{remove\+User()}{removeUser()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Db\+Manager\+::remove\+User (\begin{DoxyParamCaption}\item[{unsigned int}]{id }\end{DoxyParamCaption})}
+
+
+
+remove\+User method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & id from DB \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Database\+Exception$>$} & \{ throws exception if query was failed or wrong parameter/aparameters were passed \} \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/include/logic/database.\+h\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/src/logic/database.\+cpp\end{DoxyCompactItemize}

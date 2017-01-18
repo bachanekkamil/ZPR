@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains OldUserAnswer Class used to stores data about historical answers.
+  \author Kamil Bachanek
+*/
+
 #ifndef OLDUSERANSWER_H
 #define OLDUSERANSWER_H
 #include <vector>

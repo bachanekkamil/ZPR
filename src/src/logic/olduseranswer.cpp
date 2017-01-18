@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains OldUserAnswer Class methods implementation used to stores data about historical answers.
+  \author Kamil Bachanek
+*/
+
 #include "logic/olduseranswer.h"
 
 OldUserAnswer::OldUserAnswer(long long idDb, QDateTime dateTimeCreated, std::shared_ptr<Question> question, unsigned short grade, double factor):

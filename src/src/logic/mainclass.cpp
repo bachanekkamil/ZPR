@@ -212,7 +212,7 @@ std::shared_ptr<Question> MainClass::getQuestion(long long id_db)
     return nullptr;
 }
 
-void MainClass::addNewConcreteTest(QString& name){
+void MainClass::addNewConcreteTest(QString name){
 
     bool concrete_test_already_exist=false;
     foreach(std::shared_ptr<ConcreteTest> test, mConcreteTests)
@@ -247,7 +247,7 @@ void MainClass::addNewConcreteTest(QString& name){
 
 }
 
-void MainClass::deleteConcreteTest(QString& name){
+void MainClass::deleteConcreteTest(QString name){
 
     for (std::vector<std::shared_ptr<ConcreteTest>>::iterator it = mConcreteTests.begin(); it != mConcreteTests.end(); ++it){
         if((name.compare((*it)->getTestName())==0) && (*it)->getTestOwner()->getIdDb()==mUser->getIdDb()){
@@ -297,7 +297,7 @@ void MainClass::addAnswerToCurrentConcreteTest(unsigned int question_id, unsigne
     }
 }
 
-void MainClass::startConcreteTest(QString& name){
+void MainClass::startConcreteTest(QString name){
     foreach(std::shared_ptr<ConcreteTest> test, mConcreteTests)
     {
         if(test->getTestOwner()->getIdDb()==mUser->getIdDb() && test->getTestName()==name){

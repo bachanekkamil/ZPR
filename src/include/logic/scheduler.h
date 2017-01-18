@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class Scheduler - Stores info about date when user should answer the question
+  \author Kamil Bachanek
+*/
+
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 #include <QDate>

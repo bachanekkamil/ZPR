@@ -1,0 +1,219 @@
+\hypertarget{class_concrete_test}{}\section{Concrete\+Test Class Reference}
+\label{class_concrete_test}\index{Concrete\+Test@{Concrete\+Test}}
+
+
+Concrete test class.  
+
+
+
+
+{\ttfamily \#include $<$concretetest.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_concrete_test_a2604f3d0a17c6673b906d8e89f9ddbd6}{Concrete\+Test} (unsigned int id, std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ test, std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ user, Q\+String name, Q\+Date\+Time date, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$$>$ old\+User\+Answers)
+\begin{DoxyCompactList}\small\item\em A \hyperlink{class_concrete_test}{Concrete\+Test} constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_concrete_test_ac87522c67935f77fd3484646b7759c70}{$\sim$\+Concrete\+Test} ()
+\begin{DoxyCompactList}\small\item\em A \hyperlink{class_concrete_test}{Concrete\+Test} destructor. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ \hyperlink{class_concrete_test_a09e88f4984fed654de6f469515a26bcf}{get\+Test\+Owner} () const
+\begin{DoxyCompactList}\small\item\em get\+Test\+Owner memhod \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ \hyperlink{class_concrete_test_a1cd1879a0356b614266e5cd7bcbe4ff4}{get\+Test} () const
+\begin{DoxyCompactList}\small\item\em get\+Test method \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_concrete_test_a204ab380ffaa5ac54e3cd25906b28cd5}{get\+Test\+Name} () const
+\begin{DoxyCompactList}\small\item\em get\+Test\+Name method \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_concrete_test_ad329e296cf5766cd2086fa2855dab307}{get\+Id\+Db} () const
+\begin{DoxyCompactList}\small\item\em get\+Id\+Db method \end{DoxyCompactList}\item 
+Q\+Date\+Time \hyperlink{class_concrete_test_af8d78edb5c195117a73b7fb84001893b}{get\+Time\+Created} () const
+\begin{DoxyCompactList}\small\item\em get\+Time\+Created method \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$ $>$ \hyperlink{class_concrete_test_a8e6c9bf328a786008c262377cfae574e}{get\+All\+Old\+Answers} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Old\+Answers method \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ $>$ \hyperlink{class_concrete_test_a718d41cba48881c2b9e4193bcff5ae02}{get\+Questions\+For\+Today} ()
+\begin{DoxyCompactList}\small\item\em get\+Questions\+For\+Today method \end{DoxyCompactList}\item 
+void \hyperlink{class_concrete_test_a462ecfa38659f9deba5500a4ea240b15}{refresh\+Answers} ()
+\begin{DoxyCompactList}\small\item\em refresh\+Answers method \end{DoxyCompactList}\item 
+void \hyperlink{class_concrete_test_a3e2e540b83471c5b6e42e3ad7e0c3b14}{add\+New\+Answer} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$ oua)
+\begin{DoxyCompactList}\small\item\em add\+New\+Answer method \end{DoxyCompactList}\item 
+Q\+Date \hyperlink{class_concrete_test_a1e562cde6482e0ae4d63a718c55e0fa4}{get\+Date\+For\+Next\+Test} ()
+\begin{DoxyCompactList}\small\item\em get\+Date\+For\+Next\+Test \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Concrete test class. 
+
+Class related to concrete instance of test (linked to user and done answers). 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_concrete_test_a2604f3d0a17c6673b906d8e89f9ddbd6}\label{class_concrete_test_a2604f3d0a17c6673b906d8e89f9ddbd6}} 
+\index{Concrete\+Test@{Concrete\+Test}!Concrete\+Test@{Concrete\+Test}}
+\index{Concrete\+Test@{Concrete\+Test}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{Concrete\+Test()}{ConcreteTest()}}
+{\footnotesize\ttfamily Concrete\+Test\+::\+Concrete\+Test (\begin{DoxyParamCaption}\item[{unsigned int}]{id,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$}]{test,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$}]{user,  }\item[{Q\+String}]{name,  }\item[{Q\+Date\+Time}]{date,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$$>$}]{old\+User\+Answers }\end{DoxyParamCaption})}
+
+
+
+A \hyperlink{class_concrete_test}{Concrete\+Test} constructor. 
+
+Contains class methods related to concrete instance of test (linked to user and done answers).
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID from DB \\
+\hline
+{\em test} & pointer to \hyperlink{class_test}{Test} class \\
+\hline
+{\em user} & pointer to user (owner of \hyperlink{class_concrete_test}{Concrete\+Test}) \\
+\hline
+{\em name} & name of test \\
+\hline
+{\em date} & datetime when test was created \\
+\hline
+{\em old\+User\+Answers} & vector with pointers to old user answer for this test\\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Kamil Bachanek 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{class_concrete_test_ac87522c67935f77fd3484646b7759c70}\label{class_concrete_test_ac87522c67935f77fd3484646b7759c70}} 
+\index{Concrete\+Test@{Concrete\+Test}!````~Concrete\+Test@{$\sim$\+Concrete\+Test}}
+\index{````~Concrete\+Test@{$\sim$\+Concrete\+Test}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{$\sim$\+Concrete\+Test()}{~ConcreteTest()}}
+{\footnotesize\ttfamily Concrete\+Test\+::$\sim$\+Concrete\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A \hyperlink{class_concrete_test}{Concrete\+Test} destructor. 
+
+Deletes m\+Scheduler 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_concrete_test_a3e2e540b83471c5b6e42e3ad7e0c3b14}\label{class_concrete_test_a3e2e540b83471c5b6e42e3ad7e0c3b14}} 
+\index{Concrete\+Test@{Concrete\+Test}!add\+New\+Answer@{add\+New\+Answer}}
+\index{add\+New\+Answer@{add\+New\+Answer}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{add\+New\+Answer()}{addNewAnswer()}}
+{\footnotesize\ttfamily void Concrete\+Test\+::add\+New\+Answer (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$}]{oua }\end{DoxyParamCaption})}
+
+
+
+add\+New\+Answer method 
+
+Add new answer to be stored in vector \mbox{\Hypertarget{class_concrete_test_a8e6c9bf328a786008c262377cfae574e}\label{class_concrete_test_a8e6c9bf328a786008c262377cfae574e}} 
+\index{Concrete\+Test@{Concrete\+Test}!get\+All\+Old\+Answers@{get\+All\+Old\+Answers}}
+\index{get\+All\+Old\+Answers@{get\+All\+Old\+Answers}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{get\+All\+Old\+Answers()}{getAllOldAnswers()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_old_user_answer}{Old\+User\+Answer} $>$ $>$ Concrete\+Test\+::get\+All\+Old\+Answers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+All\+Old\+Answers method 
+
+\begin{DoxyReturn}{Returns}
+vector with all \hyperlink{class_old_user_answer}{Old\+User\+Answer} for this test 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_concrete_test_a1e562cde6482e0ae4d63a718c55e0fa4}\label{class_concrete_test_a1e562cde6482e0ae4d63a718c55e0fa4}} 
+\index{Concrete\+Test@{Concrete\+Test}!get\+Date\+For\+Next\+Test@{get\+Date\+For\+Next\+Test}}
+\index{get\+Date\+For\+Next\+Test@{get\+Date\+For\+Next\+Test}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{get\+Date\+For\+Next\+Test()}{getDateForNextTest()}}
+{\footnotesize\ttfamily Q\+Date Concrete\+Test\+::get\+Date\+For\+Next\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Date\+For\+Next\+Test 
+
+\begin{DoxyReturn}{Returns}
+Get the nearest date for next test 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_concrete_test_ad329e296cf5766cd2086fa2855dab307}\label{class_concrete_test_ad329e296cf5766cd2086fa2855dab307}} 
+\index{Concrete\+Test@{Concrete\+Test}!get\+Id\+Db@{get\+Id\+Db}}
+\index{get\+Id\+Db@{get\+Id\+Db}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{get\+Id\+Db()}{getIdDb()}}
+{\footnotesize\ttfamily unsigned int Concrete\+Test\+::get\+Id\+Db (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Id\+Db method 
+
+\begin{DoxyReturn}{Returns}
+ID concrete test from DB 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_concrete_test_a718d41cba48881c2b9e4193bcff5ae02}\label{class_concrete_test_a718d41cba48881c2b9e4193bcff5ae02}} 
+\index{Concrete\+Test@{Concrete\+Test}!get\+Questions\+For\+Today@{get\+Questions\+For\+Today}}
+\index{get\+Questions\+For\+Today@{get\+Questions\+For\+Today}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{get\+Questions\+For\+Today()}{getQuestionsForToday()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ $>$ Concrete\+Test\+::get\+Questions\+For\+Today (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Questions\+For\+Today method 
+
+\begin{DoxyReturn}{Returns}
+vector with questions which should be solved today 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_concrete_test_a1cd1879a0356b614266e5cd7bcbe4ff4}\label{class_concrete_test_a1cd1879a0356b614266e5cd7bcbe4ff4}} 
+\index{Concrete\+Test@{Concrete\+Test}!get\+Test@{get\+Test}}
+\index{get\+Test@{get\+Test}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{get\+Test()}{getTest()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ Concrete\+Test\+::get\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Test method 
+
+\begin{DoxyReturn}{Returns}
+pointer to \hyperlink{class_test}{Test} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_concrete_test_a204ab380ffaa5ac54e3cd25906b28cd5}\label{class_concrete_test_a204ab380ffaa5ac54e3cd25906b28cd5}} 
+\index{Concrete\+Test@{Concrete\+Test}!get\+Test\+Name@{get\+Test\+Name}}
+\index{get\+Test\+Name@{get\+Test\+Name}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{get\+Test\+Name()}{getTestName()}}
+{\footnotesize\ttfamily Q\+String Concrete\+Test\+::get\+Test\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Test\+Name method 
+
+\begin{DoxyReturn}{Returns}
+test name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_concrete_test_a09e88f4984fed654de6f469515a26bcf}\label{class_concrete_test_a09e88f4984fed654de6f469515a26bcf}} 
+\index{Concrete\+Test@{Concrete\+Test}!get\+Test\+Owner@{get\+Test\+Owner}}
+\index{get\+Test\+Owner@{get\+Test\+Owner}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{get\+Test\+Owner()}{getTestOwner()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ Concrete\+Test\+::get\+Test\+Owner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Test\+Owner memhod 
+
+\begin{DoxyReturn}{Returns}
+pointer to owner of this test 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_concrete_test_af8d78edb5c195117a73b7fb84001893b}\label{class_concrete_test_af8d78edb5c195117a73b7fb84001893b}} 
+\index{Concrete\+Test@{Concrete\+Test}!get\+Time\+Created@{get\+Time\+Created}}
+\index{get\+Time\+Created@{get\+Time\+Created}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{get\+Time\+Created()}{getTimeCreated()}}
+{\footnotesize\ttfamily Q\+Date\+Time Concrete\+Test\+::get\+Time\+Created (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Time\+Created method 
+
+\begin{DoxyReturn}{Returns}
+datetime when test was created 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_concrete_test_a462ecfa38659f9deba5500a4ea240b15}\label{class_concrete_test_a462ecfa38659f9deba5500a4ea240b15}} 
+\index{Concrete\+Test@{Concrete\+Test}!refresh\+Answers@{refresh\+Answers}}
+\index{refresh\+Answers@{refresh\+Answers}!Concrete\+Test@{Concrete\+Test}}
+\subsubsection{\texorpdfstring{refresh\+Answers()}{refreshAnswers()}}
+{\footnotesize\ttfamily void Concrete\+Test\+::refresh\+Answers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+refresh\+Answers method 
+
+Creates new scheduler 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/include/logic/concretetest.\+h\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/src/logic/concretetest.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,139 @@
+\hypertarget{class_old_user_answer}{}\section{Old\+User\+Answer Class Reference}
+\label{class_old_user_answer}\index{Old\+User\+Answer@{Old\+User\+Answer}}
+
+
+Contains \hyperlink{class_old_user_answer}{Old\+User\+Answer} Class used to stores data about historical answers.  
+
+
+
+
+{\ttfamily \#include $<$olduseranswer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_old_user_answer_a5054b14e998e9bbee9876dd2bc824283}{Old\+User\+Answer} (long long id\+Db, Q\+Date\+Time date\+Time\+Created, std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ question, unsigned short grade, double factor)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_question_proxy}{Question\+Proxy} constructor. \end{DoxyCompactList}\item 
+long long \hyperlink{class_old_user_answer_a73670422ab34dd57ee78846c08f48ed3}{get\+Id\+Db} () const
+\begin{DoxyCompactList}\small\item\em get\+Id\+Db method \end{DoxyCompactList}\item 
+const std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ \hyperlink{class_old_user_answer_a392760df6f3609a2d8a70b073135d1f0}{get\+Question} () const
+\begin{DoxyCompactList}\small\item\em get\+Question method \end{DoxyCompactList}\item 
+const Q\+Date\+Time $\ast$ \hyperlink{class_old_user_answer_aa731331582341ab7bce7d558d4c10ddd}{get\+Date\+Time\+Created} () const
+\begin{DoxyCompactList}\small\item\em get\+Question method \end{DoxyCompactList}\item 
+unsigned short \hyperlink{class_old_user_answer_ac5a1402d4a962a5001493fdb3c30a287}{get\+Grade} () const
+\begin{DoxyCompactList}\small\item\em get\+Question method \end{DoxyCompactList}\item 
+double \hyperlink{class_old_user_answer_a2efbda41f588dee155655b9c1e99b63a}{get\+Factor} () const
+\begin{DoxyCompactList}\small\item\em get\+Question method \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains \hyperlink{class_old_user_answer}{Old\+User\+Answer} Class used to stores data about historical answers. 
+
+\begin{DoxyAuthor}{Author}
+Kamil Bachanekclass \hyperlink{class_old_user_answer}{Old\+User\+Answer}
+\end{DoxyAuthor}
+Stores data about historical answers. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_old_user_answer_a5054b14e998e9bbee9876dd2bc824283}\label{class_old_user_answer_a5054b14e998e9bbee9876dd2bc824283}} 
+\index{Old\+User\+Answer@{Old\+User\+Answer}!Old\+User\+Answer@{Old\+User\+Answer}}
+\index{Old\+User\+Answer@{Old\+User\+Answer}!Old\+User\+Answer@{Old\+User\+Answer}}
+\subsubsection{\texorpdfstring{Old\+User\+Answer()}{OldUserAnswer()}}
+{\footnotesize\ttfamily Old\+User\+Answer\+::\+Old\+User\+Answer (\begin{DoxyParamCaption}\item[{long long}]{id\+Db,  }\item[{Q\+Date\+Time}]{date\+Time\+Created,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$}]{question,  }\item[{unsigned short}]{grade,  }\item[{double}]{factor }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_question_proxy}{Question\+Proxy} constructor. 
+
+Contains \hyperlink{class_old_user_answer}{Old\+User\+Answer} Class methods implementation used to stores data about historical answers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+Db} & id (Logs table) from DB \\
+\hline
+{\em date\+Time\+Created} & datetime when user answered \\
+\hline
+{\em question} & pointer to \hyperlink{class_question}{Question} \\
+\hline
+{\em grade} & grade for this answer \\
+\hline
+{\em factor} & last factor for this question (related to Super\+Memo algorithm)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Kamil Bachanek 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_old_user_answer_aa731331582341ab7bce7d558d4c10ddd}\label{class_old_user_answer_aa731331582341ab7bce7d558d4c10ddd}} 
+\index{Old\+User\+Answer@{Old\+User\+Answer}!get\+Date\+Time\+Created@{get\+Date\+Time\+Created}}
+\index{get\+Date\+Time\+Created@{get\+Date\+Time\+Created}!Old\+User\+Answer@{Old\+User\+Answer}}
+\subsubsection{\texorpdfstring{get\+Date\+Time\+Created()}{getDateTimeCreated()}}
+{\footnotesize\ttfamily const Q\+Date\+Time $\ast$ Old\+User\+Answer\+::get\+Date\+Time\+Created (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Question method 
+
+\begin{DoxyReturn}{Returns}
+datetime when user answered 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_old_user_answer_a2efbda41f588dee155655b9c1e99b63a}\label{class_old_user_answer_a2efbda41f588dee155655b9c1e99b63a}} 
+\index{Old\+User\+Answer@{Old\+User\+Answer}!get\+Factor@{get\+Factor}}
+\index{get\+Factor@{get\+Factor}!Old\+User\+Answer@{Old\+User\+Answer}}
+\subsubsection{\texorpdfstring{get\+Factor()}{getFactor()}}
+{\footnotesize\ttfamily double Old\+User\+Answer\+::get\+Factor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Question method 
+
+\begin{DoxyReturn}{Returns}
+last factor for this question (related to Super\+Memo algorithm) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_old_user_answer_ac5a1402d4a962a5001493fdb3c30a287}\label{class_old_user_answer_ac5a1402d4a962a5001493fdb3c30a287}} 
+\index{Old\+User\+Answer@{Old\+User\+Answer}!get\+Grade@{get\+Grade}}
+\index{get\+Grade@{get\+Grade}!Old\+User\+Answer@{Old\+User\+Answer}}
+\subsubsection{\texorpdfstring{get\+Grade()}{getGrade()}}
+{\footnotesize\ttfamily unsigned short Old\+User\+Answer\+::get\+Grade (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Question method 
+
+\begin{DoxyReturn}{Returns}
+grade for this answer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_old_user_answer_a73670422ab34dd57ee78846c08f48ed3}\label{class_old_user_answer_a73670422ab34dd57ee78846c08f48ed3}} 
+\index{Old\+User\+Answer@{Old\+User\+Answer}!get\+Id\+Db@{get\+Id\+Db}}
+\index{get\+Id\+Db@{get\+Id\+Db}!Old\+User\+Answer@{Old\+User\+Answer}}
+\subsubsection{\texorpdfstring{get\+Id\+Db()}{getIdDb()}}
+{\footnotesize\ttfamily long long Old\+User\+Answer\+::get\+Id\+Db (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Id\+Db method 
+
+\begin{DoxyReturn}{Returns}
+id\+Db id (Logs table) from DB 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_old_user_answer_a392760df6f3609a2d8a70b073135d1f0}\label{class_old_user_answer_a392760df6f3609a2d8a70b073135d1f0}} 
+\index{Old\+User\+Answer@{Old\+User\+Answer}!get\+Question@{get\+Question}}
+\index{get\+Question@{get\+Question}!Old\+User\+Answer@{Old\+User\+Answer}}
+\subsubsection{\texorpdfstring{get\+Question()}{getQuestion()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ Old\+User\+Answer\+::get\+Question (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Question method 
+
+\begin{DoxyReturn}{Returns}
+pointer to \hyperlink{class_question}{Question} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/include/logic/olduseranswer.\+h\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/src/logic/olduseranswer.\+cpp\end{DoxyCompactItemize}

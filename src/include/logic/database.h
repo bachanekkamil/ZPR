@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class used to create connection with DATABASE and creates query to retrieve data and modify data.
+  \author Kamil Bachanek
+*/
+
 #ifndef DATABASE_H
 #define DATABASE_H
 

@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class related to concrete instance of test (linked to user and done answers).
+  \author Kamil Bachanek
+*/
+
 #ifndef CONCRETETEST_H
 #define CONCRETETEST_H
 

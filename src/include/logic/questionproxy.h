@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class QuestionProxy used in proxy design patterns. Stores only DB ID for question.
+  \author Kamil Bachanek
+*/
+
 #ifndef QUESTIONPROXY_H
 #define QUESTIONPROXY_H
 

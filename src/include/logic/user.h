@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class User - Stores info about user
+  \author Kamil Bachanek
+*/
+
 #ifndef USER_H
 #define USER_H
 #include <QString>
