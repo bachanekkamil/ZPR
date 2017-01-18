@@ -116,5 +116,8 @@ foreach(testSrc ${TEST_SRCS})
 
 endforeach(testSrc)
 
+configure_file("db/db_test.db" "db_test.db" COPYONLY)
+
+
 
 
