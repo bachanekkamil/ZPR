@@ -1,3 +1,8 @@
+//!
+/*!
+  \brief Contains class method implementation which enables adding new user
+  \author Aleksandra Grzegorczyk
+*/
 #include "addnewuserwindow.h"
 #include "ui_addnewuserwindow.h"
 #include "logic/mainclass.h"

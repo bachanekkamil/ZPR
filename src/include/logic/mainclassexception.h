@@ -1,7 +1,8 @@
 //!
-
-
-
+/*!
+  \brief Class for exceptions occuring in MainClass
+  \author Aleksandra Grzegorczyk
+*/
 
 #ifndef MAINCLASSEXCEPTION_H
 #define MAINCLASSEXCEPTION_H

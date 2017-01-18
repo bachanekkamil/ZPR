@@ -1,3 +1,8 @@
+//!
+/*!
+  \brief Contains class method implementation which enables showing warnings messages
+  \author Aleksandra Grzegorczyk
+*/
 #include "warningmessagedialog.h"
 #include "ui_warningmessagedialog.h"
 

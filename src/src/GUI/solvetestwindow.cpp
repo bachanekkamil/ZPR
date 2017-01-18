@@ -1,3 +1,8 @@
+//!
+/*!
+  \brief Contains class method implementation used to crrying out tests and saving users answers
+  \author Aleksandra Grzegorczyk
+*/
 #include "GUI/solvetestwindow.h"
 #include "ui_solvetestwindow.h"
 #include "logic/mainclass.h"

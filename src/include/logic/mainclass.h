@@ -1,3 +1,10 @@
+//!
+/*!
+  \brief Class responsible for integrating application logic and delivering methods for GUI
+  \author Aleksandra Grzegorczyk
+  \author Kamil Bachanek
+*/
+
 #ifndef MAINCLASS_H
 #define MAINCLASS_H
 #include <vector>
@@ -8,7 +15,7 @@
 
 //!  MainClass
 /*!
-  Class which is responsible for integrating application logic and deliver methods for GUI
+  Class which is responsible for integrating application logic and delivering methods for GUI
 */
 
 class MainClass

@@ -1,3 +1,8 @@
+//!
+/*!
+  \brief Implementation of MainClassException methods
+  \author Aleksandra Grzegorczyk
+*/
 #include "logic/mainclassexception.h"
 
 char* MainClassException::TEXT_MAIN_CLASS_EXCEPTION = "Main class exception";

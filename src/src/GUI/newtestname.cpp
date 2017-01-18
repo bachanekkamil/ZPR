@@ -1,3 +1,8 @@
+//!
+/*!
+  \brief Contains class method implementation which enables adding new test
+  \author Aleksandra Grzegorczyk
+*/
 #include "GUI/newtestname.h"
 #include "ui_newtestname.h"
 #include "logic/mainclass.h"

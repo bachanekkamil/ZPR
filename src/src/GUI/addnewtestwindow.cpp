@@ -1,3 +1,8 @@
+//!
+/*!
+  \brief Contains class method implementation which enables adding new questions
+  \author Aleksandra Grzegorczyk
+*/
 #include "GUI/addnewtestwindow.h"
 #include "ui_addnewtestwindow.h"
 #include "logic/mainclass.h"

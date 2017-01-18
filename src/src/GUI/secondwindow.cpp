@@ -1,3 +1,8 @@
+//!
+/*!
+  \brief Contains class method implementation used to creating new concreteTests
+  \author Aleksandra Grzegorczyk
+*/
 #include "GUI/secondwindow.h"
 #include "ui_secondwindow.h"
 #include "logic/mainclass.h"

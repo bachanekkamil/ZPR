@@ -1,3 +1,8 @@
+//!
+/*!
+  \brief Contains class method implementation used to integrating logic with GUI
+  \author Aleksandra Grzegorczyk
+*/
 #include "logic/mainclass.h"
 #include "logic/mainclassexception.h"
 #include "logic/database.h"

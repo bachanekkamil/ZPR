@@ -2,6 +2,11 @@
 #include "ui_mainwindow.h"
 #include "logic/mainclass.h"
 #include <QVBoxLayout>
+//!
+/*!
+  \brief Contains class method implementation used to login user
+  \author Aleksandra Grzegorczyk
+*/
 #include <QDebug>
 #include "logic/mainclassexception.h"
 #include <QDesktopWidget>
