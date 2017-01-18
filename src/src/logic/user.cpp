@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class User methods implementation
+  \author Kamil Bachanek
+*/
+
 #include "logic/user.h"
 #include <QDebug>
 

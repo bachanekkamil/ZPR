@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains Pure abstract class Question. Interface for questions. Used in proxy design patterns
+  \author Kamil Bachanek
+*/
+
 #ifndef QUESTION_H
 #define QUESTION_H
 

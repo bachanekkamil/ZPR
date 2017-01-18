@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class QuestionReal used in proxy design patterns. Stores all info about question.
+  \author Kamil Bachanek
+*/
+
 #ifndef QUESTIONREAL_H
 #define QUESTIONREAL_H
 
@@ -5,7 +11,7 @@
 #include <memory>
 #include <logic/question.h>
 
-//!  class QuestionProxy
+//!  class QuestionReal
 /*!
   Used in proxy design patterns. Stores all info about question.
 */

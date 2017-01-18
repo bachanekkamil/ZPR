@@ -1,3 +1,10 @@
+//!
+/*!
+  \brief Contains class methods implementation used to create connection with DATABASE and creates query to retrieve data and modify data.
+  \author Kamil Bachanek
+*/
+
+
 #include <logic/database.h>
 #include <logic/database_exception.h>
 #include <QtSql/QSqlQuery>

@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class QuestionProxy methods implementation used in proxy design patterns. Stores only DB ID for question.
+  \author Kamil Bachanek
+*/
+
 #include "questionproxy.h"
 #include "logic/database.h"
 #include <QDebug>

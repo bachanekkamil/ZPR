@@ -1,3 +1,10 @@
+//!
+/*!
+  \brief Contains DatabaseException Class
+  \author Kamil Bachanek
+*/
+
+
 #ifndef DATABASE_EXCEPTION_H
 #define DATABASE_EXCEPTION_H
 

@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains class Test method implementation
+  \author Kamil Bachanek
+*/
+
 #include "logic/test.h"
 #include "logic/database.h"
 

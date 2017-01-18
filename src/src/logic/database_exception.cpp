@@ -1,3 +1,9 @@
+//!
+/*!
+  \brief Contains methods implementaion of DatabaseException Class
+  \author Kamil Bachanek
+*/
+
 #include "logic/database_exception.h"  
 
 char* DatabaseException::TEXT_PASSED_NULL_PARAMETER = "Passed NULL parameter/s";
