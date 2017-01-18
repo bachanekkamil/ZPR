@@ -1,0 +1,182 @@
+\hypertarget{class_question_proxy}{}\section{Question\+Proxy Class Reference}
+\label{class_question_proxy}\index{Question\+Proxy@{Question\+Proxy}}
+
+
+Contains class \hyperlink{class_question_proxy}{Question\+Proxy} used in proxy design patterns. Stores only DB ID for question.  
+
+
+
+
+{\ttfamily \#include $<$questionproxy.\+h$>$}
+
+Inheritance diagram for Question\+Proxy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_question_proxy}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_question_proxy_a68b0fb83effeb190d956bcc898ced585}{Question\+Proxy} (unsigned int id\+\_\+db)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_question_proxy}{Question\+Proxy} constructor. \end{DoxyCompactList}\item 
+virtual const unsigned int \hyperlink{class_question_proxy_a720f1ae28f66770e40859fd19945450c}{get\+Id\+Db} ()
+\begin{DoxyCompactList}\small\item\em get\+Id\+Db method \end{DoxyCompactList}\item 
+virtual const Q\+String \& \hyperlink{class_question_proxy_ac5fc3eeef47b1955b116599cb860aa4e}{get\+Text} ()
+\begin{DoxyCompactList}\small\item\em get\+Text method \end{DoxyCompactList}\item 
+virtual const Q\+String \& \hyperlink{class_question_proxy_aaea03e52cf7e3f9d19d59134e88d6df0}{get\+Correct\+Answer\+Text} ()
+\begin{DoxyCompactList}\small\item\em get\+Correct\+Answer\+Text method \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_question_proxy_a420fb6fae2d691aa0c574939b815a205}{modify\+Question} (const Q\+String \&question, const Q\+String \&answer)
+\begin{DoxyCompactList}\small\item\em modify\+Question method \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_question_proxy_a6993b6a84ebaf916fce21f41b0401fe7}{set\+Factor} (double factor)
+\begin{DoxyCompactList}\small\item\em set\+Factor method \end{DoxyCompactList}\item 
+virtual const double \hyperlink{class_question_proxy_af3eeb645cbd04fe05418e5931e55585e}{get\+Factor} ()
+\begin{DoxyCompactList}\small\item\em get\+Factor method \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains class \hyperlink{class_question_proxy}{Question\+Proxy} used in proxy design patterns. Stores only DB ID for question. 
+
+\begin{DoxyAuthor}{Author}
+Kamil Bachanekclass \hyperlink{class_question_proxy}{Question\+Proxy}
+\end{DoxyAuthor}
+Used in proxy design patterns. Stores only DB ID for question. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_question_proxy_a68b0fb83effeb190d956bcc898ced585}\label{class_question_proxy_a68b0fb83effeb190d956bcc898ced585}} 
+\index{Question\+Proxy@{Question\+Proxy}!Question\+Proxy@{Question\+Proxy}}
+\index{Question\+Proxy@{Question\+Proxy}!Question\+Proxy@{Question\+Proxy}}
+\subsubsection{\texorpdfstring{Question\+Proxy()}{QuestionProxy()}}
+{\footnotesize\ttfamily Question\+Proxy\+::\+Question\+Proxy (\begin{DoxyParamCaption}\item[{unsigned int}]{id\+\_\+db }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_question_proxy}{Question\+Proxy} constructor. 
+
+Contains class \hyperlink{class_question_proxy}{Question\+Proxy} methods implementation used in proxy design patterns. Stores only DB ID for question.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+\_\+db} & question id from db\\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Kamil Bachanek 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_question_proxy_aaea03e52cf7e3f9d19d59134e88d6df0}\label{class_question_proxy_aaea03e52cf7e3f9d19d59134e88d6df0}} 
+\index{Question\+Proxy@{Question\+Proxy}!get\+Correct\+Answer\+Text@{get\+Correct\+Answer\+Text}}
+\index{get\+Correct\+Answer\+Text@{get\+Correct\+Answer\+Text}!Question\+Proxy@{Question\+Proxy}}
+\subsubsection{\texorpdfstring{get\+Correct\+Answer\+Text()}{getCorrectAnswerText()}}
+{\footnotesize\ttfamily const Q\+String \& Question\+Proxy\+::get\+Correct\+Answer\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get\+Correct\+Answer\+Text method 
+
+\begin{DoxyReturn}{Returns}
+answer text 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_question_a3c825d4c813d2d620c46b062aef1c364}{Question}.
+
+\mbox{\Hypertarget{class_question_proxy_af3eeb645cbd04fe05418e5931e55585e}\label{class_question_proxy_af3eeb645cbd04fe05418e5931e55585e}} 
+\index{Question\+Proxy@{Question\+Proxy}!get\+Factor@{get\+Factor}}
+\index{get\+Factor@{get\+Factor}!Question\+Proxy@{Question\+Proxy}}
+\subsubsection{\texorpdfstring{get\+Factor()}{getFactor()}}
+{\footnotesize\ttfamily const double Question\+Proxy\+::get\+Factor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get\+Factor method 
+
+\begin{DoxyReturn}{Returns}
+factor (used in Super\+Memo algorithm) used in current \hyperlink{class_concrete_test}{Concrete\+Test} with this question 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_question_a31d98a74f4e54916d11bc2817b5518a4}{Question}.
+
+\mbox{\Hypertarget{class_question_proxy_a720f1ae28f66770e40859fd19945450c}\label{class_question_proxy_a720f1ae28f66770e40859fd19945450c}} 
+\index{Question\+Proxy@{Question\+Proxy}!get\+Id\+Db@{get\+Id\+Db}}
+\index{get\+Id\+Db@{get\+Id\+Db}!Question\+Proxy@{Question\+Proxy}}
+\subsubsection{\texorpdfstring{get\+Id\+Db()}{getIdDb()}}
+{\footnotesize\ttfamily const unsigned int Question\+Proxy\+::get\+Id\+Db (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get\+Id\+Db method 
+
+\begin{DoxyReturn}{Returns}
+question id from db 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_question_a5253480b740d35dfb7fe1331d74457b3}{Question}.
+
+\mbox{\Hypertarget{class_question_proxy_ac5fc3eeef47b1955b116599cb860aa4e}\label{class_question_proxy_ac5fc3eeef47b1955b116599cb860aa4e}} 
+\index{Question\+Proxy@{Question\+Proxy}!get\+Text@{get\+Text}}
+\index{get\+Text@{get\+Text}!Question\+Proxy@{Question\+Proxy}}
+\subsubsection{\texorpdfstring{get\+Text()}{getText()}}
+{\footnotesize\ttfamily const Q\+String \& Question\+Proxy\+::get\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+get\+Text method 
+
+\begin{DoxyReturn}{Returns}
+question text 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_question_a23e84af04f16e0dee933844d5c46b370}{Question}.
+
+\mbox{\Hypertarget{class_question_proxy_a420fb6fae2d691aa0c574939b815a205}\label{class_question_proxy_a420fb6fae2d691aa0c574939b815a205}} 
+\index{Question\+Proxy@{Question\+Proxy}!modify\+Question@{modify\+Question}}
+\index{modify\+Question@{modify\+Question}!Question\+Proxy@{Question\+Proxy}}
+\subsubsection{\texorpdfstring{modify\+Question()}{modifyQuestion()}}
+{\footnotesize\ttfamily void Question\+Proxy\+::modify\+Question (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{question,  }\item[{const Q\+String \&}]{answer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+modify\+Question method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em question} & text \\
+\hline
+{\em answer} & text \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_question_ae3724056374e2e9160f4d7250241f9ab}{Question}.
+
+\mbox{\Hypertarget{class_question_proxy_a6993b6a84ebaf916fce21f41b0401fe7}\label{class_question_proxy_a6993b6a84ebaf916fce21f41b0401fe7}} 
+\index{Question\+Proxy@{Question\+Proxy}!set\+Factor@{set\+Factor}}
+\index{set\+Factor@{set\+Factor}!Question\+Proxy@{Question\+Proxy}}
+\subsubsection{\texorpdfstring{set\+Factor()}{setFactor()}}
+{\footnotesize\ttfamily void Question\+Proxy\+::set\+Factor (\begin{DoxyParamCaption}\item[{double}]{factor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+set\+Factor method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em factor} & (used in Super\+Memo algorithm) used in current \hyperlink{class_concrete_test}{Concrete\+Test} with this question \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_question_ad5c8dfa4de5cce04fad3e31c0ccee1a0}{Question}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/include/logic/questionproxy.\+h\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/src/logic/questionproxy.\+cpp\end{DoxyCompactItemize}

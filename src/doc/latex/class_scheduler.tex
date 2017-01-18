@@ -1,0 +1,87 @@
+\hypertarget{class_scheduler}{}\section{Scheduler Class Reference}
+\label{class_scheduler}\index{Scheduler@{Scheduler}}
+
+
+class \hyperlink{class_scheduler}{Scheduler}  
+
+
+
+
+{\ttfamily \#include $<$scheduler.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ $>$ \hyperlink{class_scheduler_a4b18e745206d38e55dc115fbfa5af01f}{get\+Questions\+For\+Day} (Q\+Date date)
+\begin{DoxyCompactList}\small\item\em get\+Questions\+For\+Day method \end{DoxyCompactList}\item 
+void \hyperlink{class_scheduler_a8437191585dee71d765d3fcdc9f4af72}{insert\+Question\+For\+Day} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ quest, Q\+Date date)
+\begin{DoxyCompactList}\small\item\em get\+Questions\+For\+Day method \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scheduler_a49ee5f857170c25482896dc6759cad3a}\label{class_scheduler_a49ee5f857170c25482896dc6759cad3a}} 
+void {\bfseries print\+Scheduler} ()
+\item 
+Q\+Date \hyperlink{class_scheduler_ab959a8b807537fe7035261dfcad2e985}{get\+Nearest\+Day} ()
+\begin{DoxyCompactList}\small\item\em get\+Nearest\+Day method \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scheduler_a9b6a056b6e27c4bb0b5c342d24718e53}\label{class_scheduler_a9b6a056b6e27c4bb0b5c342d24718e53}} 
+void {\bfseries reset} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+class \hyperlink{class_scheduler}{Scheduler} 
+
+Stores info about date when user should answer the question 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scheduler_ab959a8b807537fe7035261dfcad2e985}\label{class_scheduler_ab959a8b807537fe7035261dfcad2e985}} 
+\index{Scheduler@{Scheduler}!get\+Nearest\+Day@{get\+Nearest\+Day}}
+\index{get\+Nearest\+Day@{get\+Nearest\+Day}!Scheduler@{Scheduler}}
+\subsubsection{\texorpdfstring{get\+Nearest\+Day()}{getNearestDay()}}
+{\footnotesize\ttfamily Q\+Date Scheduler\+::get\+Nearest\+Day (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get\+Nearest\+Day method 
+
+\begin{DoxyReturn}{Returns}
+nearest date when user should start a test 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_scheduler_a4b18e745206d38e55dc115fbfa5af01f}\label{class_scheduler_a4b18e745206d38e55dc115fbfa5af01f}} 
+\index{Scheduler@{Scheduler}!get\+Questions\+For\+Day@{get\+Questions\+For\+Day}}
+\index{get\+Questions\+For\+Day@{get\+Questions\+For\+Day}!Scheduler@{Scheduler}}
+\subsubsection{\texorpdfstring{get\+Questions\+For\+Day()}{getQuestionsForDay()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\hyperlink{class_question}{Question}$>$ $>$ Scheduler\+::get\+Questions\+For\+Day (\begin{DoxyParamCaption}\item[{Q\+Date}]{date }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get\+Questions\+For\+Day method 
+
+\begin{DoxyReturn}{Returns}
+vector with questions for that date 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em date} & date \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scheduler_a8437191585dee71d765d3fcdc9f4af72}\label{class_scheduler_a8437191585dee71d765d3fcdc9f4af72}} 
+\index{Scheduler@{Scheduler}!insert\+Question\+For\+Day@{insert\+Question\+For\+Day}}
+\index{insert\+Question\+For\+Day@{insert\+Question\+For\+Day}!Scheduler@{Scheduler}}
+\subsubsection{\texorpdfstring{insert\+Question\+For\+Day()}{insertQuestionForDay()}}
+{\footnotesize\ttfamily void Scheduler\+::insert\+Question\+For\+Day (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$}]{quest,  }\item[{Q\+Date}]{date }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get\+Questions\+For\+Day method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em quest} & pointer to \hyperlink{class_question}{Question} \\
+\hline
+{\em date} & date when user should answer for that question \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/include/logic/scheduler.\+h\end{DoxyCompactItemize}

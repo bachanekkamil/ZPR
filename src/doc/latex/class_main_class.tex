@@ -1,0 +1,490 @@
+\hypertarget{class_main_class}{}\section{Main\+Class Class Reference}
+\label{class_main_class}\index{Main\+Class@{Main\+Class}}
+
+
+\hyperlink{class_main_class}{Main\+Class}.  
+
+
+
+
+{\ttfamily \#include $<$mainclass.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_main_class_a91e4a76fcf2576ccf592373e4786fc42}{Initialize} ()
+\begin{DoxyCompactList}\small\item\em Initialize method. \end{DoxyCompactList}\item 
+Q\+String\+List \hyperlink{class_main_class_a4b7b9aa5957f262b49b77b2c75eca17b}{get\+All\+Users} ()
+\begin{DoxyCompactList}\small\item\em get\+All\+Users method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_aca60a0309924003da0af912365810ea3}{set\+User} (const Q\+String \&name)
+\begin{DoxyCompactList}\small\item\em set\+User method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_ad3beecfb06b5105b79a9dd53dc620811}{logout\+User} ()
+\begin{DoxyCompactList}\small\item\em logout\+User method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_a23203055dd5db7147ba38531ab3814b3}{add\+New\+User} (const Q\+String \&name)
+\begin{DoxyCompactList}\small\item\em add\+New\+User method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_a2d2f031f2e6094ff22e2304479a5485d}{delete\+User} (const Q\+String \&name)
+\begin{DoxyCompactList}\small\item\em delete\+User method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ \hyperlink{class_main_class_ae144428058aa2a87061044ee2515d3cb}{get\+User} (unsigned int id\+Db)
+\begin{DoxyCompactList}\small\item\em get\+User method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ \hyperlink{class_main_class_a0ef6e83729dc97a723a07efd99a2d1b3}{get\+Test} (unsigned int id\+Db)
+\begin{DoxyCompactList}\small\item\em get\+Test method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ \hyperlink{class_main_class_aaa60dd5448bb004623189f66335dcc9b}{get\+Concrete\+Test} (unsigned int id\+DB)
+\begin{DoxyCompactList}\small\item\em get\+Concrete\+Test method \end{DoxyCompactList}\item 
+Q\+String\+List \hyperlink{class_main_class_a5620620d6b98a1be73a52fb80982fd9e}{get\+Available\+Tests} ()
+\begin{DoxyCompactList}\small\item\em get\+Available\+Tests method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_a138aab7a71f0fb928022d1e8ddb7064b}{add\+New\+Test} (const Q\+String \&name)
+\begin{DoxyCompactList}\small\item\em add\+New\+Test method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_aca1ce710f27a6abdda8310799a750f78}{edit\+Test} (const Q\+String \&name)
+\begin{DoxyCompactList}\small\item\em edit\+Test method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_a23153f89d54388726288e652fb9f1577}{add\+Question} (Q\+String question, Q\+String answer)
+\begin{DoxyCompactList}\small\item\em add\+Question method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_ad5f52b288be1b8004edf9a3efc3bd083}{modify\+Question} (unsigned int index, Q\+String question, Q\+String answer)
+\begin{DoxyCompactList}\small\item\em modify\+Question method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ \hyperlink{class_main_class_a8733164fc7f8305dc6c717a07bd8dc85}{get\+Currently\+Edited\+Test} ()
+\begin{DoxyCompactList}\small\item\em get\+Currently\+Edited\+Test method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ \hyperlink{class_main_class_a6bdb47e00ec290b6c451483e07f63d80}{get\+Question} (long long id\+\_\+db)
+\begin{DoxyCompactList}\small\item\em get\+Question method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_ab5b461aae89fc107477e954653e98ac0}{add\+New\+Concrete\+Test} (Q\+String name)
+\begin{DoxyCompactList}\small\item\em add\+New\+Concrete\+Test method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_a829f93f30e9f001c3b6afb3f7a9d6da6}{delete\+Concrete\+Test} (Q\+String name)
+\begin{DoxyCompactList}\small\item\em delete\+Concrete\+Test method \end{DoxyCompactList}\item 
+Q\+String\+List \hyperlink{class_main_class_af4f98508f69bb511d03858c4193aaa90}{get\+Available\+Concrete\+Tests} ()
+\begin{DoxyCompactList}\small\item\em get\+Available\+Concrete\+Tests method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ \hyperlink{class_main_class_ab17ab8eec8bbfadae4c5eda7cc4421cf}{get\+Current\+Concrete\+Test} ()
+\begin{DoxyCompactList}\small\item\em get\+Current\+Concrete\+Test method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_a2bc7d95eab87498c7afdaf7f34ab9a4e}{add\+Answer\+To\+Current\+Concrete\+Test} (unsigned int question\+\_\+id, unsigned short grade)
+\begin{DoxyCompactList}\small\item\em add\+Answer\+To\+Current\+Concrete\+Test method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_ac50731f2e84b87ea305679ac3a8a2ac7}{start\+Concrete\+Test} (Q\+String name)
+\begin{DoxyCompactList}\small\item\em start\+Concrete\+Test method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_ae738e2248a895b7248d40188bb3f1e96}{end\+Current\+Concrete\+Test} ()
+\begin{DoxyCompactList}\small\item\em end\+Current\+Concrete\+Test method \end{DoxyCompactList}\item 
+void \hyperlink{class_main_class_a6f4b8eaa3ac3e2bfd2665fed96a33775}{end\+Creating\+New\+Test} ()
+\begin{DoxyCompactList}\small\item\em end\+Creating\+New\+Test method \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_main_class_aef9e88e99b6671d61de143ac55eadbd4}\label{class_main_class_aef9e88e99b6671d61de143ac55eadbd4}} 
+void \hyperlink{class_main_class_aef9e88e99b6671d61de143ac55eadbd4}{generate\+New\+Scheduler} ()
+\begin{DoxyCompactList}\small\item\em generate\+New\+Scheduler method \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ \hyperlink{class_main_class_a3ba58a65d27df922c34de2fc6208bb31}{get\+User} ()
+\begin{DoxyCompactList}\small\item\em get\+User method \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_main_class}{Main\+Class} $\ast$ \hyperlink{class_main_class_a9b4a4cac62c4e8613b9ec63d6686eb8c}{get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em get\+Instance method \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_main_class}{Main\+Class}. 
+
+Class which is responsible for integrating application logic and deliver methods for G\+UI 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_main_class_a2bc7d95eab87498c7afdaf7f34ab9a4e}\label{class_main_class_a2bc7d95eab87498c7afdaf7f34ab9a4e}} 
+\index{Main\+Class@{Main\+Class}!add\+Answer\+To\+Current\+Concrete\+Test@{add\+Answer\+To\+Current\+Concrete\+Test}}
+\index{add\+Answer\+To\+Current\+Concrete\+Test@{add\+Answer\+To\+Current\+Concrete\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{add\+Answer\+To\+Current\+Concrete\+Test()}{addAnswerToCurrentConcreteTest()}}
+{\footnotesize\ttfamily void Main\+Class\+::add\+Answer\+To\+Current\+Concrete\+Test (\begin{DoxyParamCaption}\item[{unsigned int}]{question\+\_\+id,  }\item[{unsigned short}]{grade }\end{DoxyParamCaption})}
+
+
+
+add\+Answer\+To\+Current\+Concrete\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em question\+\_\+id} & position of question in vector from conrete test class object returned by method get\+Questions\+For\+Today() from concrete test class \\
+\hline
+{\em grade} & grade which was chosen by user \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Main\+Class\+Exception$>$} & \{ throws exception if adding new answer to concrete test to data base was unsuccessful \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_main_class_ab5b461aae89fc107477e954653e98ac0}\label{class_main_class_ab5b461aae89fc107477e954653e98ac0}} 
+\index{Main\+Class@{Main\+Class}!add\+New\+Concrete\+Test@{add\+New\+Concrete\+Test}}
+\index{add\+New\+Concrete\+Test@{add\+New\+Concrete\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{add\+New\+Concrete\+Test()}{addNewConcreteTest()}}
+{\footnotesize\ttfamily void Main\+Class\+::add\+New\+Concrete\+Test (\begin{DoxyParamCaption}\item[{Q\+String}]{name }\end{DoxyParamCaption})}
+
+
+
+add\+New\+Concrete\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & new concrete test name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Main\+Class\+Exception$>$} & \{ throws exception if adding new concrete test to data base was unsuccessful \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_main_class_a138aab7a71f0fb928022d1e8ddb7064b}\label{class_main_class_a138aab7a71f0fb928022d1e8ddb7064b}} 
+\index{Main\+Class@{Main\+Class}!add\+New\+Test@{add\+New\+Test}}
+\index{add\+New\+Test@{add\+New\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{add\+New\+Test()}{addNewTest()}}
+{\footnotesize\ttfamily void Main\+Class\+::add\+New\+Test (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name }\end{DoxyParamCaption})}
+
+
+
+add\+New\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & new test name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Main\+Class\+Exception$>$} & \{ throws exception if adding new test to data base was unsuccessful \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_main_class_a23203055dd5db7147ba38531ab3814b3}\label{class_main_class_a23203055dd5db7147ba38531ab3814b3}} 
+\index{Main\+Class@{Main\+Class}!add\+New\+User@{add\+New\+User}}
+\index{add\+New\+User@{add\+New\+User}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{add\+New\+User()}{addNewUser()}}
+{\footnotesize\ttfamily void Main\+Class\+::add\+New\+User (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name }\end{DoxyParamCaption})}
+
+
+
+add\+New\+User method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & user name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Main\+Class\+Exception$>$} & \{ throws exception if adding new user to data base was unsuccessful \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_main_class_a23153f89d54388726288e652fb9f1577}\label{class_main_class_a23153f89d54388726288e652fb9f1577}} 
+\index{Main\+Class@{Main\+Class}!add\+Question@{add\+Question}}
+\index{add\+Question@{add\+Question}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{add\+Question()}{addQuestion()}}
+{\footnotesize\ttfamily void Main\+Class\+::add\+Question (\begin{DoxyParamCaption}\item[{Q\+String}]{question,  }\item[{Q\+String}]{answer }\end{DoxyParamCaption})}
+
+
+
+add\+Question method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em question} & contents of question \\
+\hline
+{\em answer} & contents of answer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Main\+Class\+Exception$>$} & \{ throws exception if adding new question and answer to data base was unsuccessful \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_main_class_a829f93f30e9f001c3b6afb3f7a9d6da6}\label{class_main_class_a829f93f30e9f001c3b6afb3f7a9d6da6}} 
+\index{Main\+Class@{Main\+Class}!delete\+Concrete\+Test@{delete\+Concrete\+Test}}
+\index{delete\+Concrete\+Test@{delete\+Concrete\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{delete\+Concrete\+Test()}{deleteConcreteTest()}}
+{\footnotesize\ttfamily void Main\+Class\+::delete\+Concrete\+Test (\begin{DoxyParamCaption}\item[{Q\+String}]{name }\end{DoxyParamCaption})}
+
+
+
+delete\+Concrete\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of test to be deleted \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Main\+Class\+Exception$>$} & \{ throws exception if deleting concrete test from data base was unsuccessful \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_main_class_a2d2f031f2e6094ff22e2304479a5485d}\label{class_main_class_a2d2f031f2e6094ff22e2304479a5485d}} 
+\index{Main\+Class@{Main\+Class}!delete\+User@{delete\+User}}
+\index{delete\+User@{delete\+User}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{delete\+User()}{deleteUser()}}
+{\footnotesize\ttfamily void Main\+Class\+::delete\+User (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name }\end{DoxyParamCaption})}
+
+
+
+delete\+User method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & user name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Main\+Class\+Exception$>$} & \{ throws exception if removing user from data base was unsuccessful \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_main_class_aca1ce710f27a6abdda8310799a750f78}\label{class_main_class_aca1ce710f27a6abdda8310799a750f78}} 
+\index{Main\+Class@{Main\+Class}!edit\+Test@{edit\+Test}}
+\index{edit\+Test@{edit\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{edit\+Test()}{editTest()}}
+{\footnotesize\ttfamily void Main\+Class\+::edit\+Test (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name }\end{DoxyParamCaption})}
+
+
+
+edit\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & edited test name \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_class_a6f4b8eaa3ac3e2bfd2665fed96a33775}\label{class_main_class_a6f4b8eaa3ac3e2bfd2665fed96a33775}} 
+\index{Main\+Class@{Main\+Class}!end\+Creating\+New\+Test@{end\+Creating\+New\+Test}}
+\index{end\+Creating\+New\+Test@{end\+Creating\+New\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{end\+Creating\+New\+Test()}{endCreatingNewTest()}}
+{\footnotesize\ttfamily void Main\+Class\+::end\+Creating\+New\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+end\+Creating\+New\+Test method 
+
+Sets pointer to current new \hyperlink{class_test}{Test} to nullptr \mbox{\Hypertarget{class_main_class_ae738e2248a895b7248d40188bb3f1e96}\label{class_main_class_ae738e2248a895b7248d40188bb3f1e96}} 
+\index{Main\+Class@{Main\+Class}!end\+Current\+Concrete\+Test@{end\+Current\+Concrete\+Test}}
+\index{end\+Current\+Concrete\+Test@{end\+Current\+Concrete\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{end\+Current\+Concrete\+Test()}{endCurrentConcreteTest()}}
+{\footnotesize\ttfamily void Main\+Class\+::end\+Current\+Concrete\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+end\+Current\+Concrete\+Test method 
+
+Sets pointer to current \hyperlink{class_concrete_test}{Concrete\+Test} to nullptr \mbox{\Hypertarget{class_main_class_a4b7b9aa5957f262b49b77b2c75eca17b}\label{class_main_class_a4b7b9aa5957f262b49b77b2c75eca17b}} 
+\index{Main\+Class@{Main\+Class}!get\+All\+Users@{get\+All\+Users}}
+\index{get\+All\+Users@{get\+All\+Users}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{get\+All\+Users()}{getAllUsers()}}
+{\footnotesize\ttfamily Q\+String\+List Main\+Class\+::get\+All\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+All\+Users method 
+
+\begin{DoxyReturn}{Returns}
+list containing users logins 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_main_class_af4f98508f69bb511d03858c4193aaa90}\label{class_main_class_af4f98508f69bb511d03858c4193aaa90}} 
+\index{Main\+Class@{Main\+Class}!get\+Available\+Concrete\+Tests@{get\+Available\+Concrete\+Tests}}
+\index{get\+Available\+Concrete\+Tests@{get\+Available\+Concrete\+Tests}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{get\+Available\+Concrete\+Tests()}{getAvailableConcreteTests()}}
+{\footnotesize\ttfamily Q\+String\+List Main\+Class\+::get\+Available\+Concrete\+Tests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Available\+Concrete\+Tests method 
+
+\begin{DoxyReturn}{Returns}
+list of all concrete test available to current user, and date of next repetition 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_main_class_a5620620d6b98a1be73a52fb80982fd9e}\label{class_main_class_a5620620d6b98a1be73a52fb80982fd9e}} 
+\index{Main\+Class@{Main\+Class}!get\+Available\+Tests@{get\+Available\+Tests}}
+\index{get\+Available\+Tests@{get\+Available\+Tests}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{get\+Available\+Tests()}{getAvailableTests()}}
+{\footnotesize\ttfamily Q\+String\+List Main\+Class\+::get\+Available\+Tests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Available\+Tests method 
+
+\begin{DoxyReturn}{Returns}
+list containing all tests form data base 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_main_class_aaa60dd5448bb004623189f66335dcc9b}\label{class_main_class_aaa60dd5448bb004623189f66335dcc9b}} 
+\index{Main\+Class@{Main\+Class}!get\+Concrete\+Test@{get\+Concrete\+Test}}
+\index{get\+Concrete\+Test@{get\+Concrete\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{get\+Concrete\+Test()}{getConcreteTest()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ Main\+Class\+::get\+Concrete\+Test (\begin{DoxyParamCaption}\item[{unsigned int}]{id\+DB }\end{DoxyParamCaption})}
+
+
+
+get\+Concrete\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & concrete test id from data base \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_class_ab17ab8eec8bbfadae4c5eda7cc4421cf}\label{class_main_class_ab17ab8eec8bbfadae4c5eda7cc4421cf}} 
+\index{Main\+Class@{Main\+Class}!get\+Current\+Concrete\+Test@{get\+Current\+Concrete\+Test}}
+\index{get\+Current\+Concrete\+Test@{get\+Current\+Concrete\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{get\+Current\+Concrete\+Test()}{getCurrentConcreteTest()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_concrete_test}{Concrete\+Test} $>$ Main\+Class\+::get\+Current\+Concrete\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Current\+Concrete\+Test method 
+
+\begin{DoxyReturn}{Returns}
+pointer to concrete test that user chose for repetition 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_main_class_a8733164fc7f8305dc6c717a07bd8dc85}\label{class_main_class_a8733164fc7f8305dc6c717a07bd8dc85}} 
+\index{Main\+Class@{Main\+Class}!get\+Currently\+Edited\+Test@{get\+Currently\+Edited\+Test}}
+\index{get\+Currently\+Edited\+Test@{get\+Currently\+Edited\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{get\+Currently\+Edited\+Test()}{getCurrentlyEditedTest()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ Main\+Class\+::get\+Currently\+Edited\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Currently\+Edited\+Test method 
+
+\begin{DoxyReturn}{Returns}
+pointer to currently edited test 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_main_class_a9b4a4cac62c4e8613b9ec63d6686eb8c}\label{class_main_class_a9b4a4cac62c4e8613b9ec63d6686eb8c}} 
+\index{Main\+Class@{Main\+Class}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{get\+Instance()}{getInstance()}}
+{\footnotesize\ttfamily static \hyperlink{class_main_class}{Main\+Class}$\ast$ Main\+Class\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+get\+Instance method 
+
+Impelements signleton design pattern \mbox{\Hypertarget{class_main_class_a6bdb47e00ec290b6c451483e07f63d80}\label{class_main_class_a6bdb47e00ec290b6c451483e07f63d80}} 
+\index{Main\+Class@{Main\+Class}!get\+Question@{get\+Question}}
+\index{get\+Question@{get\+Question}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{get\+Question()}{getQuestion()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_question}{Question} $>$ Main\+Class\+::get\+Question (\begin{DoxyParamCaption}\item[{long long}]{id\+\_\+db }\end{DoxyParamCaption})}
+
+
+
+get\+Question method 
+
+\begin{DoxyReturn}{Returns}
+pointer question 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_main_class_a0ef6e83729dc97a723a07efd99a2d1b3}\label{class_main_class_a0ef6e83729dc97a723a07efd99a2d1b3}} 
+\index{Main\+Class@{Main\+Class}!get\+Test@{get\+Test}}
+\index{get\+Test@{get\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{get\+Test()}{getTest()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_test}{Test} $>$ Main\+Class\+::get\+Test (\begin{DoxyParamCaption}\item[{unsigned int}]{id\+Db }\end{DoxyParamCaption})}
+
+
+
+get\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & test id from data base \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_class_ae144428058aa2a87061044ee2515d3cb}\label{class_main_class_ae144428058aa2a87061044ee2515d3cb}} 
+\index{Main\+Class@{Main\+Class}!get\+User@{get\+User}}
+\index{get\+User@{get\+User}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{get\+User()}{getUser()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ Main\+Class\+::get\+User (\begin{DoxyParamCaption}\item[{unsigned int}]{id\+Db }\end{DoxyParamCaption})}
+
+
+
+get\+User method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & user id from data base \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_class_a3ba58a65d27df922c34de2fc6208bb31}\label{class_main_class_a3ba58a65d27df922c34de2fc6208bb31}} 
+\index{Main\+Class@{Main\+Class}!get\+User@{get\+User}}
+\index{get\+User@{get\+User}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{get\+User()}{getUser()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{class_user}{User} $>$ Main\+Class\+::get\+User (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+User method 
+
+\begin{DoxyReturn}{Returns}
+pointer to user 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_main_class_a91e4a76fcf2576ccf592373e4786fc42}\label{class_main_class_a91e4a76fcf2576ccf592373e4786fc42}} 
+\index{Main\+Class@{Main\+Class}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Main\+Class\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize method. 
+
+Sets initial value for class attributes which are stored in data base \mbox{\Hypertarget{class_main_class_ad3beecfb06b5105b79a9dd53dc620811}\label{class_main_class_ad3beecfb06b5105b79a9dd53dc620811}} 
+\index{Main\+Class@{Main\+Class}!logout\+User@{logout\+User}}
+\index{logout\+User@{logout\+User}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{logout\+User()}{logoutUser()}}
+{\footnotesize\ttfamily void Main\+Class\+::logout\+User (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+logout\+User method 
+
+Sets pointer to current \hyperlink{class_user}{User} to nullptr \mbox{\Hypertarget{class_main_class_ad5f52b288be1b8004edf9a3efc3bd083}\label{class_main_class_ad5f52b288be1b8004edf9a3efc3bd083}} 
+\index{Main\+Class@{Main\+Class}!modify\+Question@{modify\+Question}}
+\index{modify\+Question@{modify\+Question}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{modify\+Question()}{modifyQuestion()}}
+{\footnotesize\ttfamily void Main\+Class\+::modify\+Question (\begin{DoxyParamCaption}\item[{unsigned int}]{index,  }\item[{Q\+String}]{question,  }\item[{Q\+String}]{answer }\end{DoxyParamCaption})}
+
+
+
+modify\+Question method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & position of question in vector from \hyperlink{class_test}{Test} class object representing test in which this question occur \\
+\hline
+{\em question} & contents of question \\
+\hline
+{\em answer} & contents of answer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Main\+Class\+Exception$>$} & \{ throws exception if changing question and answer in data base was unsuccessful \} \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_main_class_aca60a0309924003da0af912365810ea3}\label{class_main_class_aca60a0309924003da0af912365810ea3}} 
+\index{Main\+Class@{Main\+Class}!set\+User@{set\+User}}
+\index{set\+User@{set\+User}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{set\+User()}{setUser()}}
+{\footnotesize\ttfamily void Main\+Class\+::set\+User (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name }\end{DoxyParamCaption})}
+
+
+
+set\+User method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & user name \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_class_ac50731f2e84b87ea305679ac3a8a2ac7}\label{class_main_class_ac50731f2e84b87ea305679ac3a8a2ac7}} 
+\index{Main\+Class@{Main\+Class}!start\+Concrete\+Test@{start\+Concrete\+Test}}
+\index{start\+Concrete\+Test@{start\+Concrete\+Test}!Main\+Class@{Main\+Class}}
+\subsubsection{\texorpdfstring{start\+Concrete\+Test()}{startConcreteTest()}}
+{\footnotesize\ttfamily void Main\+Class\+::start\+Concrete\+Test (\begin{DoxyParamCaption}\item[{Q\+String}]{name }\end{DoxyParamCaption})}
+
+
+
+start\+Concrete\+Test method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & concrete test name \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em $<$\+Main\+Class\+Exception$>$} & \{ throws exception if there are no question to be answered this day \} \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/include/logic/mainclass.\+h\item 
+C\+:/\+Users/bacha/\+One\+Drive/\+S\+T\+U\+D\+I\+A/eiti/2sem/\+Z\+P\+R/\+P\+R\+O\+J\+E\+K\+T/\+Great\+Memo/\+Z\+P\+R/src/src/logic/mainclass.\+cpp\end{DoxyCompactItemize}
