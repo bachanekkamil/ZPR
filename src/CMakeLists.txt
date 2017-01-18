@@ -68,7 +68,7 @@ file(GLOB UIS_HEADERS "ui_include/*.ui")
 QT5_WRAP_UI(UIS ${UIS_HEADERS})
 
 # Find all .h files
-file(GLOB H_HEADERS "include/GUI/*.h" "include/logic/*.h")
+file(GLOB H_HEADERS "include/GUI/*.h")
 
 # Wrap .h files
 qt5_wrap_cpp(MOC_HEADERS ${H_HEADERS})
