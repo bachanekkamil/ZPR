@@ -120,6 +120,7 @@ void SecondWindow::on_pushButtonTakeTest_clicked()
             mSolveTestWindow->show();
             this->hide();
         }catch (MainClassException &e){
+            qDebug() << "Exception " << e.what();
             mWarningMessageDialog = new WarningMessageDialog("Brak pytań na dziś dla wybranego testu!");
             mWarningMessageDialog->show();
         }
@@ -141,6 +142,7 @@ void SecondWindow::on_pushButtonDeleteTest_clicked(){
             main_class->deleteConcreteTest(ui->tableWidgetChooseMyTest->item(index.row(),0)->text());
             concreteTestsListChanged();
         }catch(MainClassException &e){
+            qDebug() << "Exception " << e.what();
             mWarningMessageDialog= new WarningMessageDialog("Nie udało się usunąć testu!");
             QRect screenGeometry = QApplication::desktop()->screenGeometry();
             int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
@@ -178,6 +180,7 @@ void SecondWindow::on_pushButtonTakeNewTest_clicked()
                 mSolveTestWindow->show();
                 this->hide();
             }catch(MainClassException &e){
+                qDebug() << "Exception " << e.what();
                 mWarningMessageDialog= new WarningMessageDialog("Nie udało się stworzyć testu dla użytkownika!");
                 QRect screenGeometry = QApplication::desktop()->screenGeometry();
                 int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
@@ -187,6 +190,7 @@ void SecondWindow::on_pushButtonTakeNewTest_clicked()
             }
 
         }catch(MainClassException &e){
+            qDebug() << "Exception " << e.what();
             mWarningMessageDialog = new WarningMessageDialog(e.what());
             QRect screenGeometry = QApplication::desktop()->screenGeometry();
             int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;

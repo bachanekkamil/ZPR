@@ -65,6 +65,7 @@ void SolveTestWindow::on_pushButtonEvaluate_clicked(){
                 QString progress_label= QString::number(mProgress) + "/" + QString::number(mInitialQuestionNumber);
                 ui->labelProgressValue->setText(progress_label);
             }catch(MainClassException &e){
+                qDebug() << "Exception " << e.what();
                 mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać oceny do odpowiedzi!");
                 QRect screenGeometry = QApplication::desktop()->screenGeometry();
                 int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;

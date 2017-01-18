@@ -63,6 +63,7 @@ void MainWindow::on_pushButtonDeleteUser_clicked()
             main_class->deleteUser(ui->comboBoxChooseUser->currentText());
             userListChanged();
         }catch(MainClassException &e){
+            qDebug() << "Exception " << e.what();
             mWarningMessageDialog = new WarningMessageDialog("Nie udało się usunąć użytkownika z bazy.");
             QRect screenGeometry = QApplication::desktop()->screenGeometry();
             int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;

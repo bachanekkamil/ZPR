@@ -8,6 +8,7 @@
 #include "logic/mainclass.h"
 #include "logic/mainclassexception.h"
 #include <QDesktopWidget>
+#include <QDebug>
 
 NewTestName::NewTestName(QMainWindow *previous, QWidget *parent) :
     QDialog(parent),
@@ -32,6 +33,7 @@ void NewTestName::on_buttonBox_accepted()
             emit newTestNameAccepted();
             this->close();
         }catch(MainClassException &e){
+            qDebug() << "Exception " << e.what();
             mWarningMessageDialog = new WarningMessageDialog("Nie udało się dodać testu do bazy.");
             QRect screenGeometry = QApplication::desktop()->screenGeometry();
             int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;

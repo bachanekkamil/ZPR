@@ -8,6 +8,7 @@
 #include "logic/mainclass.h"
 #include "logic/mainclassexception.h"
 #include <QDesktopWidget>
+#include<QDebug>
 
 AddNewUserWindow::AddNewUserWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),
@@ -34,6 +35,7 @@ void AddNewUserWindow::on_pushButtonAddNewUser_clicked()
             mPrevious->show();
             this->close();
         }catch(MainClassException &e){
+            qDebug() << "Exception " << e.what();
             mWarningMessageDialog = new WarningMessageDialog("Nie udało się dodać użytkownika do bazy.");
             QRect screenGeometry = QApplication::desktop()->screenGeometry();
             int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;

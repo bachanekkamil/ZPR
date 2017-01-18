@@ -9,6 +9,7 @@
 #include "mainclassexception.h"
 #include <algorithm>
 #include <QDesktopWidget>
+#include <QDebug>
 
 AddNewTestWindow::AddNewTestWindow(QMainWindow *previous, QWidget *parent) :
     QMainWindow(parent),
@@ -56,6 +57,7 @@ void AddNewTestWindow::on_pushButtonEndTestEditing_clicked()
                     mPrevious->show();
                     this->close();
                 }catch(MainClassException &e){
+                    qDebug() << "Exception " << e.what();
                     mWarningMessageDialog= new WarningMessageDialog("Nie udało się zmodyfikować pytania!");
                     QRect screenGeometry = QApplication::desktop()->screenGeometry();
                     int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
@@ -81,6 +83,7 @@ void AddNewTestWindow::on_pushButtonEndTestEditing_clicked()
                     mPrevious->show();
                     this->close();
                 }catch(MainClassException &e){
+                    qDebug() << "Exception " << e.what();
                     mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
                     QRect screenGeometry = QApplication::desktop()->screenGeometry();
                     int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
@@ -118,6 +121,7 @@ void AddNewTestWindow::on_pushButtonNext_clicked()
             try{
                 main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
             }catch(MainClassException &e){
+                qDebug() << "Exception " << e.what();
                 mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
                 QRect screenGeometry = QApplication::desktop()->screenGeometry();
                 int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
@@ -130,6 +134,7 @@ void AddNewTestWindow::on_pushButtonNext_clicked()
                 try{
                     main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
                 }catch(MainClassException &e){
+                    qDebug() << "Exception " << e.what();
                     mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
                     QRect screenGeometry = QApplication::desktop()->screenGeometry();
                     int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
@@ -141,6 +146,7 @@ void AddNewTestWindow::on_pushButtonNext_clicked()
                 try{
                     main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
                 }catch(MainClassException &e){
+                    qDebug() << "Exception " << e.what();
                     mWarningMessageDialog= new WarningMessageDialog("Nie udało się zmodyfikować pytania!");
                     QRect screenGeometry = QApplication::desktop()->screenGeometry();
                     int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
@@ -193,6 +199,7 @@ void AddNewTestWindow::on_pushButtonPrevious_clicked()
             try{
                 main_class->modifyQuestion(mProgress-1, ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
             }catch(MainClassException &e){
+                qDebug() << "Exception " << e.what();
                 mWarningMessageDialog= new WarningMessageDialog("Nie udało się zmodyfikować pytania!");
                 QRect screenGeometry = QApplication::desktop()->screenGeometry();
                 int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
@@ -205,6 +212,7 @@ void AddNewTestWindow::on_pushButtonPrevious_clicked()
             try{
                 main_class->addQuestion(ui->textEditQuestion->toPlainText(), ui->textEditAnswer->toPlainText());
             }catch(MainClassException &e){
+                qDebug() << "Exception " << e.what();
                 mWarningMessageDialog= new WarningMessageDialog("Nie udało się dodać pytania do bazy!");
                 QRect screenGeometry = QApplication::desktop()->screenGeometry();
                 int x = (screenGeometry.width()- mWarningMessageDialog->width()) / 2;
