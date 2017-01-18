@@ -292,11 +292,6 @@ void MainClass::addAnswerToCurrentConcreteTest(unsigned int question_id, unsigne
     }
 }
 
-void MainClass::generateNewScheduler()
-{
-    mConcreteTest->refreshAnswers();
-}
-
 void MainClass::startConcreteTest(QString& name){
     foreach(std::shared_ptr<ConcreteTest> test, mConcreteTests)
     {
@@ -309,6 +304,11 @@ void MainClass::startConcreteTest(QString& name){
             break;
         }
     }
+}
+
+void MainClass::generateNewScheduler()
+{
+    mConcreteTest->refreshAnswers();
 }
 
 void MainClass::endCurrentConcreteTest(){

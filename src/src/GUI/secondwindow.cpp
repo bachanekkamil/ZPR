@@ -166,6 +166,10 @@ void SecondWindow::on_pushButtonTakeNewTest_clicked()
                 concreteTestsListChanged();
                 mSolveTestWindow = new SolveTestWindow(this);
                 QObject::connect(mSolveTestWindow, SIGNAL(testTaken()), this, SLOT(concreteTestsListChanged()));
+                QRect screenGeometry = QApplication::desktop()->screenGeometry();
+                int x = (screenGeometry.width()- mSolveTestWindow->width()) / 2;
+                int y = (screenGeometry.height()- mSolveTestWindow->height()) / 2;
+                mSolveTestWindow->move(x, y);
                 mSolveTestWindow->show();
                 this->hide();
             }catch(MainClassException &e){

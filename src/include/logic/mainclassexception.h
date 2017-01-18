@@ -1,3 +1,8 @@
+//!
+
+
+
+
 #ifndef MAINCLASSEXCEPTION_H
 #define MAINCLASSEXCEPTION_H
 
@@ -6,19 +11,40 @@
 #include <iostream>
 #include <cstring>
 
-enum error_type_main_class
+//! ErrorTypeMainClass enum
+/*!
+    Enum for error types
+*/
+
+enum ErrorTypeMainClass
 {
     MAIN_CLASS_EXCEPTION
 };
 
+//!  MainClassException
+/*!
+  Class for MainClass exceptions
+*/
+
 class MainClassException : public std::exception
 {
 public:
+    //! \brief MainClassException
+    /*!
+      \param error error text
+    */
     MainClassException(const char* error);
 
+    //!  MainClassException Constructor
+    /*!
+      \param error error type
+    */
+    MainClassException(ErrorTypeMainClass err);
 
-    MainClassException(error_type_main_class err);
-
+    //!  what method
+    /*!
+      \return error text
+    */
     virtual const char *what() const noexcept override;
 
 

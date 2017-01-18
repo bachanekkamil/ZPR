@@ -9,7 +9,7 @@ MainClassException::MainClassException(const char* error)
      strcpy(text, error);
 }
 
-MainClassException::MainClassException(error_type_main_class err)
+MainClassException::MainClassException(ErrorTypeMainClass err)
 {
      switch(err)
      {
