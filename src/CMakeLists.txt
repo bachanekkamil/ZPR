@@ -12,18 +12,19 @@ cmake_minimum_required (VERSION 2.8.11)
 # Set project name
 project (SuperMemo)
 
-# Flag for gcc compiler
-SET ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
 
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-add_definitions(-std=c++0x)
 
 #add_definitions (-DBOOST_TEST_DYN_LINK)
 
+if(UNIX)
 # Coverage test
 SET(CMAKE_CXX_FLAGS "-g -O0 --coverage")
 SET(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE_1)
+# Flag for gcc compiler
+SET ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
+endif()
  
 
 # Instruct CMake to run moc automatically when needed.
